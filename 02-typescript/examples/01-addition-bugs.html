@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Document</title>
+	</head>
+	<body>
+		<!-- There are (at least) 3 bugs in this page. Can you spot them? -->
+		<input id="a" type="number" /> +
+		<input id="b" type="number" /> =
+		<span id="result "></span>
+		<script>
+			const aInput = document.getElementById("a");
+			const bInput = document.getElementById("b");
+			const resultSpan = document.getElementById("result");
+			const computeResult = () =>
+				(resultSpan.value = aInput.value + bInput.value);
+			aInput.addEventListener("input", computeResult);
+			bInput.addEventListener("input", computeResult);
+			computeResult();
+		</script>
+	</body>
+</html>
+l

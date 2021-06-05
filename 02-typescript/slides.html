@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>TypeScript</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {  background-color: #f8f8f8; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ef2929; } /* Alert */
+    code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #c4a000; } /* Attribute */
+    code span.bn { color: #0000cf; } /* BaseN */
+    code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4e9a06; } /* Char */
+    code span.cn { color: #000000; } /* Constant */
+    code span.co { color: #8f5902; font-style: italic; } /* Comment */
+    code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+    code span.dt { color: #204a87; } /* DataType */
+    code span.dv { color: #0000cf; } /* DecVal */
+    code span.er { color: #a40000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #0000cf; } /* Float */
+    code span.fu { color: #000000; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+    code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+    code span.ot { color: #8f5902; } /* Other */
+    code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+    code span.sc { color: #000000; } /* SpecialChar */
+    code span.ss { color: #4e9a06; } /* SpecialString */
+    code span.st { color: #4e9a06; } /* String */
+    code span.va { color: #000000; } /* Variable */
+    code span.vs { color: #4e9a06; } /* VerbatimString */
+    code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="https://xn--erklr-mir-mal-efb.ch/2021-1/css/theme/powercoders.css"/>
+  <link rel="stylesheet" href="../slides.css"/>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">TypeScript</h1>
+</section>
+
+<section>
+<section id="introduction" class="title-slide slide level2">
+<h2>Introduction</h2>
+
+</section>
+<section id="example-1-motivating-example" class="slide level3">
+<h3><em class="type">Example 1</em> Motivating example</h3>
+<p>There are (at least) 3 bugs in this code. Can you spot them?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;a&quot;</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;number&quot;</span> <span class="kw">/&gt;</span> +</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;b&quot;</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;number&quot;</span> <span class="kw">/&gt;</span> =</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;span</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;result &quot;</span><span class="kw">&gt;&lt;/span&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> aInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;a&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> bInput <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;b&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> resultSpan <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;result&quot;</span>)<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">const</span> computeResult <span class="op">=</span> () <span class="kw">=&gt;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        (resultSpan<span class="op">.</span><span class="at">value</span> <span class="op">=</span> aInput<span class="op">.</span><span class="at">value</span> <span class="op">+</span> bInput<span class="op">.</span><span class="at">value</span>)<span class="op">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    aInput<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;input&quot;</span><span class="op">,</span> computeResult)<span class="op">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    bInput<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;input&quot;</span><span class="op">,</span> computeResult)<span class="op">;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">computeResult</span>()<span class="op">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/script&gt;</span></span></code></pre></div>
+<p><a href="./01-addition-bugs.html">Source</a></p>
+</section>
+<section id="what-is-a-type" class="slide level3">
+<h3>What is a type?</h3>
+<blockquote>
+<p>A type system is a syntaxic method for automatically checking the absence of certain erroneous behaviors by classifying program phrases according to the kinds of values they compute.</p>
+<p>— <em>Benjamin C. Pierce, Types and Programming Languages</em></p>
+</blockquote>
+</section>
+<section id="why-do-we-need-types" class="slide level3">
+<h3>Why do we need types?</h3>
+<ul>
+<li>Early bugs discovery</li>
+<li>Documentation</li>
+<li>Autocompletion</li>
+<li>(Performance)</li>
+</ul>
+</section>
+<section id="variable-type-annotations" class="slide level3">
+<h3>Variable type annotations</h3>
+<p>Typescript (<a href="./02-variable-type.ts">example 2</a>):</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>const foo<span class="op">:</span> <span class="dt">number</span> <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span></code></pre></div>
+<p>Python (<a href="./03-python-variable-type.py">example 3</a>):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>foo: <span class="bu">int</span> <span class="op">=</span> <span class="dv">42</span></span></code></pre></div>
+<p>C:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> foo <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span></code></pre></div>
+</section></section>
+<section>
+<section id="everyday-types" class="title-slide slide level2">
+<h2>Everyday types</h2>
+
+</section>
+<section id="reference" class="slide level3">
+<h3>Reference</h3>
+<p><a href="https://www.typescriptlang.org/docs/handbook/2/everyday-types.html">TypeScript Handbook &gt; Everyday types</a></p>
+</section>
+<section id="primitive-types" class="slide level3">
+<h3>Primitive types</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>const foo<span class="op">:</span> <span class="dt">number</span> <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>const bar<span class="op">:</span> <span class="dt">string</span> <span class="op">=</span> <span class="st">&quot;Hello world&quot;</span><span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>const baz<span class="op">:</span> <span class="dt">boolean</span> <span class="op">=</span> true<span class="op">;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>const qux<span class="op">:</span> <span class="dt">undefined</span> <span class="op">=</span> undefined<span class="op">;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>const quux<span class="op">:</span> <span class="dt">null</span> <span class="op">=</span> null<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="array-types" class="slide level3">
+<h3>Array types</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>const foo<span class="op">:</span> <span class="dt">number</span>[] <span class="op">=</span> [<span class="dv">42</span><span class="op">,</span> <span class="dv">451</span><span class="op">,</span> <span class="dv">1984</span>]<span class="op">;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>const bar<span class="op">:</span> <span class="dt">string</span>[] <span class="op">=</span> [<span class="st">&quot;Hello Bradbery&quot;</span><span class="op">,</span> <span class="st">&quot;Hello Orwell&quot;</span>]<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>const baz<span class="op">:</span> <span class="dt">boolean</span>[] <span class="op">=</span> [false<span class="op">,</span> false<span class="op">,</span> true]<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="parameter-type-annotations" class="slide level3">
+<h3>Parameter type annotations</h3>
+<div class="sourceCode" id="cb7"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">greet</span>(name<span class="op">:</span> <span class="dt">string</span>) {</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;Hello &quot;</span> <span class="op">+</span> name)<span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">greet</span>(<span class="st">&quot;Ada&quot;</span>)<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="return-type-annotations" class="slide level3">
+<h3>Return type annotations</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">greet</span>(name<span class="op">:</span> <span class="dt">string</span>)<span class="op">:</span> <span class="dt">string</span> {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    return <span class="st">&quot;Hello &quot;</span> <span class="op">+</span> name<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">greet</span>(<span class="st">&quot;Ada&quot;</span>))<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">add</span>(a<span class="op">:</span> <span class="dt">number</span><span class="op">,</span> b<span class="op">:</span> <span class="dt">number</span>)<span class="op">:</span> <span class="dt">number</span> {</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    return a <span class="op">+</span> b<span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">add</span>(<span class="dv">40</span><span class="op">,</span> <span class="dv">2</span>))<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="object-types" class="slide level3">
+<h3>Object types</h3>
+<div class="sourceCode" id="cb9"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>const center<span class="op">:</span> { x<span class="op">:</span> <span class="dt">number</span><span class="op">;</span> y<span class="op">:</span> <span class="dt">number</span> } <span class="op">=</span> { x<span class="op">:</span> <span class="dv">0</span><span class="op">,</span> y<span class="op">:</span> <span class="dv">0</span> }<span class="op">;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">// The parameter&#39;s type annotation is an object type</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">printCoord</span>(point<span class="op">:</span> { x<span class="op">:</span> <span class="dt">number</span><span class="op">;</span> y<span class="op">:</span> <span class="dt">number</span> }) {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;The coordinate&#39;s x value is &quot;</span> <span class="op">+</span> point<span class="op">.</span><span class="at">x</span>)<span class="op">;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;The coordinate&#39;s y value is &quot;</span> <span class="op">+</span> point<span class="op">.</span><span class="at">y</span>)<span class="op">;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">printCoord</span>(center)<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="union-types" class="slide level3">
+<h3>Union types</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> foo<span class="op">:</span> number <span class="op">|</span> string <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> bar<span class="op">:</span> number <span class="op">|</span> string <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> baz<span class="op">:</span> number <span class="op">|</span> <span class="kw">undefined</span> <span class="op">=</span> <span class="dv">42</span><span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> qux<span class="op">:</span> number <span class="op">|</span> <span class="kw">undefined</span> <span class="op">=</span> <span class="kw">undefined</span><span class="op">;</span></span></code></pre></div>
+</section>
+<section id="type-aliases" class="slide level3">
+<h3>Type aliases</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>type Human <span class="op">=</span> { <span class="dt">firstname</span><span class="op">:</span> string<span class="op">,</span> <span class="dt">lastname</span><span class="op">:</span> string }<span class="op">;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>type Robot <span class="op">=</span> { <span class="dt">serialNumber</span><span class="op">:</span> number }<span class="op">;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">printName</span>(member<span class="op">:</span> Human <span class="op">|</span> Robot) {</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// ...</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</section>
+<section id="interfaces" class="slide level3">
+<h3>Interfaces</h3>
+<div class="sourceCode" id="cb12"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Human {</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">firstname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">lastname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Robot {</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">serialNumber</span><span class="op">:</span> number<span class="op">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</section>
+<section id="interface-extension" class="slide level3">
+<h3>Interface extension</h3>
+<div class="sourceCode" id="cb13"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Human {</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">firstname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">lastname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Developer <span class="kw">extends</span> Human {</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">githubRepo</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</section>
+<section id="classes" class="slide level3">
+<h3>Classes</h3>
+<p>Remember <a href="https://erklär-mir-mal.ch/2021-1/05-01-js-repetition-with-loops.html#/20">ES6 classes</a>?</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Human {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">constructor</span>(firstname<span class="op">,</span> lastname) {</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">firstname</span> <span class="op">=</span> firstname<span class="op">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">lastname</span> <span class="op">=</span> lastname<span class="op">;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>In TypeScript, we explicitly annotate <em>attributes</em>:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Human {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">firstname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">lastname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">constructor</span>(<span class="dt">firstname</span><span class="op">:</span> string<span class="op">,</span> <span class="dt">lastname</span><span class="op">:</span> string) {</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">firstname</span> <span class="op">=</span> firstname<span class="op">;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">lastname</span> <span class="op">=</span> lastname<span class="op">;</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</section>
+<section id="interfaces-vs-classes" class="slide level3">
+<h3>Interfaces vs Classes</h3>
+<p>Here, <code>ada</code> is a <em>POJO</em> (Plain Old JavaScript Object), created using the <em>object literal notation</em> (<code>{ ... }</code>):</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Human {</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">firstname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">lastname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ada<span class="op">:</span> Human <span class="op">=</span> {</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">firstname</span><span class="op">:</span> <span class="st">&quot;Ada&quot;</span><span class="op">,</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">lastname</span><span class="op">:</span> <span class="st">&quot;Lovelace&quot;</span><span class="op">,</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="interfaces-vs-classes-contd" class="slide level3">
+<h3>Interfaces vs Classes (cont’d)</h3>
+<p>Here <code>ada2</code> is an instance of the <code>Human</code> class, constructed with the <code>new</code> keyword:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Human {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">firstname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">lastname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">constructor</span>(<span class="dt">firstname</span><span class="op">:</span> string<span class="op">,</span> <span class="dt">lastname</span><span class="op">:</span> string) {</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">firstname</span> <span class="op">=</span> firstname<span class="op">;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">lastname</span> <span class="op">=</span> lastname<span class="op">;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ada<span class="op">:</span> Human <span class="op">=</span> <span class="kw">new</span> <span class="fu">Human</span>(<span class="st">&quot;Ada&quot;</span><span class="op">,</span> <span class="st">&quot;Lovelace&quot;</span>)<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="interfaces-vs-classes-contd-1" class="slide level3">
+<h3>Interfaces vs Classes (cont’d)</h3>
+<p>The main added value of a class is the possibility to add <em>methods</em>:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Human {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">firstname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">lastname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">constructor</span>(<span class="dt">firstname</span><span class="op">:</span> string<span class="op">,</span> <span class="dt">lastname</span><span class="op">:</span> string) {</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">firstname</span> <span class="op">=</span> firstname<span class="op">;</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">lastname</span> <span class="op">=</span> lastname<span class="op">;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">toString</span>()<span class="op">:</span> string {</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="kw">this</span><span class="op">.</span><span class="at">firstname</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> <span class="kw">this</span><span class="op">.</span><span class="at">lastname</span><span class="op">;</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> ada<span class="op">:</span> Human <span class="op">=</span> <span class="kw">new</span> <span class="fu">Human</span>(<span class="st">&quot;Ada&quot;</span><span class="op">,</span> <span class="st">&quot;Lovelace&quot;</span>)<span class="op">;</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>ada<span class="op">.</span><span class="fu">toString</span>()<span class="op">;</span> <span class="co">// &quot;Ada Lovelace&quot;</span></span></code></pre></div>
+</section></section>
+<section>
+<section id="exercise-1-the-myhtmlelement-class" class="title-slide slide level2">
+<h2><em class="type">Exercise 1</em> The <code>MyHTMLElement</code> class</h2>
+
+</section>
+<section id="starting-point" class="slide level3">
+<h3>Starting point</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MyHTMLElement {</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">tagName</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">constructor</span>(<span class="dt">tagName</span><span class="op">:</span> string) {</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">this</span><span class="op">.</span><span class="at">tagName</span> <span class="op">=</span> tagName<span class="op">;</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">appendChild</span>(<span class="dt">child</span><span class="op">:</span> MyHTMLElement) {}</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Copy this code in a file <code>02-typescript/01-my-html-element.ts</code> in your repository.</p>
+</section>
+<section id="step-1-add-a-children-attribute" class="slide level3">
+<h3><em class="type">Step 1</em> Add a <code>children</code> attribute</h3>
+<p>Add a <code>children</code> attribute to the <code>MyHTMLElement</code> class so that the following code <em>type-checks</em> (for now, this means nothing should be underlined in red in VSCode):</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> element<span class="op">:</span> MyHTMLElement <span class="op">=</span> <span class="kw">new</span> <span class="fu">MyHTMLElement</span>(<span class="st">&quot;div&quot;</span><span class="op">,</span> [])<span class="op">;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">children</span>[<span class="dv">0</span>]<span class="op">.</span><span class="at">tagName</span><span class="op">;</span></span></code></pre></div>
+<p><em>Question:</em> in the real <code>HTMLElement</code> type, is the <code>children</code> attribute an array?</p>
+</section>
+<section id="step-2-add-an-insertbefore-method" class="slide level3">
+<h3><em class="type">Step 2</em> Add an <code>insertBefore</code> method</h3>
+<p>Write an <code>insertBefore</code> method declaration (without implementation) so that the following code type-checks:</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> child<span class="op">:</span> MyHTMLElement <span class="op">=</span> <span class="kw">new</span> <span class="fu">MyHTMLElement</span>(<span class="st">&quot;span&quot;</span><span class="op">,</span> [])<span class="op">;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> element<span class="op">:</span> MyHTMLElement <span class="op">=</span> <span class="kw">new</span> <span class="fu">MyHTMLElement</span>(<span class="st">&quot;div&quot;</span><span class="op">,</span> [])<span class="op">;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="fu">insertBefore</span>(child<span class="op">,</span> <span class="kw">new</span> <span class="fu">MyHTMLElement</span>(<span class="st">&quot;span&quot;</span><span class="op">,</span> []))<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="step-3-add-a-queryselector-method" class="slide level3">
+<h3><em class="type">Step 3</em> Add a <code>querySelector</code> method</h3>
+<p>Write a <code>querySelector</code> method declaration (just write <code>return null</code> as a mock implementation) so that the following code type-checks:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> element<span class="op">:</span> MyHTMLElement <span class="op">=</span> <span class="kw">new</span> <span class="fu">MyHTMLElement</span>(<span class="st">&quot;div&quot;</span><span class="op">,</span> [])<span class="op">;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">const</span> child <span class="op">=</span> element<span class="op">.</span><span class="fu">querySelector</span>(<span class="st">&quot;span&quot;</span>)<span class="op">;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (child <span class="op">!==</span> <span class="kw">null</span>) {</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    child<span class="op">.</span><span class="at">tagName</span><span class="op">;</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</section>
+<section id="step-4-advanced-add-a-classlist-attribute" class="slide level3">
+<h3><em class="type">Step 4 (advanced)</em> Add a <code>classList</code> attribute</h3>
+<p>Add a <code>classList</code> attribute so that the following code type-checks:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">add</span>(<span class="st">&quot;a-class&quot;</span>)<span class="op">;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">has</span>(<span class="st">&quot;a-class&quot;</span>)<span class="op">;</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>element<span class="op">.</span><span class="at">classList</span><span class="op">.</span><span class="fu">remove</span>(<span class="st">&quot;a-class&quot;</span>)<span class="op">;</span></span></code></pre></div>
+</section>
+<section id="step-5-advanced-implementation" class="slide level3">
+<h3><em class="type">Step 5 (advanced)</em> Implementation</h3>
+<p>Fill the code for all methods so that everything works as expected.</p>
+</section></section>
+<section>
+<section id="narrowing" class="title-slide slide level2">
+<h2>Narrowing</h2>
+
+</section>
+<section id="reference-1" class="slide level3">
+<h3>Reference</h3>
+<p><a href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html">TypeScript Handbook &gt; Narrowing</a></p>
+</section>
+<section id="equality-narrowing" class="slide level3">
+<h3>Equality narrowing</h3>
+<p>When we want to differentiate <em>one</em> value (like <code>null</code> or <code>undefined</code>) from other values, we can use an equality check.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">getLength</span>(arg<span class="op">:</span> <span class="dt">string</span> <span class="op">|</span> <span class="dt">undefined</span>)<span class="op">:</span> <span class="dt">number</span> {</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">if</span> (arg <span class="op">===</span> undefined) {</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>        return <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    } else {</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>        return arg<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</section>
+<section id="typeof-type-guards" class="slide level3">
+<h3><code>typeof</code> type guards</h3>
+<p>When we want to differentiate a primitive type from another, we can use the <code>typeof</code> keyword that returns the type of a variable as a string. This <strong>only</strong> works for primitive types (string, number, boolean, undefined or null).</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">sinOrLength</span>(arg<span class="op">:</span> <span class="dt">number</span> <span class="op">|</span> <span class="dt">string</span>)<span class="op">:</span> <span class="dt">number</span> {</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">if</span> (typeof arg <span class="op">===</span> <span class="st">&quot;number&quot;</span>) {</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        return <span class="bu">Math</span><span class="op">.</span><span class="fu">sin</span>(arg)<span class="op">;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    } else {</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        return arg<span class="op">.</span><span class="at">length</span><span class="op">;</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</section>
+<section id="discriminated-unions" class="slide level3">
+<h3>Discriminated unions</h3>
+<p>When we want to differentiate between interface types.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Human {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">type</span><span class="op">:</span> <span class="st">&quot;human&quot;</span><span class="op">;</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">firstname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">lastname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="kw">interface</span> Robot {</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">type</span><span class="op">:</span> <span class="st">&quot;robot&quot;</span><span class="op">;</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">serialNumber</span><span class="op">:</span> number<span class="op">;</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">printName</span>(member<span class="op">:</span> Human <span class="op">|</span> Robot) {</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (member<span class="op">.</span><span class="at">type</span> <span class="op">===</span> <span class="st">&quot;robot&quot;</span>) {</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(member<span class="op">.</span><span class="at">serialNumber</span>)<span class="op">;</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(member<span class="op">.</span><span class="at">firstname</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> member<span class="op">.</span><span class="at">lastname</span>)<span class="op">;</span></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</section>
+<section id="instanceof-narrowing" class="slide level3">
+<h3><code>instanceof</code> narrowing</h3>
+<p>When we want to differentiate between class types.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Human {</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">firstname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">lastname</span><span class="op">:</span> string<span class="op">;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// constructor ...</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Robot {</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">serialNumber</span><span class="op">:</span> number<span class="op">;</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="co">// constructor ...</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">printName</span>(member<span class="op">:</span> Human <span class="op">|</span> Robot) {</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (member <span class="kw">instanceof</span> Robot) {</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(member<span class="op">.</span><span class="at">serialNumber</span>)<span class="op">;</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>        <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(member<span class="op">.</span><span class="at">firstname</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> member<span class="op">.</span><span class="at">lastname</span>)<span class="op">;</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</section></section>
+<section>
+<section id="how-to-use-typescript" class="title-slide slide level2">
+<h2>How to use TypeScript</h2>
+
+</section>
+<section id="compilation" class="slide level3">
+<h3>Compilation</h3>
+<p>TypeScript files cannot be directly understood by a web browser. We need to <em>compile</em> them to JavaScript first.</p>
+</section>
+<section id="node.js" class="slide level3">
+<h3>Node.js</h3>
+<p>Node.js allows to run JavaScript outside of the browser.</p>
+<p>We will it use for two purpose:</p>
+<ol type="1">
+<li>Now: to run <em>build tools</em> which are written in JavaScript,</li>
+<li>Later: to run a web server written in JavaScript.</li>
+</ol>
+</section>
+<section id="npm-project" class="slide level3">
+<h3>NPM Project</h3>
+</section>
+<section id="webpack" class="slide level3">
+<h3>Webpack</h3>
+</section></section>
+<section id="example-4-addition" class="title-slide slide level2">
+<h2><em class="type">Example 4</em> Addition</h2>
+
+</section>
+
+<section id="exercise-2-celcius-fahrenheit-converter" class="title-slide slide level2">
+<h2><em class="type">Exercise 2</em> Celcius-Fahrenheit converter</h2>
+
+</section>
+
+<section id="data-and-view" class="title-slide slide level2">
+<h2>Data and view</h2>
+
+</section>
+
+<section id="example-5-numbers-sum" class="title-slide slide level2">
+<h2><em class="type">Example 5</em> Numbers sum</h2>
+
+</section>
+
+<section id="exercise-3-task-list" class="title-slide slide level2">
+<h2><em class="type">Exercise 3</em> Task list</h2>
+
+</section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/search/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>

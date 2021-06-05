@@ -1,0 +1,116 @@
+body {
+	font-family: sans-serif;
+	line-height: 1.3;
+	background-color: #eee;
+	color: #222;
+	margin: 1rem;
+}
+@media screen and (min-width: 60rem) {
+	body {
+		margin: 2rem;
+	}
+}
+code {
+	background-color: #eee;
+	padding: 0.15em 0.3em;
+	margin: 0 0.15em;
+	font-size: 0.9em;
+	vertical-align: baseline;
+	display: inline-block;
+	border-radius: 0.3em;
+}
+h1 {
+	font-size: 2.5rem;
+}
+.week {
+	border-top: 1px solid #ddd;
+	margin: 1rem 0;
+	padding: 1rem 0;
+}
+.week > h2 {
+	font-size: 1.8rem;
+	margin: 0;
+}
+.week:last-child {
+	border-bottom: 1px dotted #bbb;
+}
+@media screen and (min-width: 60rem) {
+	.days-container {
+		display: flex;
+		justify-content: space-between;
+		justify-content: start;
+	}
+	.days-container > * {
+		width: 24%;
+	}
+	.days-container > *:not(:last-child) {
+		margin-right: 1.333333%;
+	}
+	.day {
+		font-size: 0.85em;
+	}
+	.day > h3 {
+		font-size: 1rem;
+	}
+}
+.chapter {
+	border: 1px solid #e9e9e9;
+	margin: 1rem 0;
+	padding: 0.7rem;
+	background-color: #fff;
+}
+.chapter > h4 {
+	font-size: 1.25rem;
+	margin: 0.3rem 0 0;
+}
+.item {
+	padding-left: 1rem;
+	position: relative;
+	margin: 1rem 0;
+}
+.item::before {
+	content: "•";
+	position: absolute;
+	left: 0;
+	top: -0.5rem;
+	font-size: 2rem;
+}
+.item > h5 {
+	font-size: 1rem;
+	margin: 0;
+}
+.item p {
+	margin: 0.5rem 0;
+}
+.chapter > .time,
+.item > .time {
+	margin-top: 0;
+	font-style: italic;
+}
+.theory::before {
+	color: purple;
+}
+.doc::before {
+	color: navy;
+}
+.exercise::before {
+	color: orange;
+}
+.project::before {
+	color: salmon;
+}
+.example::before {
+	color: green;
+}
+.legend > * {
+	display: inline-block;
+}
+.legend > ul,
+.legend > p {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.legend > ul > .item {
+	margin: 0;
+}

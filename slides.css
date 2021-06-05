@@ -1,0 +1,22 @@
+.reveal h1 {
+	margin: 0;
+}
+.reveal .slides section section:first-child {
+	text-align: left;
+}
+.reveal pre {
+	margin: 1em;
+}
+.reveal pre code {
+	background: none;
+}
+em.type {
+	display: block;
+	font-size: 0.5em;
+	color: #c32e4c;
+	font-style: normal;
+}
+::selection {
+	background-color: #c32e4c !important;
+	color: white;
+}

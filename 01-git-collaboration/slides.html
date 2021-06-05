@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Collaborating with Git and GitHub</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="https://xn--erklr-mir-mal-efb.ch/2021-1/css/theme/powercoders.css"/>
+  <link rel="stylesheet" href="../slides.css"/>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Collaborating with Git and GitHub</h1>
+</section>
+
+<section id="the-github-workflow" class="slide level2">
+<h2>The GitHub workflow</h2>
+<p>See <a href="https://guides.github.com/introduction/flow/">Understanding the GitHub Workflow</a>.</p>
+<ol type="1">
+<li>Create a branch (see <a href="https://www.atlassian.com/git/tutorials/using-branches">Using branches</a>).</li>
+<li>Open a PR (Pull Request) (see <a href="https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request">Creating a pull request</a>).</li>
+<li>Discuss and review your code</li>
+<li>Merge the PR.</li>
+</ol>
+</section>
+<section id="github-issues" class="slide level2">
+<h2>GitHub issues</h2>
+<p>See <a href="https://guides.github.com/features/issues/">Mastering issues, GitHub guides</a>.</p>
+</section>
+<section id="exercise-1-your-exercises-repository" class="slide level2">
+<h2><em class="type">Exercise 1</em> Your exercises repository</h2>
+<ol type="1">
+<li>Create a new repository in your GitHub account with a Readme file. If you decide to make it private, please add <a href="https://github.com/sardaykin">Susanne</a> and <a href="https://github.com/mbovel/">I</a> as contributors (under “Settings” &gt; “Manage access”).</li>
+<li>Create an issue named “Do first exercise” with the label “enhancement”.</li>
+<li>In a branch <code>git-exercise-1</code>, add a file named <code>01-git-collaboration/01-quote/index.html</code> showing the quote of your choice at the center of the page.</li>
+<li>Once this is done, create a pull request for this branch, and add Susanne and I as reviewers.</li>
+<li>After we approved the pull request, merge it.</li>
+</ol>
+</section>
+<section id="forks" class="slide level2">
+<h2>Forks</h2>
+<p>See <a href="https://docs.github.com/en/github/getting-started-with-github/quickstart/fork-a-repo">Fork a repo</a>.</p>
+</section>
+<section id="exercise-2-list-of-participants" class="slide level2">
+<h2><em class="type">Exercise 2</em> List of participants</h2>
+<p>Make a pull request to this repository to add a Markdown file <code>[your-name].md</code> to the folder <code>02-git-collaboration/exercises/02-list-of-participants</code> with a link to your favorite song and two lines about you if you would like to (note that this repo is public).</p>
+</section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/search/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
