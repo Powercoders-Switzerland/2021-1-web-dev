@@ -5,7 +5,8 @@
 	text-align: left;
 }
 .reveal pre {
-	margin: 1em;
+	padding: 0.5em;
+	background: #f9f9f9;
 }
 .reveal pre code {
 	background: none;

@@ -90,9 +90,6 @@ h1 {
 .theory::before {
 	color: purple;
 }
-.doc::before {
-	color: navy;
-}
 .exercise::before {
 	color: orange;
 }

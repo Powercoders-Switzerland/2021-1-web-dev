@@ -21,6 +21,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/theme/white.css" id="theme">
   <link rel="stylesheet" href="https://xn--erklr-mir-mal-efb.ch/2021-1/css/theme/powercoders.css"/>
   <link rel="stylesheet" href="../slides.css"/>
+  <link href='https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css' rel='stylesheet' />
 </head>
 <body>
   <div class="reveal">
@@ -105,6 +106,28 @@
           RevealZoom
         ]
       });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-c.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-json.min.js"></script>
+    <script>
+    	for (const preEl of document.querySelectorAll("pre")) {
+    		const className = preEl.getAttribute("class");
+
+    		if (className) {
+    			const codeEl = preEl.querySelector("code");
+    			if (!Prism.languages[className]) {
+    				console.log(className);
+    			}
+    			codeEl.innerHTML = Prism.highlight(
+    				codeEl.textContent,
+    				Prism.languages[className],
+    				className
+    			);
+    		}
+    	}
     </script>
     </body>
 </html>

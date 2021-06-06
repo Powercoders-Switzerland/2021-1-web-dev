@@ -1,6 +1,6 @@
 const appDiv = document.getElementById("app");
 
-if (!appDiv || !(appDiv instanceof HTMLDivElement)) {
+if (!(appDiv instanceof HTMLDivElement)) {
 	throw new Error("No div with id 'app' found");
 }
 
@@ -13,7 +13,9 @@ let numbers: number[] = [1, 2, 3];
  *
  * If the value cannot be parsed as a number, `0` is returned.
  */
-const readInputInteger = (input: HTMLInputElement) => {
+const readInputInteger = (
+	input: HTMLInputElement
+): number => {
 	const result = parseInt(input.value);
 	return isNaN(result) ? 0 : result;
 };

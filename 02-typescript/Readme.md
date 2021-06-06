@@ -24,7 +24,7 @@ There are (at least) 3 bugs in this code. Can you spot them?
 </script>
 ```
 
-[Source](./01-addition-bugs.html)
+[Source](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/02-typescript/examples/01-addition-bugs)
 
 ### What is a type?
 
@@ -41,13 +41,13 @@ There are (at least) 3 bugs in this code. Can you spot them?
 
 ### Variable type annotations
 
-Typescript ([example 2](./02-variable-type.ts)):
+Typescript ([example 2](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/02-typescript/examples/02-variable-type)):
 
 ```ts
 const foo: number = 42;
 ```
 
-Python ([example 3](./03-python-variable-type.py)):
+Python ([example 3](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/02-typescript/examples/03-python-variable-type)):
 
 ```python
 foo: int = 42
@@ -122,7 +122,7 @@ printCoord(center);
 
 ### Union types
 
-```js
+```ts
 const foo: number | string = 42;
 const bar: number | string = "";
 const baz: number | undefined = 42;
@@ -131,8 +131,8 @@ const qux: number | undefined = undefined;
 
 ### Type aliases
 
-```js
-type Human = { firstname: string, lastname: string };
+```ts
+type Human = { firstname: string; lastname: string };
 type Robot = { serialNumber: number };
 
 function printName(member: Human | Robot) {
@@ -142,7 +142,7 @@ function printName(member: Human | Robot) {
 
 ### Interfaces
 
-```js
+```ts
 interface Human {
 	firstname: string;
 	lastname: string;
@@ -155,7 +155,7 @@ interface Robot {
 
 ### Interface extension
 
-```js
+```ts
 interface Human {
 	firstname: string;
 	lastname: string;
@@ -179,9 +179,9 @@ class Human {
 }
 ```
 
-In TypeScript, we explicitly annotate _attributes_:
+With type annotations:
 
-```js
+```ts
 class Human {
 	firstname: string;
 	lastname: string;
@@ -196,7 +196,7 @@ class Human {
 
 Here, `ada` is a _POJO_ (Plain Old JavaScript Object), created using the _object literal notation_ (`{ ... }`):
 
-```js
+```ts
 interface Human {
 	firstname: string;
 	lastname: string;
@@ -209,9 +209,9 @@ const ada: Human = {
 
 ### Interfaces vs Classes (cont'd)
 
-Here `ada2` is an instance of the `Human` class, constructed with the `new` keyword:
+Here `ada` is an _instance_ of the `Human` class, constructed with the `new` keyword:
 
-```js
+```ts
 class Human {
 	firstname: string;
 	lastname: string;
@@ -227,7 +227,7 @@ const ada: Human = new Human("Ada", "Lovelace");
 
 The main added value of a class is the possibility to add _methods_:
 
-```js
+```ts
 class Human {
 	firstname: string;
 	lastname: string;
@@ -247,7 +247,7 @@ ada.toString(); // "Ada Lovelace"
 
 ### Starting point
 
-```js
+```ts
 class MyHTMLElement {
 	tagName: string;
 
@@ -263,9 +263,9 @@ Copy this code in a file `02-typescript/01-my-html-element.ts` in your repositor
 
 ### <em class="type">Step 1</em> Add a `children` attribute
 
-Add a `children` attribute to the `MyHTMLElement` class so that the following code _type-checks_ (for now, this means nothing should be underlined in red in VSCode):
+Add a `children` attribute to the `MyHTMLElement` class so that the following code _type-checks_ (for now, this means that nothing should be underlined in red in VSCode):
 
-```js
+```ts
 const element: MyHTMLElement = new MyHTMLElement("div", []);
 element.children[0].tagName;
 ```
@@ -276,7 +276,7 @@ _Question:_ in the real `HTMLElement` type, is the `children` attribute an array
 
 Write an `insertBefore` method declaration (without implementation) so that the following code type-checks:
 
-```js
+```ts
 const child: MyHTMLElement = new MyHTMLElement("span", []);
 const element: MyHTMLElement = new MyHTMLElement("div", []);
 element.insertBefore(child, new MyHTMLElement("span", []));
@@ -284,29 +284,21 @@ element.insertBefore(child, new MyHTMLElement("span", []));
 
 ### <em class="type">Step 3</em> Add a `querySelector` method
 
-Write a `querySelector` method declaration (just write `return null` as a mock implementation) so that the following code type-checks:
+Write a `querySelector` method declaration that takes a `string` as an argument and returns either a `MyHTMLElement` or `null`. Use `return null;` as implementation for now.
 
-```js
-const element: MyHTMLElement = new MyHTMLElement("div", []);
-const child = element.querySelector("span");
-if (child !== null) {
-	child.tagName;
-}
-```
-
-### <em class="type">Step 4 (advanced)</em> Add a `classList` attribute
+### <em class="type">Step 4 (extra)</em> Add a `classList` attribute
 
 Add a `classList` attribute so that the following code type-checks:
 
-```js
+```ts
 element.classList.add("a-class");
 element.classList.has("a-class");
 element.classList.remove("a-class");
 ```
 
-### <em class="type">Step 5 (advanced)</em> Implementation
+### <em class="type">Step 5 (extra)</em> Implementation
 
-Fill the code for all methods so that everything works as expected.
+Write the methods' implementations.
 
 ## Narrowing
 
@@ -316,7 +308,7 @@ Fill the code for all methods so that everything works as expected.
 
 ### Equality narrowing
 
-When we want to differentiate _one_ value (like `null` or `undefined`) from other values, we can use an equality check.
+To differentiate _one_ value (like `null` or `undefined`) from other values, we can use an equality check.
 
 ```ts
 function getLength(arg: string | undefined): number {
@@ -330,7 +322,7 @@ function getLength(arg: string | undefined): number {
 
 ### `typeof` type guards
 
-When we want to differentiate a primitive type from another, we can use the `typeof` keyword that returns the type of a variable as a string. This **only** works for primitive types (string, number, boolean, undefined or null).
+To differentiate a primitive type from another, we can use the `typeof` keyword that returns the type of a variable as a string. This **only** works for primitive types (string, number, boolean, undefined or null).
 
 ```ts
 function sinOrLength(arg: number | string): number {
@@ -344,9 +336,9 @@ function sinOrLength(arg: number | string): number {
 
 ### Discriminated unions
 
-When we want to differentiate between interface types.
+Used to differentiate between interface types.
 
-```js
+```ts
 interface Human {
 	type: "human";
 	firstname: string;
@@ -368,9 +360,9 @@ function printName(member: Human | Robot) {
 
 ### `instanceof` narrowing
 
-When we want to differentiate between class types.
+Used to differentiate between class types.
 
-```js
+```ts
 class Human {
 	firstname: string;
 	lastname: string;
@@ -406,14 +398,150 @@ We will it use for two purpose:
 
 ### NPM Project
 
+The [**N**ode **P**ackage **M**anager (NPM)](https://www.npmjs.com/) is used to manage the _dependencies_ of a project.
+
+Each NPM project contains a `package.json` file that declares the dependencies of the project and other metadata.
+
+### Our `package.json` file
+
+Our `package.json` will look like:
+
+```json
+{
+	"name": "01-addition",
+	"version": "1.0.0",
+	"author": "Ada lovelace",
+	"private": true,
+	"scripts": {
+		"build": "webpack",
+		"build:watch": "webpack --watch"
+	},
+	"devDependencies": {
+		"ts-loader": "^9.2.3",
+		"webpack": "^5.38.1",
+		"webpack-cli": "^4.7.0"
+	}
+}
+```
+
 ### Webpack
 
-## <em class="type">Example 4</em> Addition
+[Webpack](https://webpack.js.org/) is the build tool we will use. It can convert files from one language to another and _bundle_ them together.
+
+Webpack is configured by a `webpack.config.js` file.
+
+### Our `webpack.config.js` file
+
+We will use Webpack to convert all TypeScript files from the `src` directory to a single JavaScript file `dist/bundle.js` using the following configuration:
+
+```js
+const path = require("path");
+
+module.exports = {
+	entry: "./src/main.ts",
+	mode: "development",
+	module: {
+		rules: [
+			{
+				test: /\.tsx?$/,
+				use: "ts-loader",
+				exclude: /node_modules/,
+			},
+		],
+	},
+	resolve: {
+		extensions: [".tsx", ".ts", ".js"],
+	},
+	output: {
+		filename: "bundle.js",
+		path: path.resolve(__dirname, "dist"),
+	},
+};
+```
+
+### TypeScript config
+
+The TypeScript compiler itself also can be configured, using a `tsconfig.json` file. We will use the following:
+
+```json
+{
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "esnext",
+		"strict": true
+	}
+}
+```
+
+## <em class="type">Example 4</em> [Addition](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/02-typescript/examples/04-addition)
 
 ## <em class="type">Exercise 2</em> Celcius-Fahrenheit converter
 
-## Data and view
+### Goal
 
-## <em class="type">Example 5</em> Numbers sum
+Reproduce the [degrees converter from Google search](https://www.google.com/search?q=fahrenheit+celsius):
 
-## <em class="type">Exercise 3</em> Task list
+![](images/google-degrees.png)
+
+### <em class="type">Step 1</em> Celsius-Fahrenheit conversion
+
+The page should contain two `<input>`: one with the value in Celsius degrees and the second in Fahrenheit degrees.
+
+Changing the value of one input should automatically update the value of the other.
+
+Make sure that this also work if an input is empty.
+
+### <em class="type">Step 2 (extra)</em> Unit choosers
+
+Under each input, there should be a `<select>` element allowing to change the degrees unit ("Fahrenheit", "Celsius" or "Kelvin"), as in the Google widget.
+
+## Data and view separation
+
+### Risks with manual DOM manipulation
+
+- It makes the code hard to reason about.
+- It makes it easy to introduce bugs, especially mismatch between data and user interface.
+- It is not obvious to choose which elements should be static HTML or dynamically generated with JavaScript.
+
+### Solution
+
+Use data as a _single source of truth_, and derive the view from it.
+
+**The view should never update itself directly.**
+
+### Diagram
+
+![](images/state-view.svg)
+
+## <em class="type">Example 5</em> [Numbers sum](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/02-typescript/examples/04-array-sum)
+
+## <em class="type">Exercise 3</em> To-do list
+
+### <em class="type">Step 1</em> `State` type
+
+- Define a `State` type representing the state of your application. It should be an array of objects, each with an attribute `done` and an attribute `title`.
+- Define an initial example state in a `state` variable of type `State`.
+
+### <em class="type">Step 2</em> `render` function
+
+Write a `render` function that renders the state to the DOM.
+
+### <em class="type">Step 3</em> Add item
+
+Add a way to add a new item to the to-do list.
+
+### <em class="type">Step 4</em> Add checkboxes
+
+Display a checkbox for each item showing if the item is done or not. Clicking on the checkbox should change the value of the corresponding `done` attribute.
+
+### <em class="type">Step 5 (extra)</em> Make the items sorted
+
+The to-do items should always be sorted alphabetically.
+
+### <em class="type">Step 5 (extra)</em> Store state in local storage.
+
+Each time the state changes, save it to local storage so that it can be restored on next page load.
+
+### <em class="type">Step 6 (extra)</em> Add a filter feature
+
+Add a way to show only items that are done or not done.
