@@ -1,8 +1,10 @@
 # Powercoders web development track, spring 2021
 
-For an overview of the course, see the curriculum.
+For an overview of the course, see the [curriculum](./).
 
 ## How to build the slides
+
+The following instructions are targeted to those wishing to _edit_ the slides.
 
 Slides are compiled from `*/Readme.md` files to `*/slides.html` [Reveal.js](https://revealjs.com/) presentations using [pandoc](https://pandoc.org/).
 
