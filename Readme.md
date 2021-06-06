@@ -1,4 +1,4 @@
-# Powercoders full-stack web development track, spring 2021
+# Powercoders web development track, spring 2021
 
 For an overview of the course, see the curriculum.
 
