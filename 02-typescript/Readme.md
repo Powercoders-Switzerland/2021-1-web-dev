@@ -538,10 +538,10 @@ Display a checkbox for each item showing if the item is done or not. Clicking on
 
 The to-do items should always be sorted alphabetically.
 
-### <em class="type">Step 5 (extra)</em> Store state in local storage.
+### <em class="type">Step 6 (extra)</em> Store state in local storage.
 
 Each time the state changes, save it to local storage so that it can be restored on next page load.
 
-### <em class="type">Step 6 (extra)</em> Add a filter feature
+### <em class="type">Step 7 (extra)</em> Add a filter feature
 
 Add a way to show only items that are done or not done.
