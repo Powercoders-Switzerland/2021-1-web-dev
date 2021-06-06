@@ -513,7 +513,7 @@ Use data as a _single source of truth_, and derive the view from it.
 
 ![](images/state-view.svg)
 
-## <em class="type">Example 5</em> [Numbers sum](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/02-typescript/examples/04-array-sum)
+## <em class="type">Example 5</em> [Numbers sum](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/02-typescript/examples/05-array-sum)
 
 ## <em class="type">Exercise 3</em> To-do list
 
