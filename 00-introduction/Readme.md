@@ -37,7 +37,7 @@ We will implement it using:
 
 ## Detailed curriculum
 
-[![](images/curriculum.png)](../curriculum.html)
+[![](images/curriculum.png)](https://powercoders-switzerland.github.io/2021-1-web-dev/)
 
 <!-- TODO(mbovel): update image -->
 
