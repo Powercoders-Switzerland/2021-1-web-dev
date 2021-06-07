@@ -5,25 +5,20 @@
 		<title>Document</title>
 	</head>
 	<body>
+		<!-- There are (at least) 3 bugs in this page. Can you spot them? -->
 		<input id="a" type="number" /> +
 		<input id="b" type="number" /> =
-		<!-- Bug 1: extra space in the id. -->
-		<span id="result "></span>
+		<span id="result"></span>
 		<script>
 			const aInput = document.getElementById("a");
 			const bInput = document.getElementById("b");
 			const resultSpan = document.getElementById("result");
 			const computeResult = () =>
-				// Bug 2: the `value` property does not exist an a span element.
-				// Bug 3: the `value` property of an input element is a string.
-				// The `+` operator therefore will concatenate the two values
-				// instead of adding them together, yielding `"105"` instead of
-				// `15` for `"10"` and `"5"` for example.
-				(resultSpan.value = aInput.value + bInput.value);
+				(resultSpan.innerText =
+					parseInt(aInput.value) + parseInt(bInput.value));
 			aInput.addEventListener("input", computeResult);
 			bInput.addEventListener("input", computeResult);
 			computeResult();
 		</script>
 	</body>
 </html>
-l
