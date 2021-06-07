@@ -15,6 +15,10 @@ See [Understanding the GitHub Workflow](https://guides.github.com/introduction/f
 
 See [Mastering issues, GitHub guides](https://guides.github.com/features/issues/).
 
+## GitHub Desktop App
+
+[Try it](https://desktop.github.com/).
+
 ## <em class="type">Exercise 1</em> Your exercises repository
 
 1. Create a new repository in your GitHub account with a Readme file. If you decide to make it private, please add [Susanne](https://github.com/sardaykin) and [I](https://github.com/mbovel/) as contributors (under "Settings" > "Manage access").
