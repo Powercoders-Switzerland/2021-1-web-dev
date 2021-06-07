@@ -166,140 +166,6 @@ interface Developer extends Human {
 }
 ```
 
-### Classes
-
-Remember [ES6 classes](https://erklär-mir-mal.ch/2021-1/05-01-js-repetition-with-loops.html#/20)?
-
-```js
-class Human {
-	constructor(firstname, lastname) {
-		this.firstname = firstname;
-		this.lastname = lastname;
-	}
-}
-```
-
-With type annotations:
-
-```ts
-class Human {
-	firstname: string;
-	lastname: string;
-	constructor(firstname: string, lastname: string) {
-		this.firstname = firstname;
-		this.lastname = lastname;
-	}
-}
-```
-
-### Interfaces vs Classes
-
-Here, `ada` is a _POJO_ (Plain Old JavaScript Object), created using the _object literal notation_ (`{ ... }`):
-
-```ts
-interface Human {
-	firstname: string;
-	lastname: string;
-}
-const ada: Human = {
-	firstname: "Ada",
-	lastname: "Lovelace",
-};
-```
-
-### Interfaces vs Classes (cont'd)
-
-Here `ada` is an _instance_ of the `Human` class, constructed with the `new` keyword:
-
-```ts
-class Human {
-	firstname: string;
-	lastname: string;
-	constructor(firstname: string, lastname: string) {
-		this.firstname = firstname;
-		this.lastname = lastname;
-	}
-}
-const ada: Human = new Human("Ada", "Lovelace");
-```
-
-### Interfaces vs Classes (cont'd)
-
-The main added value of a class is the possibility to add _methods_:
-
-```ts
-class Human {
-	firstname: string;
-	lastname: string;
-	constructor(firstname: string, lastname: string) {
-		this.firstname = firstname;
-		this.lastname = lastname;
-	}
-	toString(): string {
-		return this.firstname + " " + this.lastname;
-	}
-}
-const ada: Human = new Human("Ada", "Lovelace");
-ada.toString(); // "Ada Lovelace"
-```
-
-## <em class="type">Exercise 1</em> The `MyHTMLElement` class
-
-### Starting point
-
-```ts
-class MyHTMLElement {
-	tagName: string;
-
-	constructor(tagName: string) {
-		this.tagName = tagName;
-	}
-
-	appendChild(child: MyHTMLElement) {}
-}
-```
-
-Copy this code in a file `02-typescript/01-my-html-element.ts` in your repository.
-
-### <em class="type">Step 1</em> Add a `children` attribute
-
-Add a `children` attribute to the `MyHTMLElement` class so that the following code _type-checks_ (for now, this means that nothing should be underlined in red in VSCode):
-
-```ts
-const element: MyHTMLElement = new MyHTMLElement("div", []);
-element.children[0].tagName;
-```
-
-_Question:_ in the real `HTMLElement` type, is the `children` attribute an array?
-
-### <em class="type">Step 2</em> Add an `insertBefore` method
-
-Write an `insertBefore` method declaration (without implementation) so that the following code type-checks:
-
-```ts
-const child: MyHTMLElement = new MyHTMLElement("span", []);
-const element: MyHTMLElement = new MyHTMLElement("div", []);
-element.insertBefore(child, new MyHTMLElement("span", []));
-```
-
-### <em class="type">Step 3</em> Add a `querySelector` method
-
-Write a `querySelector` method declaration that takes a `string` as an argument and returns either a `MyHTMLElement` or `null`. Use `return null;` as implementation for now.
-
-### <em class="type">Step 4 (extra)</em> Add a `classList` attribute
-
-Add a `classList` attribute so that the following code type-checks:
-
-```ts
-element.classList.add("a-class");
-element.classList.has("a-class");
-element.classList.remove("a-class");
-```
-
-### <em class="type">Step 5 (extra)</em> Implementation
-
-Write the methods' implementations.
-
 ## Narrowing
 
 ### Reference
@@ -475,7 +341,7 @@ The TypeScript compiler itself also can be configured, using a `tsconfig.json` f
 
 ## <em class="type">Example 4</em> [Addition](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/02-typescript/examples/04-addition)
 
-## <em class="type">Exercise 2</em> Celcius-Fahrenheit converter
+## <em class="type">Exercise 1</em> Celcius-Fahrenheit converter
 
 ### Goal
 
@@ -515,7 +381,7 @@ Use data as a _single source of truth_, and derive the view from it.
 
 ## <em class="type">Example 5</em> [Numbers sum](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/02-typescript/examples/05-array-sum)
 
-## <em class="type">Exercise 3</em> To-do list
+## <em class="type">Exercise 2</em> To-do list
 
 ### <em class="type">Step 1</em> `State` type
 
@@ -545,3 +411,139 @@ Each time the state changes, save it to local storage so that it can be restored
 ### <em class="type">Step 7 (extra)</em> Add a filter feature
 
 Add a way to show only items that are done or not done.
+
+## Classes
+
+### Classes
+
+Remember [ES6 classes](https://erklär-mir-mal.ch/2021-1/05-01-js-repetition-with-loops.html#/20)?
+
+```js
+class Human {
+	constructor(firstname, lastname) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
+}
+```
+
+With type annotations:
+
+```ts
+class Human {
+	firstname: string;
+	lastname: string;
+	constructor(firstname: string, lastname: string) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
+}
+```
+
+### Interfaces vs Classes
+
+Here, `ada` is a _POJO_ (Plain Old JavaScript Object), created using the _object literal notation_ (`{ ... }`):
+
+```ts
+interface Human {
+	firstname: string;
+	lastname: string;
+}
+const ada: Human = {
+	firstname: "Ada",
+	lastname: "Lovelace",
+};
+```
+
+### Interfaces vs Classes (cont'd)
+
+Here `ada` is an _instance_ of the `Human` class, constructed with the `new` keyword:
+
+```ts
+class Human {
+	firstname: string;
+	lastname: string;
+	constructor(firstname: string, lastname: string) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
+}
+const ada: Human = new Human("Ada", "Lovelace");
+```
+
+### Interfaces vs Classes (cont'd)
+
+The main added value of a class is the possibility to add _methods_:
+
+```ts
+class Human {
+	firstname: string;
+	lastname: string;
+	constructor(firstname: string, lastname: string) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+	}
+	toString(): string {
+		return this.firstname + " " + this.lastname;
+	}
+}
+const ada: Human = new Human("Ada", "Lovelace");
+ada.toString(); // "Ada Lovelace"
+```
+
+## <em class="type">Exercise 3</em> The `MyHTMLElement` class
+
+### Starting point
+
+```ts
+class MyHTMLElement {
+	tagName: string;
+
+	constructor(tagName: string) {
+		this.tagName = tagName;
+	}
+
+	appendChild(child: MyHTMLElement) {}
+}
+```
+
+Copy this code in a file `02-typescript/01-my-html-element.ts` in your repository.
+
+### <em class="type">Step 1</em> Add a `children` attribute
+
+Add a `children` attribute to the `MyHTMLElement` class so that the following code _type-checks_ (for now, this means that nothing should be underlined in red in VSCode):
+
+```ts
+const element: MyHTMLElement = new MyHTMLElement("div", []);
+element.children[0].tagName;
+```
+
+_Question:_ in the real `HTMLElement` type, is the `children` attribute an array?
+
+### <em class="type">Step 2</em> Add an `insertBefore` method
+
+Write an `insertBefore` method declaration (without implementation) so that the following code type-checks:
+
+```ts
+const child: MyHTMLElement = new MyHTMLElement("span", []);
+const element: MyHTMLElement = new MyHTMLElement("div", []);
+element.insertBefore(child, new MyHTMLElement("span", []));
+```
+
+### <em class="type">Step 3</em> Add a `querySelector` method
+
+Write a `querySelector` method declaration that takes a `string` as an argument and returns either a `MyHTMLElement` or `null`. Use `return null;` as implementation for now.
+
+### <em class="type">Step 4 (extra)</em> Add a `classList` attribute
+
+Add a `classList` attribute so that the following code type-checks:
+
+```ts
+element.classList.add("a-class");
+element.classList.has("a-class");
+element.classList.remove("a-class");
+```
+
+### <em class="type">Step 5 (extra)</em> Implementation
+
+Write the methods' implementations.

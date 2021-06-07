@@ -170,114 +170,6 @@ interface Robot {
 interface Developer extends Human {
     githubRepo: string;
 }</code></pre>
-</section>
-<section id="classes" class="slide level3">
-<h3>Classes</h3>
-<p>Remember <a href="https://erklär-mir-mal.ch/2021-1/05-01-js-repetition-with-loops.html#/20">ES6 classes</a>?</p>
-<pre class="js"><code>class Human {
-    constructor(firstname, lastname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
-}</code></pre>
-<p>With type annotations:</p>
-<pre class="ts"><code>class Human {
-    firstname: string;
-    lastname: string;
-    constructor(firstname: string, lastname: string) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
-}</code></pre>
-</section>
-<section id="interfaces-vs-classes" class="slide level3">
-<h3>Interfaces vs Classes</h3>
-<p>Here, <code>ada</code> is a <em>POJO</em> (Plain Old JavaScript Object), created using the <em>object literal notation</em> (<code>{ ... }</code>):</p>
-<pre class="ts"><code>interface Human {
-    firstname: string;
-    lastname: string;
-}
-const ada: Human = {
-    firstname: &quot;Ada&quot;,
-    lastname: &quot;Lovelace&quot;,
-};</code></pre>
-</section>
-<section id="interfaces-vs-classes-contd" class="slide level3">
-<h3>Interfaces vs Classes (cont’d)</h3>
-<p>Here <code>ada</code> is an <em>instance</em> of the <code>Human</code> class, constructed with the <code>new</code> keyword:</p>
-<pre class="ts"><code>class Human {
-    firstname: string;
-    lastname: string;
-    constructor(firstname: string, lastname: string) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
-}
-const ada: Human = new Human(&quot;Ada&quot;, &quot;Lovelace&quot;);</code></pre>
-</section>
-<section id="interfaces-vs-classes-contd-1" class="slide level3">
-<h3>Interfaces vs Classes (cont’d)</h3>
-<p>The main added value of a class is the possibility to add <em>methods</em>:</p>
-<pre class="ts"><code>class Human {
-    firstname: string;
-    lastname: string;
-    constructor(firstname: string, lastname: string) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
-    toString(): string {
-        return this.firstname + &quot; &quot; + this.lastname;
-    }
-}
-const ada: Human = new Human(&quot;Ada&quot;, &quot;Lovelace&quot;);
-ada.toString(); // &quot;Ada Lovelace&quot;</code></pre>
-</section></section>
-<section>
-<section id="exercise-1-the-myhtmlelement-class" class="title-slide slide level2">
-<h2><em class="type">Exercise 1</em> The <code>MyHTMLElement</code> class</h2>
-
-</section>
-<section id="starting-point" class="slide level3">
-<h3>Starting point</h3>
-<pre class="ts"><code>class MyHTMLElement {
-    tagName: string;
-
-    constructor(tagName: string) {
-        this.tagName = tagName;
-    }
-
-    appendChild(child: MyHTMLElement) {}
-}</code></pre>
-<p>Copy this code in a file <code>02-typescript/01-my-html-element.ts</code> in your repository.</p>
-</section>
-<section id="step-1-add-a-children-attribute" class="slide level3">
-<h3><em class="type">Step 1</em> Add a <code>children</code> attribute</h3>
-<p>Add a <code>children</code> attribute to the <code>MyHTMLElement</code> class so that the following code <em>type-checks</em> (for now, this means that nothing should be underlined in red in VSCode):</p>
-<pre class="ts"><code>const element: MyHTMLElement = new MyHTMLElement(&quot;div&quot;, []);
-element.children[0].tagName;</code></pre>
-<p><em>Question:</em> in the real <code>HTMLElement</code> type, is the <code>children</code> attribute an array?</p>
-</section>
-<section id="step-2-add-an-insertbefore-method" class="slide level3">
-<h3><em class="type">Step 2</em> Add an <code>insertBefore</code> method</h3>
-<p>Write an <code>insertBefore</code> method declaration (without implementation) so that the following code type-checks:</p>
-<pre class="ts"><code>const child: MyHTMLElement = new MyHTMLElement(&quot;span&quot;, []);
-const element: MyHTMLElement = new MyHTMLElement(&quot;div&quot;, []);
-element.insertBefore(child, new MyHTMLElement(&quot;span&quot;, []));</code></pre>
-</section>
-<section id="step-3-add-a-queryselector-method" class="slide level3">
-<h3><em class="type">Step 3</em> Add a <code>querySelector</code> method</h3>
-<p>Write a <code>querySelector</code> method declaration that takes a <code>string</code> as an argument and returns either a <code>MyHTMLElement</code> or <code>null</code>. Use <code>return null;</code> as implementation for now.</p>
-</section>
-<section id="step-4-extra-add-a-classlist-attribute" class="slide level3">
-<h3><em class="type">Step 4 (extra)</em> Add a <code>classList</code> attribute</h3>
-<p>Add a <code>classList</code> attribute so that the following code type-checks:</p>
-<pre class="ts"><code>element.classList.add(&quot;a-class&quot;);
-element.classList.has(&quot;a-class&quot;);
-element.classList.remove(&quot;a-class&quot;);</code></pre>
-</section>
-<section id="step-5-extra-implementation" class="slide level3">
-<h3><em class="type">Step 5 (extra)</em> Implementation</h3>
-<p>Write the methods’ implementations.</p>
 </section></section>
 <section>
 <section id="narrowing" class="title-slide slide level2">
@@ -441,8 +333,8 @@ module.exports = {
 </section>
 
 <section>
-<section id="exercise-2-celcius-fahrenheit-converter" class="title-slide slide level2">
-<h2><em class="type">Exercise 2</em> Celcius-Fahrenheit converter</h2>
+<section id="exercise-1-celcius-fahrenheit-converter" class="title-slide slide level2">
+<h2><em class="type">Exercise 1</em> Celcius-Fahrenheit converter</h2>
 
 </section>
 <section id="goal" class="slide level3">
@@ -488,8 +380,8 @@ module.exports = {
 </section>
 
 <section>
-<section id="exercise-3-to-do-list" class="title-slide slide level2">
-<h2><em class="type">Exercise 3</em> To-do list</h2>
+<section id="exercise-2-to-do-list" class="title-slide slide level2">
+<h2><em class="type">Exercise 2</em> To-do list</h2>
 
 </section>
 <section id="step-1-state-type" class="slide level3">
@@ -522,6 +414,119 @@ module.exports = {
 <section id="step-7-extra-add-a-filter-feature" class="slide level3">
 <h3><em class="type">Step 7 (extra)</em> Add a filter feature</h3>
 <p>Add a way to show only items that are done or not done.</p>
+</section></section>
+<section>
+<section id="classes" class="title-slide slide level2">
+<h2>Classes</h2>
+
+</section>
+<section id="classes-1" class="slide level3">
+<h3>Classes</h3>
+<p>Remember <a href="https://erklär-mir-mal.ch/2021-1/05-01-js-repetition-with-loops.html#/20">ES6 classes</a>?</p>
+<pre class="js"><code>class Human {
+    constructor(firstname, lastname) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+}</code></pre>
+<p>With type annotations:</p>
+<pre class="ts"><code>class Human {
+    firstname: string;
+    lastname: string;
+    constructor(firstname: string, lastname: string) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+}</code></pre>
+</section>
+<section id="interfaces-vs-classes" class="slide level3">
+<h3>Interfaces vs Classes</h3>
+<p>Here, <code>ada</code> is a <em>POJO</em> (Plain Old JavaScript Object), created using the <em>object literal notation</em> (<code>{ ... }</code>):</p>
+<pre class="ts"><code>interface Human {
+    firstname: string;
+    lastname: string;
+}
+const ada: Human = {
+    firstname: &quot;Ada&quot;,
+    lastname: &quot;Lovelace&quot;,
+};</code></pre>
+</section>
+<section id="interfaces-vs-classes-contd" class="slide level3">
+<h3>Interfaces vs Classes (cont’d)</h3>
+<p>Here <code>ada</code> is an <em>instance</em> of the <code>Human</code> class, constructed with the <code>new</code> keyword:</p>
+<pre class="ts"><code>class Human {
+    firstname: string;
+    lastname: string;
+    constructor(firstname: string, lastname: string) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+}
+const ada: Human = new Human(&quot;Ada&quot;, &quot;Lovelace&quot;);</code></pre>
+</section>
+<section id="interfaces-vs-classes-contd-1" class="slide level3">
+<h3>Interfaces vs Classes (cont’d)</h3>
+<p>The main added value of a class is the possibility to add <em>methods</em>:</p>
+<pre class="ts"><code>class Human {
+    firstname: string;
+    lastname: string;
+    constructor(firstname: string, lastname: string) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+    toString(): string {
+        return this.firstname + &quot; &quot; + this.lastname;
+    }
+}
+const ada: Human = new Human(&quot;Ada&quot;, &quot;Lovelace&quot;);
+ada.toString(); // &quot;Ada Lovelace&quot;</code></pre>
+</section></section>
+<section>
+<section id="exercise-3-the-myhtmlelement-class" class="title-slide slide level2">
+<h2><em class="type">Exercise 3</em> The <code>MyHTMLElement</code> class</h2>
+
+</section>
+<section id="starting-point" class="slide level3">
+<h3>Starting point</h3>
+<pre class="ts"><code>class MyHTMLElement {
+    tagName: string;
+
+    constructor(tagName: string) {
+        this.tagName = tagName;
+    }
+
+    appendChild(child: MyHTMLElement) {}
+}</code></pre>
+<p>Copy this code in a file <code>02-typescript/01-my-html-element.ts</code> in your repository.</p>
+</section>
+<section id="step-1-add-a-children-attribute" class="slide level3">
+<h3><em class="type">Step 1</em> Add a <code>children</code> attribute</h3>
+<p>Add a <code>children</code> attribute to the <code>MyHTMLElement</code> class so that the following code <em>type-checks</em> (for now, this means that nothing should be underlined in red in VSCode):</p>
+<pre class="ts"><code>const element: MyHTMLElement = new MyHTMLElement(&quot;div&quot;, []);
+element.children[0].tagName;</code></pre>
+<p><em>Question:</em> in the real <code>HTMLElement</code> type, is the <code>children</code> attribute an array?</p>
+</section>
+<section id="step-2-add-an-insertbefore-method" class="slide level3">
+<h3><em class="type">Step 2</em> Add an <code>insertBefore</code> method</h3>
+<p>Write an <code>insertBefore</code> method declaration (without implementation) so that the following code type-checks:</p>
+<pre class="ts"><code>const child: MyHTMLElement = new MyHTMLElement(&quot;span&quot;, []);
+const element: MyHTMLElement = new MyHTMLElement(&quot;div&quot;, []);
+element.insertBefore(child, new MyHTMLElement(&quot;span&quot;, []));</code></pre>
+</section>
+<section id="step-3-add-a-queryselector-method" class="slide level3">
+<h3><em class="type">Step 3</em> Add a <code>querySelector</code> method</h3>
+<p>Write a <code>querySelector</code> method declaration that takes a <code>string</code> as an argument and returns either a <code>MyHTMLElement</code> or <code>null</code>. Use <code>return null;</code> as implementation for now.</p>
+</section>
+<section id="step-4-extra-add-a-classlist-attribute" class="slide level3">
+<h3><em class="type">Step 4 (extra)</em> Add a <code>classList</code> attribute</h3>
+<p>Add a <code>classList</code> attribute so that the following code type-checks:</p>
+<pre class="ts"><code>element.classList.add(&quot;a-class&quot;);
+element.classList.has(&quot;a-class&quot;);
+element.classList.remove(&quot;a-class&quot;);</code></pre>
+</section>
+<section id="step-5-extra-implementation" class="slide level3">
+<h3><em class="type">Step 5 (extra)</em> Implementation</h3>
+<p>Write the methods’ implementations.</p>
 </section></section>
     </div>
   </div>
