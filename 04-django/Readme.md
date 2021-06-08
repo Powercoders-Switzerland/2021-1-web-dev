@@ -277,7 +277,7 @@ env/bin/python manage.py migrate
 <!-- todo: relationships? -->
 
 
-## Exercise
+## Exercise 3
 
 - Define a database model for the articles
 - Create the migration script and migrate the database
@@ -360,7 +360,7 @@ urlpatterns = router.urls
 ```
 
 
-## Exercise 3
+## Exercise 4
 
 - Install the Django REST framework
 - Add a serializer for your model
@@ -372,7 +372,7 @@ urlpatterns = router.urls
 <!-- todo: -->
 
 
-## Exercise 4
+## Exercise 5
 
 - Install django-filter
 - Add categories to your model
