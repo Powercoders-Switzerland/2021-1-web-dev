@@ -383,6 +383,13 @@ Use data as a _single source of truth_, and derive the view from it.
 
 ## <em class="type">Exercise 2</em> To-do list
 
+### Setup
+
+- Copy the content of `02-typescript/examples/05-array-sum` example, or from your first exercise, to a folder `02-react/02-to-do-list` in your exercises repository (so that you have all the configuration files ready).
+- Then, run `npm install`.
+- Remove all content of the `src/main.ts` file.
+- To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
+
 ### <em class="type">Step 1</em> `State` type
 
 - Define a `State` type representing the state of your application. It should be an array of objects, each with an attribute `done` and an attribute `title`.
