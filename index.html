@@ -40,7 +40,6 @@
 										>Goals & course structure</a
 									>
 								</h5>
-								<p class="time">15 minutes</p>
 							</article>
 						</article>
 						<article class="chapter">
@@ -52,7 +51,6 @@
 										>The GitHub WorkFlow</a
 									>
 								</h5>
-								<p class="time">15 minutes</p>
 							</article>
 							<article class="item exercise">
 								<h5>
@@ -61,7 +59,6 @@
 										>Your exercises repository</a
 									>
 								</h5>
-								<p class="time">10 minutes</p>
 							</article>
 							<article class="item theory">
 								<h5>
@@ -70,7 +67,6 @@
 										>Forks</a
 									>
 								</h5>
-								<p class="time">5 minutes</p>
 							</article>
 							<article class="item exercise">
 								<h5>
@@ -79,7 +75,6 @@
 										>List of participants</a
 									>
 								</h5>
-								<p class="time">15 minutes</p>
 							</article>
 						</article>
 						<article class="chapter">
@@ -91,7 +86,6 @@
 										>Introduction</a
 									>
 								</h5>
-								<p class="time">15 minutes</p>
 							</article>
 							<article class="item theory">
 								<h5>
@@ -100,17 +94,6 @@
 										>Everyday types</a
 									>
 								</h5>
-								<p class="time">15 minutes</p>
-							</article>
-							<article class="item exercise">
-								<h5>
-									<a
-										href="02-typescript/slides.html#/exercise-1-the-myhtmlelement-class"
-									>
-										The <code>MyHTMLElement</code> class</a
-									>
-								</h5>
-								<p class="time">45 minutes</p>
 							</article>
 							<article class="item theory">
 								<h5>
@@ -119,7 +102,6 @@
 										>Narrowing</a
 									>
 								</h5>
-								<p class="time">15 minutes</p>
 							</article>
 							<article class="item theory">
 								<h5>
@@ -128,7 +110,6 @@
 										>How to use TypeScript</a
 									>
 								</h5>
-								<p class="time">15 minutes</p>
 							</article>
 							<article class="item example">
 								<h5>
@@ -137,7 +118,6 @@
 										>Addition</a
 									>
 								</h5>
-								<p class="time">15 minutes</p>
 							</article>
 							<article class="item exercise">
 								<h5>
@@ -147,34 +127,6 @@
 										converter</a
 									>
 								</h5>
-								<p class="time">45 minutes</p>
-							</article>
-							<article class="item theory">
-								<h5>
-									<a
-										href="02-typescript/slides.html#/data-and-view-separation"
-										>Data and view separation</a
-									>
-								</h5>
-								<p class="time">10 minutes</p>
-							</article>
-							<article class="item example">
-								<h5>
-									<a
-										href="https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/02-typescript/examples/05-array-sum"
-										>Numbers sum</a
-									>
-								</h5>
-								<p class="time">10 minutes</p>
-							</article>
-							<article class="item exercise">
-								<h5>
-									<a
-										href="02-typescript/slides.html#/exercise-3-to-do-list"
-										>To-do list</a
-									>
-								</h5>
-								<p class="time">45 minutes</p>
 							</article>
 							<p>Ressources:</p>
 							<ul>
@@ -197,10 +149,35 @@
 					<article class="day">
 						<h3>Tuesday 8</h3>
 						<article class="chapter">
-							<h4>React</h4>
+							<h4>TypeScript (cont'd)</h4>
+
+							<article class="item theory">
+								<h5>
+									<a
+										href="02-typescript/slides.html#/data-and-view-separation"
+										>Data and view separation</a
+									>
+								</h5>
+							</article>
+							<article class="item example">
+								<h5>
+									<a
+										href="https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/02-typescript/examples/05-array-sum"
+										>Numbers sum</a
+									>
+								</h5>
+							</article>
+							<article class="item exercise">
+								<h5>
+									<a
+										href="02-typescript/slides.html#/exercise-3-to-do-list"
+										>To-do list</a
+									>
+								</h5>
+							</article>
 						</article>
 						<article class="chapter">
-							<h4>Angular</h4>
+							<h4>React</h4>
 						</article>
 					</article>
 					<article class="day">
@@ -302,26 +279,5 @@
 				</div>
 			</article>
 		</main>
-		<script>
-			for (const chapterElement of document.querySelectorAll(
-				".chapter"
-			)) {
-				const titleElement =
-					chapterElement.querySelector("h4");
-				const timeElement = document.createElement("p");
-				timeElement.classList.add("time");
-				const childTimeElements = [
-					...chapterElement.querySelectorAll(".time"),
-				];
-				const totalTime =
-					childTimeElements.length > 0
-						? childTimeElements
-								.map((el) => parseInt(el.textContent))
-								.reduce((a, b) => a + b) + " minutes"
-						: 0;
-				timeElement.innerText = totalTime + " minutes";
-				titleElement.after(timeElement);
-			}
-		</script>
 	</body>
 </html>

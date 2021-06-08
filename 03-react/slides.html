@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>React</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="https://xn--erklr-mir-mal-efb.ch/2021-1/css/theme/powercoders.css"/>
+  <link rel="stylesheet" href="../slides.css"/>
+  <link href='https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css' rel='stylesheet' />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">React</h1>
+</section>
+
+<section id="jsx" class="title-slide slide level2">
+<h2>JSX</h2>
+
+</section>
+
+<section id="templates" class="title-slide slide level2">
+<h2>Templates</h2>
+
+</section>
+
+<section id="attributes" class="title-slide slide level2">
+<h2>Attributes</h2>
+
+</section>
+
+<section id="example-1-hello-react" class="title-slide slide level2">
+<h2><em class="type">Example 1</em> Hello react</h2>
+
+</section>
+
+<section>
+<section id="exercise-1-random-book" class="title-slide slide level2">
+<h2><em class="type">Exercise 1</em> Random book</h2>
+
+</section>
+<section id="goal" class="slide level3">
+<h3>Goal</h3>
+<p>Display a random book title form the following list:</p>
+<pre class="typescript"><code>const books: string[] = [
+    &quot;Anna Karenina&quot;,
+    &quot;To Kill a Mockingbird&quot;,
+    &quot;The Great Gatsby&quot;,
+    &quot;One Hundred Years of Solitude&quot;,
+    &quot;A Passage to India&quot;,
+    &quot;Invisible Man&quot;,
+    &quot;Don Quixote&quot;,
+    &quot;Beloved&quot;,
+    &quot;Mrs. Dalloway&quot;,
+    &quot;Things Fall Apart&quot;,
+    &quot;Jane Eyre&quot;,
+    &quot;The Color Purple&quot;,
+];</code></pre>
+</section>
+<section id="step-1-add-the-react-boilerplate" class="slide level3">
+<h3><em class="type">Step 1</em> Add the React boilerplate</h3>
+<p>Copy the content of <code>03-react/examples/01-hello-react</code> example to a folder <code>03-react/01-random-book</code> in your exercises repository.</p>
+<p>Then, run <code>npm install</code>.</p>
+<p>To compile your TypeScript code, use the <code>npm run build</code> (to compile once) or <code>npm run build:watch</code> (to automatically recompile on every change).</p>
+</section>
+<section id="step-2-getrandombook-function" class="slide level3">
+<h3><em class="type">Step 2</em> <code>getRandomBook()</code> function</h3>
+<p>In <code>main.ts</code>, write a <code>getRandomBook()</code> function that returns a random book from the array. Your function should have an explicit return type annotation.</p>
+</section>
+<section id="step-3" class="slide level3">
+<h3><em class="type">Step 3</em></h3>
+<p>Update the React <code>App</code> component to display a random book on every page load.</p>
+</section>
+<section id="step-4-getrandomcolor-function" class="slide level3">
+<h3><em class="type">Step 4</em> <code>getRandomColor()</code> function</h3>
+<p>In <code>main.ts</code>, write a <code>getRandomColor()</code> function that returns a random color. Your function should have an explicit return type annotation.</p>
+</section>
+<section id="step-5-getrandomcolor-function" class="slide level3">
+<h3><em class="type">Step 5</em> <code>getRandomColor()</code> function</h3>
+<p>Use the <code>getRandomColor()</code> function to also randomly change the <code>background-color</code> of your book title.</p>
+</section></section>
+<section id="components" class="title-slide slide level2">
+<h2>Components</h2>
+
+</section>
+
+<section id="example-2-book-component" class="title-slide slide level2">
+<h2><em class="type">Example 2</em> <code>Book</code> component</h2>
+
+</section>
+
+<section>
+<section id="exercise-2-users-list" class="title-slide slide level2">
+<h2><em class="type">Exercise 2</em> Users list</h2>
+
+</section>
+<section id="goal-1" class="slide level3">
+<h3>Goal</h3>
+<p>Display the following list of users in two sections <code>Adults</code> and <code>Kids</code>:</p>
+<pre class="typescript"><code>const users = [
+    {
+        id: 1,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/nicollerich_128.jpg&quot;,
+        first_name: &quot;Claire&quot;,
+        last_name: &quot;Price&quot;,
+        age: 12,
+        city: &quot;North Kirstin&quot;,
+        ip: &quot;161.208.247.105&quot;,
+    },
+    {
+        id: 2,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/edobene_128.jpg&quot;,
+        first_name: &quot;Carrie&quot;,
+        last_name: &quot;Mayer&quot;,
+        age: 62,
+        city: &quot;Everettetown&quot;,
+        ip: &quot;123.224.60.146&quot;,
+    },
+    {
+        id: 3,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/rodnylobos_128.jpg&quot;,
+        first_name: &quot;Jessy&quot;,
+        last_name: &quot;Kassulke&quot;,
+        age: 8,
+        city: &quot;Lake Fordhaven&quot;,
+        ip: &quot;164.89.151.58&quot;,
+    },
+    {
+        id: 4,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/charliegann_128.jpg&quot;,
+        first_name: &quot;Amalia&quot;,
+        last_name: &quot;Rogahn&quot;,
+        age: 108,
+        city: &quot;South Russberg&quot;,
+        ip: &quot;162.25.24.120&quot;,
+    },
+    {
+        id: 5,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/jmfsocial_128.jpg&quot;,
+        first_name: &quot;Kristoffer&quot;,
+        last_name: &quot;Wuckert&quot;,
+        age: 66,
+        city: &quot;Lake Angelina&quot;,
+        ip: &quot;85.179.25.149&quot;,
+    },
+    {
+        id: 6,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/craigrcoles_128.jpg&quot;,
+        first_name: &quot;Kiera&quot;,
+        last_name: &quot;Rohan&quot;,
+        age: 36,
+        city: &quot;East Beverly&quot;,
+        ip: &quot;27.34.243.77&quot;,
+    },
+    {
+        id: 7,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/bruno_mart_128.jpg&quot;,
+        first_name: &quot;Emmie&quot;,
+        last_name: &quot;Hand&quot;,
+        age: 74,
+        city: &quot;New Maryjaneberg&quot;,
+        ip: &quot;85.232.129.225&quot;,
+    },
+    {
+        id: 8,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/woodsman001_128.jpg&quot;,
+        first_name: &quot;Cameron&quot;,
+        last_name: &quot;Veum&quot;,
+        age: 16,
+        city: &quot;Altadena&quot;,
+        ip: &quot;168.252.158.225&quot;,
+    },
+    {
+        id: 9,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/markwienands_128.jpg&quot;,
+        first_name: &quot;Tremaine&quot;,
+        last_name: &quot;Sanford&quot;,
+        age: 10,
+        city: &quot;Lenexa&quot;,
+        ip: &quot;38.83.7.48&quot;,
+    },
+    {
+        id: 10,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/ah_lice_128.jpg&quot;,
+        first_name: &quot;Ronaldo&quot;,
+        last_name: &quot;Weissnat&quot;,
+        age: 83,
+        city: &quot;Baumbachtown&quot;,
+        ip: &quot;50.218.254.52&quot;,
+    },
+    {
+        id: 11,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/zaki3d_128.jpg&quot;,
+        first_name: &quot;Ephraim&quot;,
+        last_name: &quot;Goyette&quot;,
+        age: 63,
+        city: &quot;North Martina&quot;,
+        ip: &quot;147.105.193.65&quot;,
+    },
+    {
+        id: 12,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/boxmodel_128.jpg&quot;,
+        first_name: &quot;Clay&quot;,
+        last_name: &quot;Kunde&quot;,
+        age: 113,
+        city: &quot;South Damon&quot;,
+        ip: &quot;209.104.243.157&quot;,
+    },
+    {
+        id: 13,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/VinThomas_128.jpg&quot;,
+        first_name: &quot;Melisa&quot;,
+        last_name: &quot;Leannon&quot;,
+        age: 18,
+        city: &quot;Hilo&quot;,
+        ip: &quot;103.82.167.168&quot;,
+    },
+    {
+        id: 14,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/miguelmendes_128.jpg&quot;,
+        first_name: &quot;Clovis&quot;,
+        last_name: &quot;Medhurst&quot;,
+        age: 15,
+        city: &quot;Harveybury&quot;,
+        ip: &quot;168.223.235.220&quot;,
+    },
+    {
+        id: 15,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/mandalareopens_128.jpg&quot;,
+        first_name: &quot;Mylene&quot;,
+        last_name: &quot;Renner&quot;,
+        age: 49,
+        city: &quot;Arlington&quot;,
+        ip: &quot;223.89.148.36&quot;,
+    },
+    {
+        id: 16,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/ma_tiax_128.jpg&quot;,
+        first_name: &quot;Marcos&quot;,
+        last_name: &quot;Ferry&quot;,
+        age: 47,
+        city: &quot;Strackehaven&quot;,
+        ip: &quot;74.94.165.210&quot;,
+    },
+    {
+        id: 17,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/balakayuriy_128.jpg&quot;,
+        first_name: &quot;Brain&quot;,
+        last_name: &quot;Mohr&quot;,
+        age: 54,
+        city: &quot;Carrollton&quot;,
+        ip: &quot;11.121.113.44&quot;,
+    },
+    {
+        id: 18,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/aleclarsoniv_128.jpg&quot;,
+        first_name: &quot;Bella&quot;,
+        last_name: &quot;VonRueden&quot;,
+        age: 18,
+        city: &quot;Columbia&quot;,
+        ip: &quot;224.144.68.251&quot;,
+    },
+    {
+        id: 19,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/andrewarrow_128.jpg&quot;,
+        first_name: &quot;Franz&quot;,
+        last_name: &quot;Raynor&quot;,
+        age: 28,
+        city: &quot;Garrickchester&quot;,
+        ip: &quot;91.159.111.88&quot;,
+    },
+    {
+        id: 20,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/carlosgavina_128.jpg&quot;,
+        first_name: &quot;Celestino&quot;,
+        last_name: &quot;Bailey&quot;,
+        age: 61,
+        city: &quot;Aronport&quot;,
+        ip: &quot;242.25.16.144&quot;,
+    },
+];</code></pre>
+</section>
+<section id="step-1-add-the-react-boilerplate-1" class="slide level3">
+<h3><em class="type">Step 1</em> Add the React boilerplate</h3>
+<p>Copy the content of <code>03-react/examples/01-hello-react</code> example to a folder <code>03-react/02-users-list</code> in your exercises repository.</p>
+<p>Then, run <code>npm install</code>.</p>
+<p>To compile your TypeScript code, use the <code>npm run build</code> (to compile once) or <code>npm run build:watch</code> (to automatically recompile on every change).</p>
+</section>
+<section id="step-2-userinfo-interface" class="slide level3">
+<h3><em class="type">Step 2</em> <code>UserInfo</code> interface</h3>
+<p>Write a <code>UserInfo</code> interface, and add an explicit type annotation to the <code>users</code> constant.</p>
+</section>
+<section id="step-3-all-users-list" class="slide level3">
+<h3><em class="type">Step 3</em> All users list</h3>
+<p>Update the <code>App</code> component so that it display all users (no component and no filtering yet).</p>
+</section>
+<section id="step-4-user-component" class="slide level3">
+<h3><em class="type">Step 4</em> <code>User</code> component</h3>
+<p>Extract the code that shows a single user to a <code>User</code> component in <code>src/components/User</code>.</p>
+</section>
+<section id="step-5-separate-adults-and-kids-sections" class="slide level3">
+<h3><em class="type">Step 5</em> Separate adults and kids sections</h3>
+<p>Display the users in two separate sections depending on their age.</p>
+</section></section>
+<section id="usestate-hook" class="title-slide slide level2">
+<h2><code>useState</code> hook</h2>
+
+</section>
+
+<section id="events" class="title-slide slide level2">
+<h2>Events</h2>
+
+</section>
+
+<section id="example-3-counter" class="title-slide slide level2">
+<h2><em class="type">Example 3</em> Counter</h2>
+
+</section>
+
+<section id="example-4-addition" class="title-slide slide level2">
+<h2><em class="type">Example 4</em> Addition</h2>
+
+</section>
+
+<section id="exercise-3-random-book-on-click" class="title-slide slide level2">
+<h2><em class="type">Exercise 3</em> Random book on click</h2>
+
+</section>
+
+<section id="exercise-4-degrees-converter" class="title-slide slide level2">
+<h2><em class="type">Exercise 4</em> Degrees converter</h2>
+
+</section>
+
+<section id="useeffect-hook" class="title-slide slide level2">
+<h2><code>useEffect</code> hook</h2>
+
+</section>
+
+<section id="example-5-setinterval" class="title-slide slide level2">
+<h2><em class="type">Example 5</em> <code>setInterval()</code></h2>
+
+</section>
+
+<section id="exercise-5-random-quote" class="title-slide slide level2">
+<h2><em class="type">Exercise 5</em> Random quote</h2>
+
+</section>
+
+<section id="state-immutability" class="title-slide slide level2">
+<h2>State immutability</h2>
+
+</section>
+
+<section id="exercise-6-numbers-sum" class="title-slide slide level2">
+<h2><em class="type">Exercise 6</em> Numbers sum</h2>
+
+</section>
+
+<section id="exercise-6-to-do-list" class="title-slide slide level2">
+<h2><em class="type">Exercise 6</em> To-do list</h2>
+
+</section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/search/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-c.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-json.min.js"></script>
+    <script>
+    	for (const preEl of document.querySelectorAll("pre")) {
+    		const className = preEl.getAttribute("class");
+
+    		if (className) {
+    			const codeEl = preEl.querySelector("code");
+    			if (!Prism.languages[className]) {
+    				console.log(className);
+    			}
+    			codeEl.innerHTML = Prism.highlight(
+    				codeEl.textContent,
+    				Prism.languages[className],
+    				className
+    			);
+    		}
+    	}
+    </script>
+    </body>
+</html>

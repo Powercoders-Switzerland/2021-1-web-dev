@@ -253,6 +253,8 @@ function printName(member: Human | Robot) {
 
 TypeScript files cannot be directly understood by a web browser. We need to _compile_ them to JavaScript first.
 
+In order to do so, we will use Node.js, [NPM](https://www.npmjs.com/), [Webpack](https://webpack.js.org/) and the TypeScript compiler.
+
 ### Node.js
 
 Node.js allows to run JavaScript outside of the browser.
@@ -270,13 +272,11 @@ Each NPM project contains a `package.json` file that declares the dependencies o
 
 ### Our `package.json` file
 
-Our `package.json` will look like:
-
 ```json
 {
-	"name": "01-addition",
+	"name": "[your-exercise-name]",
 	"version": "1.0.0",
-	"author": "Ada lovelace",
+	"author": "[your-name]",
 	"private": true,
 	"scripts": {
 		"build": "webpack",
@@ -284,6 +284,7 @@ Our `package.json` will look like:
 	},
 	"devDependencies": {
 		"ts-loader": "^9.2.3",
+		"typescript": "^4.3.2",
 		"webpack": "^5.38.1",
 		"webpack-cli": "^4.7.0"
 	}
@@ -292,13 +293,11 @@ Our `package.json` will look like:
 
 ### Webpack
 
-[Webpack](https://webpack.js.org/) is the build tool we will use. It can convert files from one language to another and _bundle_ them together.
+[Webpack](https://webpack.js.org/) is the build tool we will use. It can convert files from one language to another and _bundle_ them together. We will use it to convert all TypeScript files from the `src` directory to a single JavaScript file `dist/bundle.js`.
 
 Webpack is configured by a `webpack.config.js` file.
 
 ### Our `webpack.config.js` file
-
-We will use Webpack to convert all TypeScript files from the `src` directory to a single JavaScript file `dist/bundle.js` using the following configuration:
 
 ```js
 const path = require("path");
@@ -327,7 +326,9 @@ module.exports = {
 
 ### TypeScript config
 
-The TypeScript compiler itself also can be configured, using a `tsconfig.json` file. We will use the following:
+The TypeScript compiler itself also can be configured, using a `tsconfig.json` file.
+
+We will use the following:
 
 ```json
 {
@@ -419,7 +420,7 @@ Each time the state changes, save it to local storage so that it can be restored
 
 Add a way to show only items that are done or not done.
 
-## Classes
+## Classes (extra)
 
 ### Classes
 
