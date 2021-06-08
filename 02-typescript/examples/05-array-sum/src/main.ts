@@ -50,7 +50,10 @@ const render = () => {
 
 	const addButton = document.createElement("input");
 	addButton.setAttribute("type", "submit");
-	addButton.setAttribute("value", "Add Number");
+	addButton.setAttribute(
+		"value",
+		"Add Number #" + (numbers.length + 1)
+	);
 
 	const addForm = document.createElement("form");
 	addForm.appendChild(addInput);
