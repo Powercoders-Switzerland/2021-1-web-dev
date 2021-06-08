@@ -46,11 +46,14 @@
     const articleEl = document.createElement(&quot;article&quot;);
     const titleEl = document.createElement(&quot;h2&quot;);
     titleEl.innerText = title;
+    articleEl.appendChild(titleEl);
     const authorEl = document.createElement(&quot;p&quot;);
     authorEl.setAttribute(&quot;class&quot;, &quot;author&quot;);
     authorEl.innerText = &quot;By &quot; + author;
+    articleEl.appendChild(authorEl);
     const contentEl = document.createElement(&quot;div&quot;);
-    articleEl.innerHTML = content;
+    contentEl.innerHTML = content;
+    articleEl.appendChild(contentEl);
     return articleEl;
 };</code></pre>
 <p>What does this function do? Do you like it?</p>
@@ -118,8 +121,8 @@
 <li>Update the React <code>App</code> component to display a random book on every page load.</li>
 </ul>
 </section>
-<section id="step-4-random-color" class="slide level3">
-<h3><em class="type">Step 4</em> Random color</h3>
+<section id="step-3-random-color" class="slide level3">
+<h3><em class="type">Step 3</em> Random color</h3>
 <ul>
 <li>In <code>main.ts</code>, write a <code>getRandomColor()</code> function that returns a random color. Your function should have an explicit return type annotation.</li>
 <li>Use the <code>getRandomColor()</code> function to also randomly change the <code>background-color</code> of your book title.</li>

@@ -7,5 +7,16 @@ if (!(appDiv instanceof HTMLDivElement)) {
 	throw new Error("No div with id 'app' found");
 }
 
-const App = (): JSX.Element => <p>Hello React!</p>;
+const getRandomBook = (): string => {
+	return "";
+};
+
+const App = (): JSX.Element => {
+	return (
+		<p style={{ backgroundColor: "gray" }}>
+			{getRandomBook()}
+		</p>
+	);
+};
+
 ReactDOM.render(<App />, appDiv);

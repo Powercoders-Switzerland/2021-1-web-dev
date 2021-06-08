@@ -15,11 +15,14 @@ const renderArticle = (
 	const articleEl = document.createElement("article");
 	const titleEl = document.createElement("h2");
 	titleEl.innerText = title;
+	articleEl.appendChild(titleEl);
 	const authorEl = document.createElement("p");
 	authorEl.setAttribute("class", "author");
 	authorEl.innerText = "By " + author;
+	articleEl.appendChild(authorEl);
 	const contentEl = document.createElement("div");
-	articleEl.innerHTML = content;
+	contentEl.innerHTML = content;
+	articleEl.appendChild(contentEl);
 	return articleEl;
 };
 ```
@@ -84,7 +87,7 @@ const books: string[] = [
 - In `main.ts`, write a `getRandomBook()` function that returns a random book from the array. Your function should have an explicit return type annotation.
 - Update the React `App` component to display a random book on every page load.
 
-### <em class="type">Step 4</em> Random color
+### <em class="type">Step 3</em> Random color
 
 - In `main.ts`, write a `getRandomColor()` function that returns a random color. Your function should have an explicit return type annotation.
 - Use the `getRandomColor()` function to also randomly change the `background-color` of your book title.
