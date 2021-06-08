@@ -4,7 +4,7 @@ if (!(appDiv instanceof HTMLDivElement)) {
 	throw new Error("No div with id 'app' found");
 }
 
-// This is the state of our application. We set the initial to an array
+// This is the state of our application. We set the initial state to an array
 // containing the numbers 1, 2 and 3.
 let numbers: number[] = [1, 2, 3];
 
@@ -61,6 +61,7 @@ const render = () => {
 	addForm.addEventListener("submit", (event) => {
 		event.preventDefault();
 		numbers.push(readInputInteger(addInput));
+		numbers.sort();
 		render();
 	});
 

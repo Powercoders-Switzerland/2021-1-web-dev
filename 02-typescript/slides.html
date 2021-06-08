@@ -251,6 +251,7 @@ function printName(member: Human | Robot) {
 <section id="compilation" class="slide level3">
 <h3>Compilation</h3>
 <p>TypeScript files cannot be directly understood by a web browser. We need to <em>compile</em> them to JavaScript first.</p>
+<p>In order to do so, we will use Node.js, <a href="https://www.npmjs.com/">NPM</a>, <a href="https://webpack.js.org/">Webpack</a> and the TypeScript compiler.</p>
 </section>
 <section id="node.js" class="slide level3">
 <h3>Node.js</h3>
@@ -268,11 +269,10 @@ function printName(member: Human | Robot) {
 </section>
 <section id="our-package.json-file" class="slide level3">
 <h3>Our <code>package.json</code> file</h3>
-<p>Our <code>package.json</code> will look like:</p>
 <pre class="json"><code>{
-    &quot;name&quot;: &quot;01-addition&quot;,
+    &quot;name&quot;: &quot;[your-exercise-name]&quot;,
     &quot;version&quot;: &quot;1.0.0&quot;,
-    &quot;author&quot;: &quot;Ada lovelace&quot;,
+    &quot;author&quot;: &quot;[your-name]&quot;,
     &quot;private&quot;: true,
     &quot;scripts&quot;: {
         &quot;build&quot;: &quot;webpack&quot;,
@@ -280,6 +280,7 @@ function printName(member: Human | Robot) {
     },
     &quot;devDependencies&quot;: {
         &quot;ts-loader&quot;: &quot;^9.2.3&quot;,
+        &quot;typescript&quot;: &quot;^4.3.2&quot;,
         &quot;webpack&quot;: &quot;^5.38.1&quot;,
         &quot;webpack-cli&quot;: &quot;^4.7.0&quot;
     }
@@ -287,12 +288,11 @@ function printName(member: Human | Robot) {
 </section>
 <section id="webpack" class="slide level3">
 <h3>Webpack</h3>
-<p><a href="https://webpack.js.org/">Webpack</a> is the build tool we will use. It can convert files from one language to another and <em>bundle</em> them together.</p>
+<p><a href="https://webpack.js.org/">Webpack</a> is the build tool we will use. It can convert files from one language to another and <em>bundle</em> them together. We will use it to convert all TypeScript files from the <code>src</code> directory to a single JavaScript file <code>dist/bundle.js</code>.</p>
 <p>Webpack is configured by a <code>webpack.config.js</code> file.</p>
 </section>
 <section id="our-webpack.config.js-file" class="slide level3">
 <h3>Our <code>webpack.config.js</code> file</h3>
-<p>We will use Webpack to convert all TypeScript files from the <code>src</code> directory to a single JavaScript file <code>dist/bundle.js</code> using the following configuration:</p>
 <pre class="js"><code>const path = require(&quot;path&quot;);
 
 module.exports = {
@@ -318,7 +318,8 @@ module.exports = {
 </section>
 <section id="typescript-config" class="slide level3">
 <h3>TypeScript config</h3>
-<p>The TypeScript compiler itself also can be configured, using a <code>tsconfig.json</code> file. We will use the following:</p>
+<p>The TypeScript compiler itself also can be configured, using a <code>tsconfig.json</code> file.</p>
+<p>We will use the following:</p>
 <pre class="json"><code>{
     &quot;compilerOptions&quot;: {
         &quot;target&quot;: &quot;esnext&quot;,
@@ -425,11 +426,11 @@ module.exports = {
 <p>Add a way to show only items that are done or not done.</p>
 </section></section>
 <section>
-<section id="classes" class="title-slide slide level2">
-<h2>Classes</h2>
+<section id="classes-extra" class="title-slide slide level2">
+<h2>Classes (extra)</h2>
 
 </section>
-<section id="classes-1" class="slide level3">
+<section id="classes" class="slide level3">
 <h3>Classes</h3>
 <p>Remember <a href="https://erklär-mir-mal.ch/2021-1/05-01-js-repetition-with-loops.html#/20">ES6 classes</a>?</p>
 <pre class="js"><code>class Human {
