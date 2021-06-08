@@ -31,4 +31,34 @@ const App = () => (
 	</main>
 );
 
+const renderArticle2 = (
+	title: string,
+	author: string,
+	content: string
+) => {
+	return (
+		<article>
+			<h2>{title}</h2>
+			<p className="author">By {author}</p>
+			<div>{content}</div>
+		</article>
+	);
+};
+
+const renderArticle = (
+	title: string,
+	author: string,
+	content: string
+) => {
+	const articleEl = document.createElement("article");
+	const titleEl = document.createElement("h2");
+	titleEl.innerText = title;
+	const authorEl = document.createElement("p");
+	authorEl.setAttribute("class", "author");
+	authorEl.innerText = "By " + author;
+	const contentEl = document.createElement("div");
+	articleEl.innerHTML = content;
+	return articleEl;
+};
+
 ReactDOM.render(<App />, appDiv);

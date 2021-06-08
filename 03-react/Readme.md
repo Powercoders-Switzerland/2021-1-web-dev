@@ -4,11 +4,51 @@ title: React
 
 ## JSX
 
-## Templates
+### DOM APIs
 
-## Attributes
+```ts
+const renderArticle = (
+	title: string,
+	author: string,
+	content: string
+) => {
+	const articleEl = document.createElement("article");
+	const titleEl = document.createElement("h2");
+	titleEl.innerText = title;
+	const authorEl = document.createElement("p");
+	authorEl.setAttribute("class", "author");
+	authorEl.innerText = "By " + author;
+	const contentEl = document.createElement("div");
+	articleEl.innerHTML = content;
+	return articleEl;
+};
+```
 
-## <em class="type">Example 1</em> Hello react
+What does this function do? Do you like it?
+
+### What if
+
+What if we could generate our HTML elements directly from JavaScript, but with an HTML-like syntax?
+
+### Entering JSX
+
+```tsx
+const renderArticle = (
+	title: string,
+	author: string,
+	content: string
+) => {
+	return (
+		<article>
+			<h2>{title}</h2>
+			<p className="author">By {author}</p>
+			<div>{content}</div>
+		</article>
+	);
+};
+```
+
+## <em class="type">Example 1</em> [Hello react](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/01-hello-react)
 
 ## <em class="type">Exercise 1</em> Random book
 
@@ -35,27 +75,19 @@ const books: string[] = [
 
 ### <em class="type">Step 1</em> Add the React boilerplate
 
-Copy the content of `03-react/examples/01-hello-react` example to a folder `03-react/01-random-book` in your exercises repository.
+- Copy the content of `03-react/examples/01-hello-react` example to a folder `03-react/01-random-book` in your exercises repository.
+- Then, run `npm install`.
+- To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
 
-Then, run `npm install`.
+### <em class="type">Step 2</em> Random book
 
-To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
+- In `main.ts`, write a `getRandomBook()` function that returns a random book from the array. Your function should have an explicit return type annotation.
+- Update the React `App` component to display a random book on every page load.
 
-### <em class="type">Step 2</em> `getRandomBook()` function
+### <em class="type">Step 4</em> Random color
 
-In `main.ts`, write a `getRandomBook()` function that returns a random book from the array. Your function should have an explicit return type annotation.
-
-### <em class="type">Step 3</em>
-
-Update the React `App` component to display a random book on every page load.
-
-### <em class="type">Step 4</em> `getRandomColor()` function
-
-In `main.ts`, write a `getRandomColor()` function that returns a random color. Your function should have an explicit return type annotation.
-
-### <em class="type">Step 5</em> `getRandomColor()` function
-
-Use the `getRandomColor()` function to also randomly change the `background-color` of your book title.
+- In `main.ts`, write a `getRandomColor()` function that returns a random color. Your function should have an explicit return type annotation.
+- Use the `getRandomColor()` function to also randomly change the `background-color` of your book title.
 
 ## Components
 
@@ -274,11 +306,9 @@ const users = [
 
 ### <em class="type">Step 1</em> Add the React boilerplate
 
-Copy the content of `03-react/examples/01-hello-react` example to a folder `03-react/02-users-list` in your exercises repository.
-
-Then, run `npm install`.
-
-To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
+- Copy the content of `03-react/examples/01-hello-react` example to a folder `03-react/02-users-list` in your exercises repository.
+- Then, run `npm install`.
+- To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
 
 ### <em class="type">Step 2</em> `UserInfo` interface
 

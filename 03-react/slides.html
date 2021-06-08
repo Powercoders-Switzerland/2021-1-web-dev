@@ -31,23 +31,52 @@
   <h1 class="title">React</h1>
 </section>
 
+<section>
 <section id="jsx" class="title-slide slide level2">
 <h2>JSX</h2>
 
 </section>
-
-<section id="templates" class="title-slide slide level2">
-<h2>Templates</h2>
-
+<section id="dom-apis" class="slide level3">
+<h3>DOM APIs</h3>
+<pre class="ts"><code>const renderArticle = (
+    title: string,
+    author: string,
+    content: string
+) =&gt; {
+    const articleEl = document.createElement(&quot;article&quot;);
+    const titleEl = document.createElement(&quot;h2&quot;);
+    titleEl.innerText = title;
+    const authorEl = document.createElement(&quot;p&quot;);
+    authorEl.setAttribute(&quot;class&quot;, &quot;author&quot;);
+    authorEl.innerText = &quot;By &quot; + author;
+    const contentEl = document.createElement(&quot;div&quot;);
+    articleEl.innerHTML = content;
+    return articleEl;
+};</code></pre>
+<p>What does this function do? Do you like it?</p>
 </section>
-
-<section id="attributes" class="title-slide slide level2">
-<h2>Attributes</h2>
-
+<section id="what-if" class="slide level3">
+<h3>What if</h3>
+<p>What if we could generate our HTML elements directly from JavaScript, but with an HTML-like syntax?</p>
 </section>
-
+<section id="entering-jsx" class="slide level3">
+<h3>Entering JSX</h3>
+<pre class="tsx"><code>const renderArticle = (
+    title: string,
+    author: string,
+    content: string
+) =&gt; {
+    return (
+        &lt;article&gt;
+            &lt;h2&gt;{title}&lt;/h2&gt;
+            &lt;p className=&quot;author&quot;&gt;By {author}&lt;/p&gt;
+            &lt;div&gt;{content}&lt;/div&gt;
+        &lt;/article&gt;
+    );
+};</code></pre>
+</section></section>
 <section id="example-1-hello-react" class="title-slide slide level2">
-<h2><em class="type">Example 1</em> Hello react</h2>
+<h2><em class="type">Example 1</em> <a href="https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/01-hello-react">Hello react</a></h2>
 
 </section>
 
@@ -76,25 +105,25 @@
 </section>
 <section id="step-1-add-the-react-boilerplate" class="slide level3">
 <h3><em class="type">Step 1</em> Add the React boilerplate</h3>
-<p>Copy the content of <code>03-react/examples/01-hello-react</code> example to a folder <code>03-react/01-random-book</code> in your exercises repository.</p>
-<p>Then, run <code>npm install</code>.</p>
-<p>To compile your TypeScript code, use the <code>npm run build</code> (to compile once) or <code>npm run build:watch</code> (to automatically recompile on every change).</p>
+<ul>
+<li>Copy the content of <code>03-react/examples/01-hello-react</code> example to a folder <code>03-react/01-random-book</code> in your exercises repository.</li>
+<li>Then, run <code>npm install</code>.</li>
+<li>To compile your TypeScript code, use the <code>npm run build</code> (to compile once) or <code>npm run build:watch</code> (to automatically recompile on every change).</li>
+</ul>
 </section>
-<section id="step-2-getrandombook-function" class="slide level3">
-<h3><em class="type">Step 2</em> <code>getRandomBook()</code> function</h3>
-<p>In <code>main.ts</code>, write a <code>getRandomBook()</code> function that returns a random book from the array. Your function should have an explicit return type annotation.</p>
+<section id="step-2-random-book" class="slide level3">
+<h3><em class="type">Step 2</em> Random book</h3>
+<ul>
+<li>In <code>main.ts</code>, write a <code>getRandomBook()</code> function that returns a random book from the array. Your function should have an explicit return type annotation.</li>
+<li>Update the React <code>App</code> component to display a random book on every page load.</li>
+</ul>
 </section>
-<section id="step-3" class="slide level3">
-<h3><em class="type">Step 3</em></h3>
-<p>Update the React <code>App</code> component to display a random book on every page load.</p>
-</section>
-<section id="step-4-getrandomcolor-function" class="slide level3">
-<h3><em class="type">Step 4</em> <code>getRandomColor()</code> function</h3>
-<p>In <code>main.ts</code>, write a <code>getRandomColor()</code> function that returns a random color. Your function should have an explicit return type annotation.</p>
-</section>
-<section id="step-5-getrandomcolor-function" class="slide level3">
-<h3><em class="type">Step 5</em> <code>getRandomColor()</code> function</h3>
-<p>Use the <code>getRandomColor()</code> function to also randomly change the <code>background-color</code> of your book title.</p>
+<section id="step-4-random-color" class="slide level3">
+<h3><em class="type">Step 4</em> Random color</h3>
+<ul>
+<li>In <code>main.ts</code>, write a <code>getRandomColor()</code> function that returns a random color. Your function should have an explicit return type annotation.</li>
+<li>Use the <code>getRandomColor()</code> function to also randomly change the <code>background-color</code> of your book title.</li>
+</ul>
 </section></section>
 <section id="components" class="title-slide slide level2">
 <h2>Components</h2>
@@ -319,9 +348,11 @@
 </section>
 <section id="step-1-add-the-react-boilerplate-1" class="slide level3">
 <h3><em class="type">Step 1</em> Add the React boilerplate</h3>
-<p>Copy the content of <code>03-react/examples/01-hello-react</code> example to a folder <code>03-react/02-users-list</code> in your exercises repository.</p>
-<p>Then, run <code>npm install</code>.</p>
-<p>To compile your TypeScript code, use the <code>npm run build</code> (to compile once) or <code>npm run build:watch</code> (to automatically recompile on every change).</p>
+<ul>
+<li>Copy the content of <code>03-react/examples/01-hello-react</code> example to a folder <code>03-react/02-users-list</code> in your exercises repository.</li>
+<li>Then, run <code>npm install</code>.</li>
+<li>To compile your TypeScript code, use the <code>npm run build</code> (to compile once) or <code>npm run build:watch</code> (to automatically recompile on every change).</li>
+</ul>
 </section>
 <section id="step-2-userinfo-interface" class="slide level3">
 <h3><em class="type">Step 2</em> <code>UserInfo</code> interface</h3>
@@ -433,6 +464,8 @@
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-python.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-c.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-jsx.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-tsx.min.js"></script>
     <script>
     	for (const preEl of document.querySelectorAll("pre")) {
     		const className = preEl.getAttribute("class");
@@ -440,7 +473,7 @@
     		if (className) {
     			const codeEl = preEl.querySelector("code");
     			if (!Prism.languages[className]) {
-    				console.log(className);
+    				throw new Error(className + " does not exist.");
     			}
     			codeEl.innerHTML = Prism.highlight(
     				codeEl.textContent,
