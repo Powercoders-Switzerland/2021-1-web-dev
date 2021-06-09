@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>REST Services with Django</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="https://xn--erklr-mir-mal-efb.ch/2021-1/css/theme/powercoders.css"/>
+  <link rel="stylesheet" href="../slides.css"/>
+  <link href='https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css' rel='stylesheet' />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">REST Services with Django</h1>
+</section>
+
+<section id="introduction" class="slide level2">
+<h2>Introduction</h2>
+<!-- todo: -->
+</section>
+<section id="learning-objectives" class="slide level2">
+<h2>Learning Objectives</h2>
+<ul>
+<li>Understand what a REST service is</li>
+<li>Create a simple REST service with Django</li>
+</ul>
+</section>
+<section id="agenda" class="slide level2">
+<h2>Agenda</h2>
+<ul>
+<li>REST</li>
+<li>Django</li>
+<li>Models</li>
+<li>Django REST framework</li>
+<li>Filters</li>
+</ul>
+</section>
+<section id="resources" class="slide level2">
+<h2>Resources</h2>
+<ul>
+<li><a href="https://docs.djangoproject.com">docs.djangoproject.com</a></li>
+<li><a href="https://www.django-rest-framework.org/">django-rest-framework.org</a></li>
+<li><a href="https://django-filter.readthedocs.io/">django-filter.readthedocs.io</a></li>
+</ul>
+</section>
+<section id="rest" class="slide level2">
+<h2>REST</h2>
+<!-- todo:
+
+- REST
+- HTTP Methods
+- HTTP Status codes
+- URL
+- etc.
+
+-->
+</section>
+<section id="setting-up-a-python-environment" class="slide level2">
+<h2>Setting up a Python Environment</h2>
+<pre><code>mkdir webservice
+cd webservice
+python3 -m venv env
+env/bin/python --version
+env/bin/pip list
+env/bin/pip install django</code></pre>
+</section>
+<section id="django" class="slide level2">
+<h2>Django</h2>
+<!-- todo: general description -->
+<!-- todo: explain projects and apps -->
+</section>
+<section id="django-admin" class="slide level2">
+<h2>Django Admin</h2>
+<pre><code>env/bin/django-admin --help
+env/bin/django-admin startproject --help
+env/bin/django-admin startproject webservice .
+env/bin/django-admin startapp shop</code></pre>
+</section>
+<section id="typical-structure-of-a-django-project" class="slide level2">
+<h2>Typical Structure of a Django Project</h2>
+<p><img data-src="images/file-structure.png" /></p>
+</section>
+<section id="django-management" class="slide level2">
+<h2>Django Management</h2>
+<pre><code>env/bin/python manage.py --help
+env/bin/python manage.py migrate
+env/bin/python manage.py createsuperuser
+env/bin/python manage.py runserver</code></pre>
+<ul>
+<li>Frontend: <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a></li>
+<li>Backend: <a href="http://127.0.0.1:8000/admin">http://127.0.0.1:8000/admin</a></li>
+</ul>
+</section>
+<section id="exercise-1" class="slide level2">
+<h2>Exercise 1</h2>
+<ul>
+<li>Create a python environment and a django project and app.</li>
+<li>Register your app in the settings.</li>
+<li>Initialize the DB and add a superuser.</li>
+<li>Initialize a git repo and add a gitignore.</li>
+<li>Add a README which explains how to set up the project.</li>
+</ul>
+</section>
+<section id="a-simple-rest-service-with-django" class="slide level2">
+<h2>A Simple REST Service with Django</h2>
+<ul>
+<li>In Django, every endpoint has its own view (function or class method)</li>
+<li>Views are mapped to an URL with a route</li>
+</ul>
+</section>
+<section id="views" class="slide level2">
+<h2>Views</h2>
+<pre class="py"><code>from django.http import JsonResponse
+
+def view_article(request):
+    return JsonResponse({
+        &#39;id&#39;: 1,
+        &#39;name&#39;: &#39;Screwdriver&#39;
+    })</code></pre>
+</section>
+<section id="routing" class="slide level2">
+<h2>Routing</h2>
+<ul>
+<li>shop.urls</li>
+</ul>
+<pre class="py"><code>from django.urls import path
+from shop. views import view_article
+
+urlpatterns = [
+    path(&#39;articles/1/&#39;, view_article),
+]</code></pre>
+</section>
+<section id="routing-1" class="slide level2">
+<h2>Routing</h2>
+<ul>
+<li>webservice.urls</li>
+</ul>
+<pre class="py"><code>from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path(&#39;admin/&#39;, admin.site.urls),
+    path(&#39;shop/&#39;, include(&#39;shop.urls&#39;)),
+]</code></pre>
+</section>
+<section id="routing-2" class="slide level2">
+<h2>Routing</h2>
+<ul>
+<li>Routing consists of <strong>patterns</strong></li>
+</ul>
+<pre class="py"><code>urlpatterns = [
+    path(&#39;articles/&lt;int:id&gt;/&#39;, view_article),
+]</code></pre>
+<pre class="py"><code>def view_article(request, id):
+    return JsonResponse({
+        &#39;id&#39;: id,
+        &#39;name&#39;: &#39;Screwdriver&#39;
+    })</code></pre>
+</section>
+<section id="request-method" class="slide level2">
+<h2>Request Method</h2>
+<ul>
+<li>The method is available through the request as string</li>
+</ul>
+<pre class="py"><code>def view_article(request, id):
+    if request.method == &#39;GET&#39;:
+        pass</code></pre>
+<ul>
+<li>In this case, we need to disable the CsrfViewMiddleware for POST, PATCH and DELETE</li>
+</ul>
+</section>
+<section id="parsing-json" class="slide level2">
+<h2>Parsing JSON</h2>
+<pre class="py"><code>from json import loads
+
+def view_article(request, id):
+    data = loads(request.body)</code></pre>
+</section>
+<section id="returning-http-status-codes" class="slide level2">
+<h2>Returning HTTP Status Codes</h2>
+<pre class="py"><code>from django.http import HttpResponseNotAllowed
+
+def view_article(request, id):
+    return HttpResponseNotAllowed([&#39;GET&#39;, &#39;POST&#39;])</code></pre>
+</section>
+<section id="curl" class="slide level2">
+<h2>cURL</h2>
+<pre><code>curl --include \
+     --request POST \
+     --header &quot;Content-Type: application/json&quot; \
+     --data &#39;{&quot;name&quot;:&quot;test&quot;}&#39; \
+     http://localhost:8000/shop/articles/</code></pre>
+</section>
+<section id="exercise-2" class="slide level2">
+<h2>Exercise 2</h2>
+<ul>
+<li>Create a simple static REST service.</li>
+<li>Add a GET method for all articles and return some fictional IDs</li>
+<li>Add a POST method for all articles and return the given data and a fictional ID</li>
+<li>Add a GET method for one article and return the ID</li>
+<li>Add a PATCH method for one article and return the ID and the given data</li>
+<li>Add a DELETE method for an article and return the ID</li>
+<li>Return a HTTP 405 for other cases</li>
+<li>Test the views with curl</li>
+</ul>
+</section>
+<section id="django-models" class="slide level2">
+<h2>Django Models</h2>
+<!-- todo: Explain the typical flow with requests, transactions, processes and wsgi/asgi -->
+<pre class="py"><code>from django.db.models import Model
+from django.db.models import CharField
+
+
+class Article(Model):
+    name = CharField(max_length=50)</code></pre>
+<p>Every model gets automatically an auto-incremented id!</p>
+</section>
+<section id="fields" class="slide level2">
+<h2>Fields</h2>
+<ul>
+<li><strong>Boolean</strong>: BooleanField</li>
+<li><strong>Text</strong>: CharField, TextField, EmailField, URLField, UUIDField, FilePathField</li>
+<li><strong>Numbers</strong>: IntegerField, FloatField, DecimalField</li>
+<li><strong>JSON</strong>: JSONField</li>
+<li><strong>Files</strong>: FileField, ImageField</li>
+<li><strong>Date &amp; Time</strong>: DurationField, DateField, DateTimeField, TimeField</li>
+<li><strong>Relationships</strong>: ForeignKey, ManyToManyField, OneToOneField</li>
+</ul>
+</section>
+<section id="querying" class="slide level2">
+<h2>Querying</h2>
+<pre class="py"><code>Article.objects.create(name=name)
+
+Article.objects.all()
+Article.objects.all()[:5]
+
+Article.objects.filter(id=id).get()
+Article.objects.filter(id=id).first()
+
+Article.objects.order_by(&#39;name&#39;).all()[:5]
+Article.objects.order_by(&#39;-name&#39;).all()[:5]
+
+article.name = name
+article.save()
+article.delete()</code></pre>
+</section>
+<section id="migrations" class="slide level2">
+<h2>Migrations</h2>
+<p>Djangos migration management is reason alone to chose it! It supports automatical migration script creation and historical models!</p>
+<pre><code>env/bin/python manage.py makemigrations
+env/bin/python manage.py migrate</code></pre>
+<!-- todo: admin interface? -->
+<!-- todo: relationships? -->
+</section>
+<section id="exercise" class="slide level2">
+<h2>Exercise</h2>
+<ul>
+<li>Define a database model for the articles</li>
+<li>Create the migration script and migrate the database</li>
+<li>Use the model in the views</li>
+<li>Return a 404 if the article with a given ID does not exist</li>
+</ul>
+<!-- todo: let them do something with ordering and filtering? -->
+<!-- todo: let them come up with complexer models? -->
+</section>
+<section id="django-restfamework" class="slide level2">
+<h2>Django Restfamework</h2>
+<!-- todo: General description REST framework -->
+<!-- todo: show Frontend -->
+<!-- todo: pip install -r requirements -->
+<!-- todo: show how to pin versions -->
+</section>
+<section id="viewsets" class="slide level2">
+<h2>Viewsets</h2>
+<pre class="py"><code>from shop.models import Article
+from shop.serializers import ArticleSerializer
+from rest_framework.viewsets import ModelViewSet
+
+
+class ArticleViewSet(ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer</code></pre>
+</section>
+<section id="actions" class="slide level2">
+<h2>Actions</h2>
+<pre class="py"><code>from shop.models import Article
+from shop.serializers import ArticleSerializer
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.decorators import action
+
+
+class ArticleViewSet(ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+
+    @action(detail=True, methods=[&#39;post&#39;])
+    def restock(self, request, pk=None):
+        pass
+
+    @action(detail=False)
+    def popular(self, request):
+        pass</code></pre>
+</section>
+<section id="serializers" class="slide level2">
+<h2>Serializers</h2>
+<pre class="py"><code>from shop.models import Article
+from rest_framework.serializers import HyperlinkedModelSerializer
+
+class ArticleSerializer(HyperlinkedModelSerializer):
+
+    class Meta:
+        model = Article
+        fields = [&#39;id&#39;, &#39;name&#39;]
+        read_only_fields = [&#39;id&#39;]</code></pre>
+</section>
+<section id="routing-3" class="slide level2">
+<h2>Routing</h2>
+<pre class="py"><code>from shop.views import ArticleViewSet
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register(&#39;articles&#39;, ArticleViewSet)
+urlpatterns = router.urls</code></pre>
+</section>
+<section id="exercise-3" class="slide level2">
+<h2>Exercise 3</h2>
+<ul>
+<li>Install the Django REST framework</li>
+<li>Add a serializer for your model</li>
+<li>Replace your own views with a viewset</li>
+</ul>
+</section>
+<section id="filters" class="slide level2">
+<h2>Filters</h2>
+<!-- todo: -->
+</section>
+<section id="exercise-4" class="slide level2">
+<h2>Exercise 4</h2>
+<ul>
+<li>Install django-filter</li>
+<li>Add categories to your model</li>
+<li>Add a filter to your viewset for filtering by category</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.js"></script>
+
+  // reveal.js plugins
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/search/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-c.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-json.min.js"></script>
+    <script>
+    	for (const preEl of document.querySelectorAll("pre")) {
+    		const className = preEl.getAttribute("class");
+
+    		if (className) {
+    			const codeEl = preEl.querySelector("code");
+    			if (!Prism.languages[className]) {
+    				console.log(className);
+    			}
+    			codeEl.innerHTML = Prism.highlight(
+    				codeEl.textContent,
+    				Prism.languages[className],
+    				className
+    			);
+    		}
+    	}
+    </script>
+    </body>
+</html>
