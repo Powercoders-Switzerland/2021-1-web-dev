@@ -135,8 +135,8 @@ def view_article(request):
         &#39;name&#39;: &#39;Screwdriver&#39;
     })</code></pre>
 </section>
-<section id="routing" class="slide level2">
-<h2>Routing</h2>
+<section id="routing-app" class="slide level2">
+<h2>Routing: App</h2>
 <ul>
 <li>shop.urls</li>
 </ul>
@@ -147,8 +147,8 @@ urlpatterns = [
     path(&#39;articles/1/&#39;, view_article),
 ]</code></pre>
 </section>
-<section id="routing-1" class="slide level2">
-<h2>Routing</h2>
+<section id="routing-project" class="slide level2">
+<h2>Routing: Project</h2>
 <ul>
 <li>webservice.urls</li>
 </ul>
@@ -160,8 +160,8 @@ urlpatterns = [
     path(&#39;shop/&#39;, include(&#39;shop.urls&#39;)),
 ]</code></pre>
 </section>
-<section id="routing-2" class="slide level2">
-<h2>Routing</h2>
+<section id="routing-patterns" class="slide level2">
+<h2>Routing: Patterns</h2>
 <ul>
 <li>Routing consists of <strong>patterns</strong></li>
 </ul>
@@ -269,8 +269,8 @@ env/bin/python manage.py migrate</code></pre>
 <!-- todo: admin interface? -->
 <!-- todo: relationships? -->
 </section>
-<section id="exercise" class="slide level2">
-<h2>Exercise</h2>
+<section id="exercise-3" class="slide level2">
+<h2>Exercise 3</h2>
 <ul>
 <li>Define a database model for the articles</li>
 <li>Create the migration script and migrate the database</li>
@@ -280,15 +280,30 @@ env/bin/python manage.py migrate</code></pre>
 <!-- todo: let them do something with ordering and filtering? -->
 <!-- todo: let them come up with complexer models? -->
 </section>
-<section id="django-restfamework" class="slide level2">
-<h2>Django Restfamework</h2>
+<section id="django-rest-framework" class="slide level2">
+<h2>Django REST framework</h2>
 <!-- todo: General description REST framework -->
-<!-- todo: show Frontend -->
-<!-- todo: pip install -r requirements -->
-<!-- todo: show how to pin versions -->
+<ul>
+<li>Browsable API: <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a></li>
+</ul>
 </section>
-<section id="viewsets" class="slide level2">
-<h2>Viewsets</h2>
+<section id="installing-packages-using-a-textfile" class="slide level2">
+<h2>Installing Packages Using a Textfile</h2>
+<pre><code>pip install -r requirements.txt</code></pre>
+<pre><code>django==3.2.4
+djangorestframework</code></pre>
+</section>
+<section id="set-up-the-django-rest-framework" class="slide level2">
+<h2>Set up the Django REST framework</h2>
+<pre><code>pip install djangorestframework
+</code></pre>
+<pre class="py"><code>INSTALLED_APPS = [
+    ...
+    &#39;rest_framework&#39;,
+]</code></pre>
+</section>
+<section id="view-sets" class="slide level2">
+<h2>View Sets</h2>
 <pre class="py"><code>from shop.models import Article
 from shop.serializers import ArticleSerializer
 from rest_framework.viewsets import ModelViewSet
@@ -330,8 +345,8 @@ class ArticleSerializer(HyperlinkedModelSerializer):
         fields = [&#39;id&#39;, &#39;name&#39;]
         read_only_fields = [&#39;id&#39;]</code></pre>
 </section>
-<section id="routing-3" class="slide level2">
-<h2>Routing</h2>
+<section id="routing-routers" class="slide level2">
+<h2>Routing: Routers</h2>
 <pre class="py"><code>from shop.views import ArticleViewSet
 from rest_framework.routers import DefaultRouter
 
@@ -339,24 +354,65 @@ router = DefaultRouter()
 router.register(&#39;articles&#39;, ArticleViewSet)
 urlpatterns = router.urls</code></pre>
 </section>
-<section id="exercise-3" class="slide level2">
-<h2>Exercise 3</h2>
+<section id="exercise-4" class="slide level2">
+<h2>Exercise 4</h2>
 <ul>
 <li>Install the Django REST framework</li>
 <li>Add a serializer for your model</li>
 <li>Replace your own views with a viewset</li>
+<li>Test the API with the browsable API</li>
 </ul>
 </section>
-<section id="filters" class="slide level2">
-<h2>Filters</h2>
-<!-- todo: -->
+<section id="filtering" class="slide level2">
+<h2>Filtering</h2>
+<!-- todo: tell them about query parameters, about GET and POST/Request Body -->
 </section>
-<section id="exercise-4" class="slide level2">
-<h2>Exercise 4</h2>
+<section id="setting-up-django-filters" class="slide level2">
+<h2>Setting up Django Filters</h2>
+<pre><code>pip install django-filter
+</code></pre>
+<pre class="py"><code>INSTALLED_APPS = [
+    ...
+    &#39;django_filters&#39;,
+]
+
+REST_FRAMEWORK = {
+    &#39;DEFAULT_FILTER_BACKENDS&#39;: [
+        &#39;django_filters.rest_framework.DjangoFilterBackend&#39;
+    ]
+}</code></pre>
+</section>
+<section id="filter-sets" class="slide level2">
+<h2>Filter Sets</h2>
+<pre class="py"><code>from django_filters import FilterSet
+from shop.models import Article
+
+class ArticleFilter(FilterSet):
+
+    class Meta:
+        model = Article
+        fields = [&#39;category&#39;]</code></pre>
+</section>
+<section id="view-sets-with-filters" class="slide level2">
+<h2>View Sets with Filters</h2>
+<pre class="py"><code>from shop.filters import ArticleFilter
+from shop.models import Article
+from shop.serializers import ArticleSerializer
+from rest_framework.viewsets import ModelViewSet
+
+
+class ArticleViewSet(ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    filterset_class = ArticleFilter</code></pre>
+</section>
+<section id="exercise-5" class="slide level2">
+<h2>Exercise 5</h2>
 <ul>
 <li>Install django-filter</li>
 <li>Add categories to your model</li>
 <li>Add a filter to your viewset for filtering by category</li>
+<li>Test the filters with the browsable API</li>
 </ul>
 </section>
     </div>
@@ -392,6 +448,8 @@ urlpatterns = router.urls</code></pre>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-python.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-c.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-jsx.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-tsx.min.js"></script>
     <script>
     	for (const preEl of document.querySelectorAll("pre")) {
     		const className = preEl.getAttribute("class");
@@ -399,7 +457,7 @@ urlpatterns = router.urls</code></pre>
     		if (className) {
     			const codeEl = preEl.querySelector("code");
     			if (!Prism.languages[className]) {
-    				console.log(className);
+    				throw new Error(className + " does not exist.");
     			}
     			codeEl.innerHTML = Prism.highlight(
     				codeEl.textContent,

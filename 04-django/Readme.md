@@ -116,7 +116,7 @@ def view_article(request):
 ```
 
 
-## Routing
+## Routing: App
 
 - shop.urls
 ```py
@@ -129,7 +129,7 @@ urlpatterns = [
 ```
 
 
-## Routing
+## Routing: Project
 
 - webservice.urls
 ```py
@@ -143,7 +143,7 @@ urlpatterns = [
 ```
 
 
-## Routing
+## Routing: Patterns
 
 - Routing consists of **patterns**
 
@@ -288,15 +288,39 @@ env/bin/python manage.py migrate
 <!-- todo: let them come up with complexer models? -->
 
 
-## Django Restfamework
+## Django REST framework
 
 <!-- todo: General description REST framework -->
-<!-- todo: show Frontend -->
-<!-- todo: pip install -r requirements -->
-<!-- todo: show how to pin versions -->
+
+- Browsable API: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
+
+## Installing Packages Using a Textfile
+
+```
+pip install -r requirements.txt
+```
+
+```
+django==3.2.4
+djangorestframework
+```
+
+## Set up the Django REST framework
+
+```
+pip install djangorestframework
+
+```
+
+```py
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+]
+```
 
 
-## Viewsets
+## View Sets
 
 ```py
 from shop.models import Article
@@ -348,7 +372,7 @@ class ArticleSerializer(HyperlinkedModelSerializer):
 ```
 
 
-## Routing
+## Routing: Routers
 
 ```py
 from shop.views import ArticleViewSet
@@ -365,15 +389,64 @@ urlpatterns = router.urls
 - Install the Django REST framework
 - Add a serializer for your model
 - Replace your own views with a viewset
+- Test the API with the browsable API
 
 
-## Filters
+## Filtering
 
-<!-- todo: -->
+<!-- todo: tell them about query parameters, about GET and POST/Request Body -->
 
+## Setting up Django Filters
+
+```
+pip install django-filter
+
+```
+
+```py
+INSTALLED_APPS = [
+    ...
+    'django_filters',
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ]
+}
+```
+
+## Filter Sets
+
+```py
+from django_filters import FilterSet
+from shop.models import Article
+
+class ArticleFilter(FilterSet):
+
+    class Meta:
+        model = Article
+        fields = ['category']
+```
+
+## View Sets with Filters
+
+```py
+from shop.filters import ArticleFilter
+from shop.models import Article
+from shop.serializers import ArticleSerializer
+from rest_framework.viewsets import ModelViewSet
+
+
+class ArticleViewSet(ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    filterset_class = ArticleFilter
+```
 
 ## Exercise 5
 
 - Install django-filter
 - Add categories to your model
 - Add a filter to your viewset for filtering by category
+- Test the filters with the browsable API
