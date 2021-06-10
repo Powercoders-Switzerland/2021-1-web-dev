@@ -93,7 +93,7 @@ env/bin/python manage.py runserver
 - Create a python environment and a django project and app.
 - Register your app in the settings.
 - Initialize the DB and add a superuser.
-- Initialize a git repo and add a gitignore.
+- Update the gitignore to ignore the env and the __pycache__ directories
 - Add a README which explains how to set up the project.
 
 
