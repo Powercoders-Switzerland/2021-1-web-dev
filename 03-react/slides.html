@@ -189,7 +189,7 @@ const App = () =&gt; (
 
 const App = () =&gt; (
     &lt;ul&gt;
-        {books.map(title =&gt; &lt;li&gt;{title}&lt;/li&gt;))}
+        {books.map(title =&gt; &lt;li key={title}&gt;{title}&lt;/li&gt;))}
     &lt;/ul&gt;
 );</code></pre>
 </section></section>
@@ -208,7 +208,7 @@ const App = () =&gt; (
     return (
         &lt;article&gt;
             &lt;h2&gt;My comment&lt;/h2&gt;
-            &lt;p class=&quot;author&quot;&gt;By Matt&lt;/p&gt;
+            &lt;p className=&quot;author&quot;&gt;By Matt&lt;/p&gt;
             &lt;p&gt;I think that…&lt;/p&gt;
         &lt;/article&gt;
     );
@@ -230,7 +230,7 @@ function Comment(props: CommentProps) {
     return (
         &lt;article&gt;
             &lt;h2&gt;{props.title}&lt;/h2&gt;
-            &lt;p class=&quot;author&quot;&gt;By {props.author}&lt;/p&gt;
+            &lt;p className=&quot;author&quot;&gt;By {props.author}&lt;/p&gt;
             &lt;p&gt;{props.content}&lt;/p&gt;
         &lt;/article&gt;
     );
@@ -262,7 +262,7 @@ function Comment(props: CommentProps) {
     return (
         &lt;article&gt;
             &lt;h2&gt;{props.comment.title}&lt;/h2&gt;
-            &lt;p class=&quot;author&quot;&gt;By {props.comment.author}&lt;/p&gt;
+            &lt;p className=&quot;author&quot;&gt;By {props.comment.author}&lt;/p&gt;
             &lt;p&gt;{props.comment.content}&lt;/p&gt;
         &lt;/article&gt;
     );
