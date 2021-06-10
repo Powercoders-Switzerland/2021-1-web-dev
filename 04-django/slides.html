@@ -72,8 +72,19 @@
 
 -->
 </section>
+<section id="wsgiasgi" class="slide level2">
+<h2>WSGI/ASGI</h2>
+<p><img data-src="images/wsgi.png" /></p>
+<ul>
+<li>Python web frameworks are often WSGI/ASGI applications</li>
+<li>Most frameworks are invoked per request</li>
+</ul>
+</section>
 <section id="setting-up-a-python-environment" class="slide level2">
 <h2>Setting up a Python Environment</h2>
+<ul>
+<li>Virtual environment can be created with the built-in venv module</li>
+</ul>
 <pre><code>mkdir webservice
 cd webservice
 python3 -m venv env
@@ -83,11 +94,20 @@ env/bin/pip install django</code></pre>
 </section>
 <section id="django" class="slide level2">
 <h2>Django</h2>
-<!-- todo: general description -->
-<!-- todo: explain projects and apps -->
+<ul>
+<li>Model - Template - View</li>
+<li>Free and open source</li>
+<li>Much “magic”</li>
+<li>Old (15 years) but still new features (ASGI)</li>
+<li>Often used, lot of extensions</li>
+<li>One project, many apps</li>
+</ul>
 </section>
 <section id="django-admin" class="slide level2">
 <h2>Django Admin</h2>
+<ul>
+<li>The django admin CLI provides skeletons for projects and apps</li>
+</ul>
 <pre><code>env/bin/django-admin --help
 env/bin/django-admin startproject --help
 env/bin/django-admin startproject webservice .
@@ -99,6 +119,10 @@ env/bin/django-admin startapp shop</code></pre>
 </section>
 <section id="django-management" class="slide level2">
 <h2>Django Management</h2>
+<ul>
+<li>The django managment script provides commands for database migration, debug server, etc.</li>
+<li>It’s possible to define your own commands as well</li>
+</ul>
 <pre><code>env/bin/python manage.py --help
 env/bin/python manage.py migrate
 env/bin/python manage.py createsuperuser
@@ -127,6 +151,9 @@ env/bin/python manage.py runserver</code></pre>
 </section>
 <section id="views" class="slide level2">
 <h2>Views</h2>
+<ul>
+<li>Views are functions which take a request and return a response</li>
+</ul>
 <pre class="py"><code>from django.http import JsonResponse
 
 def view_article(request):
@@ -135,10 +162,10 @@ def view_article(request):
         &#39;name&#39;: &#39;Screwdriver&#39;
     })</code></pre>
 </section>
-<section id="routing-app" class="slide level2">
-<h2>Routing: App</h2>
+<section id="routing-application" class="slide level2">
+<h2>Routing: Application</h2>
 <ul>
-<li>shop.urls</li>
+<li>Application URLs defined for every view (shop.urls)</li>
 </ul>
 <pre class="py"><code>from django.urls import path
 from shop. views import view_article
@@ -150,7 +177,7 @@ urlpatterns = [
 <section id="routing-project" class="slide level2">
 <h2>Routing: Project</h2>
 <ul>
-<li>webservice.urls</li>
+<li>All application URLs can be included at an endpoint (webservice.urls)</li>
 </ul>
 <pre class="py"><code>from django.contrib import admin
 from django.urls import include, path
@@ -164,6 +191,7 @@ urlpatterns = [
 <h2>Routing: Patterns</h2>
 <ul>
 <li>Routing consists of <strong>patterns</strong></li>
+<li>Variable parts are passed as arguments</li>
 </ul>
 <pre class="py"><code>urlpatterns = [
     path(&#39;articles/&lt;int:id&gt;/&#39;, view_article),
@@ -177,6 +205,7 @@ urlpatterns = [
 <section id="request-method" class="slide level2">
 <h2>Request Method</h2>
 <ul>
+<li>The request object contains all information about the current request</li>
 <li>The method is available through the request as string</li>
 </ul>
 <pre class="py"><code>def view_article(request, id):
@@ -188,6 +217,9 @@ urlpatterns = [
 </section>
 <section id="parsing-json" class="slide level2">
 <h2>Parsing JSON</h2>
+<ul>
+<li>The body of the request may contain JSON</li>
+</ul>
 <pre class="py"><code>from json import loads
 
 def view_article(request, id):
@@ -195,6 +227,9 @@ def view_article(request, id):
 </section>
 <section id="returning-http-status-codes" class="slide level2">
 <h2>Returning HTTP Status Codes</h2>
+<ul>
+<li>There are responses for every status code</li>
+</ul>
 <pre class="py"><code>from django.http import HttpResponseNotAllowed
 
 def view_article(request, id):
@@ -202,6 +237,9 @@ def view_article(request, id):
 </section>
 <section id="curl" class="slide level2">
 <h2>cURL</h2>
+<ul>
+<li>cURL is a CLI tool for making requests</li>
+</ul>
 <pre><code>curl --include \
      --request POST \
      --header &quot;Content-Type: application/json&quot; \
@@ -223,18 +261,25 @@ def view_article(request, id):
 </section>
 <section id="django-models" class="slide level2">
 <h2>Django Models</h2>
-<!-- todo: Explain the typical flow with requests, transactions, processes and wsgi/asgi -->
+<ul>
+<li>Django has its own object-relational mapper (ORM)</li>
+<li>Requests are normally NOT bound to a transaction but immediately commited</li>
+<li>Some DB interactions may need an atomic decorator/context manager</li>
+</ul>
 <pre class="py"><code>from django.db.models import Model
 from django.db.models import CharField
 
 
 class Article(Model):
     name = CharField(max_length=50)</code></pre>
-<p>Every model gets automatically an auto-incremented id!</p>
+<ul>
+<li>Every model gets automatically an auto-incremented id!</li>
+</ul>
 </section>
 <section id="fields" class="slide level2">
 <h2>Fields</h2>
 <ul>
+<li>Django provides a lot of different DB fields, more are available using additional libraries</li>
 <li><strong>Boolean</strong>: BooleanField</li>
 <li><strong>Text</strong>: CharField, TextField, EmailField, URLField, UUIDField, FilePathField</li>
 <li><strong>Numbers</strong>: IntegerField, FloatField, DecimalField</li>
@@ -246,6 +291,9 @@ class Article(Model):
 </section>
 <section id="querying" class="slide level2">
 <h2>Querying</h2>
+<ul>
+<li>Django allows DB interaction using the <code>objects</code> property of any model</li>
+</ul>
 <pre class="py"><code>Article.objects.create(name=name)
 
 Article.objects.all()
@@ -263,11 +311,23 @@ article.delete()</code></pre>
 </section>
 <section id="migrations" class="slide level2">
 <h2>Migrations</h2>
-<p>Djangos migration management is reason alone to chose it! It supports automatical migration script creation and historical models!</p>
+<ul>
+<li>Djangos migration management is reason alone to chose it! It supports automatic migration script creation and historical models!</li>
+</ul>
 <pre><code>env/bin/python manage.py makemigrations
 env/bin/python manage.py migrate</code></pre>
-<!-- todo: admin interface? -->
-<!-- todo: relationships? -->
+</section>
+<section id="admin-ui" class="slide level2">
+<h2>Admin UI</h2>
+<ul>
+<li>Models can be registered and are then available at the admin UI</li>
+</ul>
+<pre class="py"><code>from django.contrib.admin import ModelAdmin, register
+from shop.models import Article
+
+@register(Article)
+class ArticelAdmin(ModelAdmin):
+    pass</code></pre>
 </section>
 <section id="exercise-3" class="slide level2">
 <h2>Exercise 3</h2>
@@ -275,28 +335,39 @@ env/bin/python manage.py migrate</code></pre>
 <li>Define a database model for the articles</li>
 <li>Create the migration script and migrate the database</li>
 <li>Use the model in the views</li>
+<li>Register the model for the admin UI</li>
 <li>Return a 404 if the article with a given ID does not exist</li>
 </ul>
-<!-- todo: let them do something with ordering and filtering? -->
-<!-- todo: let them come up with complexer models? -->
 </section>
 <section id="django-rest-framework" class="slide level2">
 <h2>Django REST framework</h2>
-<!-- todo: General description REST framework -->
 <ul>
+<li>Django REST framework is a django extension for easily creating REST APIs</li>
 <li>Browsable API: <a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a></li>
 </ul>
 </section>
 <section id="installing-packages-using-a-textfile" class="slide level2">
 <h2>Installing Packages Using a Textfile</h2>
+<ul>
+<li>pip allows installation from a text file</li>
+</ul>
 <pre><code>pip install -r requirements.txt</code></pre>
+<ul>
+<li>it’s possible to pin version</li>
+</ul>
 <pre><code>django==3.2.4
 djangorestframework</code></pre>
 </section>
 <section id="set-up-the-django-rest-framework" class="slide level2">
 <h2>Set up the Django REST framework</h2>
+<ul>
+<li>Install</li>
+</ul>
 <pre><code>pip install djangorestframework
 </code></pre>
+<ul>
+<li>Enable</li>
+</ul>
 <pre class="py"><code>INSTALLED_APPS = [
     ...
     &#39;rest_framework&#39;,
@@ -304,6 +375,9 @@ djangorestframework</code></pre>
 </section>
 <section id="view-sets" class="slide level2">
 <h2>View Sets</h2>
+<ul>
+<li>Viewsets are classes which provide CRUD operations for models</li>
+</ul>
 <pre class="py"><code>from shop.models import Article
 from shop.serializers import ArticleSerializer
 from rest_framework.viewsets import ModelViewSet
@@ -315,6 +389,9 @@ class ArticleViewSet(ModelViewSet):
 </section>
 <section id="actions" class="slide level2">
 <h2>Actions</h2>
+<ul>
+<li>Additional actions can be defined for on instance or all instances</li>
+</ul>
 <pre class="py"><code>from shop.models import Article
 from shop.serializers import ArticleSerializer
 from rest_framework.viewsets import ModelViewSet
@@ -335,6 +412,9 @@ class ArticleViewSet(ModelViewSet):
 </section>
 <section id="serializers" class="slide level2">
 <h2>Serializers</h2>
+<ul>
+<li>Serializers define the data format of a model for requests and responses</li>
+</ul>
 <pre class="py"><code>from shop.models import Article
 from rest_framework.serializers import HyperlinkedModelSerializer
 
@@ -347,6 +427,9 @@ class ArticleSerializer(HyperlinkedModelSerializer):
 </section>
 <section id="routing-routers" class="slide level2">
 <h2>Routing: Routers</h2>
+<ul>
+<li>Routers register all CRUD operations for viewsets</li>
+</ul>
 <pre class="py"><code>from shop.views import ArticleViewSet
 from rest_framework.routers import DefaultRouter
 
@@ -365,12 +448,24 @@ urlpatterns = router.urls</code></pre>
 </section>
 <section id="filtering" class="slide level2">
 <h2>Filtering</h2>
-<!-- todo: tell them about query parameters, about GET and POST/Request Body -->
+<ul>
+<li>Query parameters are often used for ordering and filtering</li>
+</ul>
+<pre><code>https://duckduckgo.com/?t=ffab&amp;q=query+parameters&amp;ia=web</code></pre>
+<ul>
+<li>Django filters allows filtering with query parameters together with the REST framework</li>
+</ul>
 </section>
 <section id="setting-up-django-filters" class="slide level2">
 <h2>Setting up Django Filters</h2>
+<ul>
+<li>install</li>
+</ul>
 <pre><code>pip install django-filter
 </code></pre>
+<ul>
+<li>enable and configure</li>
+</ul>
 <pre class="py"><code>INSTALLED_APPS = [
     ...
     &#39;django_filters&#39;,
@@ -384,6 +479,9 @@ REST_FRAMEWORK = {
 </section>
 <section id="filter-sets" class="slide level2">
 <h2>Filter Sets</h2>
+<ul>
+<li>Filter sets are classes which define filters for models</li>
+</ul>
 <pre class="py"><code>from django_filters import FilterSet
 from shop.models import Article
 
@@ -395,6 +493,9 @@ class ArticleFilter(FilterSet):
 </section>
 <section id="view-sets-with-filters" class="slide level2">
 <h2>View Sets with Filters</h2>
+<ul>
+<li>Filtersets can be added to view sets</li>
+</ul>
 <pre class="py"><code>from shop.filters import ArticleFilter
 from shop.models import Article
 from shop.serializers import ArticleSerializer
@@ -413,6 +514,13 @@ class ArticleViewSet(ModelViewSet):
 <li>Add categories to your model</li>
 <li>Add a filter to your viewset for filtering by category</li>
 <li>Test the filters with the browsable API</li>
+</ul>
+</section>
+<section id="whats-next" class="slide level2">
+<h2>What’s next?</h2>
+<ul>
+<li>Have a look at <a href="https://docs.djangoproject.com/en/3.2/topics/db/examples/">relationships</a></li>
+<li>Extend your models</li>
 </ul>
 </section>
     </div>

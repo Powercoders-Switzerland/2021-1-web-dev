@@ -41,9 +41,17 @@ title: REST Services with Django
 
 -->
 
+## WSGI/ASGI
+
+![](images/wsgi.png)
+
+- Python web frameworks are often WSGI/ASGI applications
+- Most frameworks are invoked per request
+
 
 ## Setting up a Python Environment
 
+- Virtual environment can be created with the built-in venv module
 ```
 mkdir webservice
 cd webservice
@@ -56,12 +64,17 @@ env/bin/pip install django
 
 ## Django
 
-<!-- todo: general description -->
-<!-- todo: explain projects and apps -->
+- Model - Template - View
+- Free and open source
+- Much "magic"
+- Old (15 years) but still new features (ASGI)
+- Often used, lot of extensions
+- One project, many apps
 
 
 ## Django Admin
 
+- The django admin CLI provides skeletons for projects and apps
 ```
 env/bin/django-admin --help
 env/bin/django-admin startproject --help
@@ -74,9 +87,10 @@ env/bin/django-admin startapp shop
 
 ![](images/file-structure.png)
 
-
 ## Django Management
 
+- The django managment script provides commands for database migration, debug server, etc.
+- It's possible to define your own commands as well
 ```
 env/bin/python manage.py --help
 env/bin/python manage.py migrate
@@ -105,6 +119,7 @@ env/bin/python manage.py runserver
 
 ## Views
 
+- Views are functions which take a request and return a response
 ```py
 from django.http import JsonResponse
 
@@ -116,9 +131,9 @@ def view_article(request):
 ```
 
 
-## Routing: App
+## Routing: Application
 
-- shop.urls
+- Application URLs defined for every view (shop.urls)
 ```py
 from django.urls import path
 from shop. views import view_article
@@ -131,7 +146,7 @@ urlpatterns = [
 
 ## Routing: Project
 
-- webservice.urls
+- All application URLs can be included at an endpoint (webservice.urls)
 ```py
 from django.contrib import admin
 from django.urls import include, path
@@ -146,6 +161,7 @@ urlpatterns = [
 ## Routing: Patterns
 
 - Routing consists of **patterns**
+- Variable parts are passed as arguments
 
 ```py
 urlpatterns = [
@@ -164,6 +180,7 @@ def view_article(request, id):
 
 ## Request Method
 
+- The request object contains all information about the current request
 - The method is available through the request as string
 ```py
 def view_article(request, id):
@@ -176,6 +193,7 @@ def view_article(request, id):
 
 ## Parsing JSON
 
+- The body of the request may contain JSON
 ```py
 from json import loads
 
@@ -186,6 +204,7 @@ def view_article(request, id):
 
 ## Returning HTTP Status Codes
 
+- There are responses for every status code
 ```py
 from django.http import HttpResponseNotAllowed
 
@@ -196,6 +215,7 @@ def view_article(request, id):
 
 ## cURL
 
+- cURL is a CLI tool for making requests
 ```
 curl --include \
 	 --request POST \
@@ -219,7 +239,9 @@ curl --include \
 
 ## Django Models
 
-<!-- todo: Explain the typical flow with requests, transactions, processes and wsgi/asgi -->
+- Django has its own object-relational mapper (ORM)
+- Requests are normally NOT bound to a transaction but immediately commited
+- Some DB interactions may need an atomic decorator/context manager
 
 ```py
 from django.db.models import Model
@@ -230,11 +252,12 @@ class Article(Model):
     name = CharField(max_length=50)
 ```
 
-Every model gets automatically an auto-incremented id!
+- Every model gets automatically an auto-incremented id!
 
 
 ## Fields
 
+- Django provides a lot of different DB fields, more are available using additional libraries
 - **Boolean**: BooleanField
 - **Text**: CharField, TextField, EmailField, URLField, UUIDField, FilePathField
 - **Numbers**: IntegerField, FloatField, DecimalField
@@ -246,6 +269,7 @@ Every model gets automatically an auto-incremented id!
 
 ## Querying
 
+- Django allows DB interaction using the `objects` property of any model
 ```py
 Article.objects.create(name=name)
 
@@ -266,15 +290,25 @@ article.delete()
 
 ## Migrations
 
-Djangos migration management is reason alone to chose it! It supports automatical migration script creation and historical models!
+- Djangos migration management is reason alone to chose it! It supports automatic migration script creation and historical models!
 
 ```
 env/bin/python manage.py makemigrations
 env/bin/python manage.py migrate
 ```
 
-<!-- todo: admin interface? -->
-<!-- todo: relationships? -->
+
+## Admin UI
+
+- Models can be registered and are then available at the admin UI
+```py
+from django.contrib.admin import ModelAdmin, register
+from shop.models import Article
+
+@register(Article)
+class ArticelAdmin(ModelAdmin):
+    pass
+```
 
 
 ## Exercise 3
@@ -282,24 +316,23 @@ env/bin/python manage.py migrate
 - Define a database model for the articles
 - Create the migration script and migrate the database
 - Use the model in the views
+- Register the model for the admin UI
 - Return a 404 if the article with a given ID does not exist
-
-<!-- todo: let them do something with ordering and filtering? -->
-<!-- todo: let them come up with complexer models? -->
 
 
 ## Django REST framework
 
-<!-- todo: General description REST framework -->
-
+- Django REST framework is a django extension for easily creating REST APIs
 - Browsable API: [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
 
 ## Installing Packages Using a Textfile
 
+- pip allows installation from a text file
 ```
 pip install -r requirements.txt
 ```
 
+- it's possible to pin version
 ```
 django==3.2.4
 djangorestframework
@@ -307,11 +340,13 @@ djangorestframework
 
 ## Set up the Django REST framework
 
+- Install
 ```
 pip install djangorestframework
 
 ```
 
+- Enable
 ```py
 INSTALLED_APPS = [
     ...
@@ -322,6 +357,7 @@ INSTALLED_APPS = [
 
 ## View Sets
 
+- Viewsets are classes which provide CRUD operations for models
 ```py
 from shop.models import Article
 from shop.serializers import ArticleSerializer
@@ -336,6 +372,7 @@ class ArticleViewSet(ModelViewSet):
 
 ## Actions
 
+- Additional actions can be defined for on instance or all instances
 ```py
 from shop.models import Article
 from shop.serializers import ArticleSerializer
@@ -359,6 +396,7 @@ class ArticleViewSet(ModelViewSet):
 
 ## Serializers
 
+- Serializers define the data format of a model for requests and responses
 ```py
 from shop.models import Article
 from rest_framework.serializers import HyperlinkedModelSerializer
@@ -374,6 +412,7 @@ class ArticleSerializer(HyperlinkedModelSerializer):
 
 ## Routing: Routers
 
+- Routers register all CRUD operations for viewsets
 ```py
 from shop.views import ArticleViewSet
 from rest_framework.routers import DefaultRouter
@@ -394,15 +433,22 @@ urlpatterns = router.urls
 
 ## Filtering
 
-<!-- todo: tell them about query parameters, about GET and POST/Request Body -->
+- Query parameters are often used for ordering and filtering
+```
+https://duckduckgo.com/?t=ffab&q=query+parameters&ia=web
+```
+
+- Django filters allows filtering with query parameters together with the REST framework
 
 ## Setting up Django Filters
 
+- install
 ```
 pip install django-filter
 
 ```
 
+- enable and configure
 ```py
 INSTALLED_APPS = [
     ...
@@ -418,6 +464,7 @@ REST_FRAMEWORK = {
 
 ## Filter Sets
 
+- Filter sets are classes which define filters for models
 ```py
 from django_filters import FilterSet
 from shop.models import Article
@@ -431,6 +478,7 @@ class ArticleFilter(FilterSet):
 
 ## View Sets with Filters
 
+- Filtersets can be added to view sets
 ```py
 from shop.filters import ArticleFilter
 from shop.models import Article
@@ -450,3 +498,8 @@ class ArticleViewSet(ModelViewSet):
 - Add categories to your model
 - Add a filter to your viewset for filtering by category
 - Test the filters with the browsable API
+
+## What's next?
+
+- Have a look at [relationships](https://docs.djangoproject.com/en/3.2/topics/db/examples/)
+- Extend your models
