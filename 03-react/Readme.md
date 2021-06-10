@@ -155,7 +155,7 @@ const books: string[] = [
 
 const App = () => (
 	<ul>
-		{books.map(title => <li>{title}</li>))}
+		{books.map(title => <li key={title}>{title}</li>))}
 	</ul>
 );
 ```
@@ -173,7 +173,7 @@ function Comment() {
 	return (
 		<article>
 			<h2>My comment</h2>
-			<p class="author">By Matt</p>
+			<p className="author">By Matt</p>
 			<p>I think that…</p>
 		</article>
 	);
@@ -197,7 +197,7 @@ function Comment(props: CommentProps) {
 	return (
 		<article>
 			<h2>{props.title}</h2>
-			<p class="author">By {props.author}</p>
+			<p className="author">By {props.author}</p>
 			<p>{props.content}</p>
 		</article>
 	);
@@ -231,7 +231,7 @@ function Comment(props: CommentProps) {
 	return (
 		<article>
 			<h2>{props.comment.title}</h2>
-			<p class="author">By {props.comment.author}</p>
+			<p className="author">By {props.comment.author}</p>
 			<p>{props.comment.content}</p>
 		</article>
 	);
