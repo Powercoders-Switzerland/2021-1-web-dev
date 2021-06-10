@@ -1,6 +1,6 @@
 # Powercoders web development track, spring 2021
 
-For an overview of the course, see the [curriculum](https://powercoders-switzerland.github.io/2021-1-web-dev/).
+For an overview of the course, see the [journal](https://powercoders-switzerland.github.io/2021-1-web-dev/).
 
 ## How to build the slides
 
