@@ -92,9 +92,163 @@ const books: string[] = [
 - In `main.ts`, write a `getRandomColor()` function that returns a random color. Your function should have an explicit return type annotation.
 - Use the `getRandomColor()` function to also randomly change the `background-color` of your book title.
 
+## Conditional rendering
+
+### Reference
+
+[Conditional rendering, React docs](https://reactjs.org/docs/conditional-rendering.html)
+
+### If-else
+
+```tsx
+function App() {
+	const userConnected: boolean = false;
+
+	if (userConnected) {
+		return <button>Show my profile</button>;
+	}
+	return <button>Log in</button>;
+}
+```
+
+### Conditional operator
+
+```tsx
+function App() {
+	const userConnected: boolean = false;
+	return (
+		<div className={userConnected ? "guest" : "user"}></div>
+	);
+}
+```
+
+## Lists
+
+### Reference
+
+[Lists and key, React docs](https://reactjs.org/docs/lists-and-keys.html)
+
+### Using `.map()`
+
+```tsx
+const books: string[] = [
+	"Anna Karenina",
+	"To Kill a Mockingbird",
+];
+
+const App = () => (
+	<ul>
+		{books.map(title => <li>{title}</li>))}
+	</ul>
+);
+```
+
+### Keys
+
+When rendering a list, each element of the list should have **unique** `key` prop.
+
+```tsx
+const books: string[] = [
+	"Anna Karenina",
+	"To Kill a Mockingbird",
+];
+
+const App = () => (
+	<ul>
+		{books.map(title => <li>{title}</li>))}
+	</ul>
+);
+```
+
 ## Components
 
-## <em class="type">Example 2</em> `Book` component
+### Reference
+
+[Components and Props, React docs](https://reactjs.org/docs/components-and-props.html)
+
+### Defining a component
+
+```tsx
+function Comment() {
+	return (
+		<article>
+			<h2>My comment</h2>
+			<p class="author">By Matt</p>
+			<p>I think that…</p>
+		</article>
+	);
+}
+
+function App() {
+	return <Comment />;
+}
+```
+
+### Props
+
+```tsx
+interface CommentProps {
+	title: string;
+	author: string;
+	content: string;
+}
+
+function Comment(props: CommentProps) {
+	return (
+		<article>
+			<h2>{props.title}</h2>
+			<p class="author">By {props.author}</p>
+			<p>{props.content}</p>
+		</article>
+	);
+}
+
+function App() {
+	return (
+		<Comment
+			title="Evidence"
+			author="René"
+			content="Cogito, ergo sum"
+		/>
+	);
+}
+```
+
+### Object as prop
+
+```tsx
+interface CommentInfo {
+	title: string;
+	author: string;
+	content: string;
+}
+
+interface CommentProps {
+	comment: CommentInfo;
+}
+
+function Comment(props: CommentProps) {
+	return (
+		<article>
+			<h2>{props.comment.title}</h2>
+			<p class="author">By {props.comment.author}</p>
+			<p>{props.comment.content}</p>
+		</article>
+	);
+}
+
+function App() {
+	const discourse: CommentInfo = {
+		title: "Evidence",
+		author: "René",
+		content: "Cogito, ergo sum",
+	};
+
+	return <Comment comment={discourse} />;
+}
+```
+
+## <em class="type">Example 2</em> [Books list](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/02-books)
 
 ## <em class="type">Exercise 2</em> Users list
 
@@ -113,6 +267,7 @@ const users = [
 		age: 12,
 		city: "North Kirstin",
 		ip: "161.208.247.105",
+		isAdmin: false,
 	},
 	{
 		id: 2,
@@ -123,6 +278,7 @@ const users = [
 		age: 62,
 		city: "Everettetown",
 		ip: "123.224.60.146",
+		isAdmin: true,
 	},
 	{
 		id: 3,
@@ -133,6 +289,7 @@ const users = [
 		age: 8,
 		city: "Lake Fordhaven",
 		ip: "164.89.151.58",
+		isAdmin: false,
 	},
 	{
 		id: 4,
@@ -143,6 +300,7 @@ const users = [
 		age: 108,
 		city: "South Russberg",
 		ip: "162.25.24.120",
+		isAdmin: false,
 	},
 	{
 		id: 5,
@@ -153,6 +311,7 @@ const users = [
 		age: 66,
 		city: "Lake Angelina",
 		ip: "85.179.25.149",
+		isAdmin: false,
 	},
 	{
 		id: 6,
@@ -163,6 +322,7 @@ const users = [
 		age: 36,
 		city: "East Beverly",
 		ip: "27.34.243.77",
+		isAdmin: false,
 	},
 	{
 		id: 7,
@@ -173,6 +333,7 @@ const users = [
 		age: 74,
 		city: "New Maryjaneberg",
 		ip: "85.232.129.225",
+		isAdmin: true,
 	},
 	{
 		id: 8,
@@ -183,6 +344,7 @@ const users = [
 		age: 16,
 		city: "Altadena",
 		ip: "168.252.158.225",
+		isAdmin: false,
 	},
 	{
 		id: 9,
@@ -193,6 +355,7 @@ const users = [
 		age: 10,
 		city: "Lenexa",
 		ip: "38.83.7.48",
+		isAdmin: false,
 	},
 	{
 		id: 10,
@@ -203,6 +366,7 @@ const users = [
 		age: 83,
 		city: "Baumbachtown",
 		ip: "50.218.254.52",
+		isAdmin: false,
 	},
 	{
 		id: 11,
@@ -213,6 +377,7 @@ const users = [
 		age: 63,
 		city: "North Martina",
 		ip: "147.105.193.65",
+		isAdmin: false,
 	},
 	{
 		id: 12,
@@ -223,6 +388,7 @@ const users = [
 		age: 113,
 		city: "South Damon",
 		ip: "209.104.243.157",
+		isAdmin: false,
 	},
 	{
 		id: 13,
@@ -233,6 +399,7 @@ const users = [
 		age: 18,
 		city: "Hilo",
 		ip: "103.82.167.168",
+		isAdmin: false,
 	},
 	{
 		id: 14,
@@ -243,6 +410,7 @@ const users = [
 		age: 15,
 		city: "Harveybury",
 		ip: "168.223.235.220",
+		isAdmin: false,
 	},
 	{
 		id: 15,
@@ -253,6 +421,7 @@ const users = [
 		age: 49,
 		city: "Arlington",
 		ip: "223.89.148.36",
+		isAdmin: false,
 	},
 	{
 		id: 16,
@@ -263,6 +432,7 @@ const users = [
 		age: 47,
 		city: "Strackehaven",
 		ip: "74.94.165.210",
+		isAdmin: false,
 	},
 	{
 		id: 17,
@@ -273,6 +443,7 @@ const users = [
 		age: 54,
 		city: "Carrollton",
 		ip: "11.121.113.44",
+		isAdmin: false,
 	},
 	{
 		id: 18,
@@ -283,6 +454,7 @@ const users = [
 		age: 18,
 		city: "Columbia",
 		ip: "224.144.68.251",
+		isAdmin: true,
 	},
 	{
 		id: 19,
@@ -293,6 +465,7 @@ const users = [
 		age: 28,
 		city: "Garrickchester",
 		ip: "91.159.111.88",
+		isAdmin: false,
 	},
 	{
 		id: 20,
@@ -303,6 +476,7 @@ const users = [
 		age: 61,
 		city: "Aronport",
 		ip: "242.25.16.144",
+		isAdmin: false,
 	},
 ];
 ```
@@ -319,31 +493,67 @@ Write a `UserInfo` interface, and add an explicit type annotation to the `users`
 
 ### <em class="type">Step 3</em> All users list
 
-Update the `App` component so that it display all users (no component and no filtering yet).
+Update the `App` component so that it displays all users (no component and no filtering yet).
 
 ### <em class="type">Step 4</em> `User` component
 
-Extract the code that shows a single user to a `User` component in `src/components/User`.
+Extract the code that shows a single user to a `User` component in `src/components/User`. The component should have a single prop of type `UserInfo`.
 
 ### <em class="type">Step 5</em> Separate adults and kids sections
 
 Display the users in two separate sections depending on their age.
 
-## `useState` hook
+### <em class="type">Step 6</em> Admin badge
+
+Next to the name of each user, display a badge if it is an admin.
 
 ## Events
 
-## <em class="type">Example 3</em> Counter
+### Reference
 
-## <em class="type">Example 4</em> Addition
+[Handling Events](https://reactjs.org/docs/handling-events.html)
+
+## `useState` hook
+
+### Reference
+
+[Using the State Hook](https://reactjs.org/docs/hooks-state.html)
+
+## <em class="type">Example 3</em> [Counter](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/03-counter)
+
+## <em class="type">Example 4</em> [Addition](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/04-addition)
 
 ## <em class="type">Exercise 3</em> Random book on click
 
-## <em class="type">Exercise 4</em> Degrees converter
+### Goal
+
+On every click, display different book, with a different background color.
+
+### <em class="type">Step 1</em> Add the React boilerplate
+
+- Copy the content of `03-react/examples/01-hello-react` example to a folder `03-react/03-random-book` in your exercises repository.
+- Then, run `npm install`.
+- To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
+
+## <em class="type">Exercise 3</em> Degrees converter
+
+### Goal
+
+Reproduce your degrees converter in React.
+
+### <em class="type">Step 1</em> Add the React boilerplate
+
+- Copy the content of `03-react/examples/01-hello-react` example to a folder `03-react/03-converter` in your exercises repository.
+- Then, run `npm install`.
+- To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
 
 ## `useEffect` hook
 
-## <em class="type">Example 5</em> `setInterval()`
+### Reference
+
+[Using the Effect Hook, React docs](https://reactjs.org/docs/hooks-effect.html)
+
+## <em class="type">Example 5</em> Clock
 
 ## <em class="type">Exercise 5</em> Random quote
 

@@ -100,23 +100,13 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 
 /***/ }),
 
-/***/ "./src/components/Book.tsx":
-/*!*********************************!*\
-  !*** ./src/components/Book.tsx ***!
-  \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ Book)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nfunction Book(props) {\n    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"article\", { style: { backgroundColor: props.color } },\n        react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"h2\", null, props.title)));\n}\n\n\n//# sourceURL=webpack://05-hello-react/./src/components/Book.tsx?");
-
-/***/ }),
-
 /***/ "./src/main.tsx":
 /*!**********************!*\
   !*** ./src/main.tsx ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var _components_Book__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Book */ \"./src/components/Book.tsx\");\n\n\n\nconst appDiv = document.getElementById(\"app\");\nif (!(appDiv instanceof HTMLDivElement)) {\n    throw new Error(\"No div with id 'app' found\");\n}\nconst books = [\n    \"Anna Karenina\",\n    \"To Kill a Mockingbird\",\n    \"The Great Gatsby\",\n    \"One Hundred Years of Solitude\",\n    \"A Passage to India\",\n    \"Invisible Man\",\n    \"Don Quixote\",\n    \"Beloved\",\n    \"Mrs. Dalloway\",\n    \"Things Fall Apart\",\n    \"Jane Eyre\",\n    \"The Color Purple\",\n];\nconst colors = [\"pink\", \"red\", \"orange\", \"blue\"];\nconst getRandomColor = () => {\n    const index = Math.floor(Math.random() * colors.length);\n    return colors[index];\n};\nconst App = () => (react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"main\", null, books.map((title) => (react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Book__WEBPACK_IMPORTED_MODULE_2__.default, { key: title, title: title, color: getRandomColor() })))));\nreact_dom__WEBPACK_IMPORTED_MODULE_1__.render(react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, null), appDiv);\n\n\n//# sourceURL=webpack://05-hello-react/./src/main.tsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\n\nconst appDiv = document.getElementById(\"app\");\nif (!(appDiv instanceof HTMLDivElement)) {\n    throw new Error(\"No div with id 'app' found\");\n}\nconst App = () => {\n    const [counter, setCounter] = react__WEBPACK_IMPORTED_MODULE_0__.useState(0);\n    return (react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"main\", null,\n        react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"p\", null, counter),\n        react__WEBPACK_IMPORTED_MODULE_0__.createElement(\"button\", { onClick: () => setCounter(counter + 1) }, \"Increment\")));\n};\nreact_dom__WEBPACK_IMPORTED_MODULE_1__.render(react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, null), appDiv);\n\n\n//# sourceURL=webpack://05-hello-react/./src/main.tsx?");
 
 /***/ })
 
@@ -147,23 +137,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var reac
 /******/ 	}
 /******/ 	
 /************************************************************************/
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports

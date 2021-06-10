@@ -23,10 +23,21 @@ const books: string[] = [
 	"The Color Purple",
 ];
 
+const colors: string[] = ["pink", "red", "orange", "blue"];
+
+const getRandomColor = (): string => {
+	const index = Math.floor(Math.random() * colors.length);
+	return colors[index];
+};
+
 const App = () => (
 	<main>
 		{books.map((title) => (
-			<Book title={title} color="lightgrey" />
+			<Book
+				key={title}
+				title={title}
+				color={getRandomColor()}
+			/>
 		))}
 	</main>
 );
