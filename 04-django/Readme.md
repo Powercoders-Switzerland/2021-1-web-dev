@@ -34,11 +34,9 @@ For example, `print(min([2, 1, 3]))` should print `1`.
 
 Note: there is a built-in [`min`](https://docs.python.org/3/library/functions.html#min) function! (But here the goal is that you implement it yourself.)
 
-## <em class="type">Python Exercise 4</em> Users
+## Users data
 
-Work in your exercises repository, in a file `04-django/01-python-intro/users.py`.
-
-For each user that is an adult, print `My name is ??? and I am ??? years old.`.
+List of dictionaries (equivalent of an array of objects in JavaScript) used for the two next exercises:
 
 ```python
 users = [
@@ -65,7 +63,23 @@ users = [
 ]
 ```
 
-## <em class="type">Python Exercise 5</em> Random password generator
+## <em class="type">Python Exercise 4</em> Users
+
+Work in your exercises repository, in a file `04-django/01-python-intro/users-hello.py`.
+
+Add the list of users from the previous slide.
+
+Define a function `helloUsers(users)` that outputs `My name is ??? and I am ??? years old`. for each user.
+
+## <em class="type">Python Exercise 5</em> Group by age
+
+Work in your exercises repository, in a file `04-django/01-python-intro/adults_children.py`.
+
+Add the list of users from the second previous slide.
+
+Write a function `groupByAge(users)` that should return a dictionary of the form `{"adults": [ ... ], "children": [ ... ]}`, where each array only contains the corresponding users.
+
+## <em class="type">Python Exercise 6</em> Random password generator
 
 Work in your exercises repository, in a file `04-django/01-python-intro/random_password.py`.
 
