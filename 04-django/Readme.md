@@ -224,7 +224,7 @@ Read more: [_Using Fetch_, MDN](https://developer.mozilla.org/en-US/docs/Web/API
 - Python web frameworks are often WSGI/ASGI applications
 - Most frameworks are invoked per request
 
-## Setting up a Python Environment
+## Setting up a Python Environment (Linux, MacOS)
 
 - Virtual environment can be created with the built-in venv module
 
@@ -235,6 +235,19 @@ python3 -m venv env
 env/bin/python --version
 env/bin/pip list
 env/bin/pip install django
+```
+
+## Setting up a Python Environment (Windows)
+
+- On windows, you should use `Scripts` instead of `bin` and might to use backslashes and/or `python` or `py`:
+
+```
+mkdir webservice
+cd webservice
+py -m venv env
+env\Scripts\python --version
+env\Scripts\pip list
+env\Scripts\pip install django
 ```
 
 ## Django

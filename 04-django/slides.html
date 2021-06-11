@@ -85,18 +85,18 @@
 <h2><em class="type">Python Exercise 4</em> Hello users</h2>
 <p>Work in your exercises repository, in a file <code>04-django/01-python-intro/users-hello.py</code>.</p>
 <p>Add the list of users from the previous slide.</p>
-<p>Define a function <code>helloUsers(users)</code> that outputs <code>My name is ??? and I am ??? years old</code>. for each user.</p>
+<p>Define a function <code>hello_users(users)</code> that outputs <code>My name is ??? and I am ??? years old</code>. for each user.</p>
 </section>
 <section id="python-exercise-5-group-by-age" class="slide level2">
 <h2><em class="type">Python Exercise 5</em> Group by age</h2>
 <p>Work in your exercises repository, in a file <code>04-django/01-python-intro/adults_children.py</code>.</p>
 <p>Add the list of users from the second previous slide.</p>
-<p>Write a function <code>groupByAge(users)</code> that should return a dictionary of the form <code>{"adults": [ ... ], "children": [ ... ]}</code>, where each array only contains the corresponding users.</p>
+<p>Write a function <code>group_by_age(users)</code> that should return a dictionary of the form <code>{"adults": [ ... ], "children": [ ... ]}</code>, where each array only contains the corresponding users.</p>
 </section>
 <section id="python-exercise-6-random-password-generator" class="slide level2">
 <h2><em class="type">Python Exercise 6</em> Random password generator</h2>
 <p>Work in your exercises repository, in a file <code>04-django/01-python-intro/random_password.py</code>.</p>
-<p>Using <a href="https://docs.python.org/3/library/random.html#random.randint"><code>random.randint</code></a>, define a function <code>randomPassword(n)</code> that returns a random password of length <code>n</code> made of numbers and letters. No other constraint.</p>
+<p>Define a function <code>randomPassword(n)</code> that returns a random password of length <code>n</code> made of numbers and letters. No other constraint.</p>
 </section>
 <section id="learning-objectives" class="slide level2">
 <h2>Learning Objectives</h2>
@@ -246,8 +246,8 @@ fetch(&quot;/shop/articles&quot;, {
 <li>Most frameworks are invoked per request</li>
 </ul>
 </section>
-<section id="setting-up-a-python-environment" class="slide level2">
-<h2>Setting up a Python Environment</h2>
+<section id="setting-up-a-python-environment-linux-macos" class="slide level2">
+<h2>Setting up a Python Environment (Linux, MacOS)</h2>
 <ul>
 <li>Virtual environment can be created with the built-in venv module</li>
 </ul>
@@ -257,6 +257,18 @@ python3 -m venv env
 env/bin/python --version
 env/bin/pip list
 env/bin/pip install django</code></pre>
+</section>
+<section id="setting-up-a-python-environment-windows" class="slide level2">
+<h2>Setting up a Python Environment (Windows)</h2>
+<ul>
+<li>On windows, you should use <code>Scripts</code> instead of <code>bin</code> and might to use backslashes and/or <code>python</code> or <code>py</code>:</li>
+</ul>
+<pre><code>mkdir webservice
+cd webservice
+py -m venv env
+env\Scripts\python --version
+env\Scripts\pip list
+env\Scripts\pip install django</code></pre>
 </section>
 <section id="django" class="slide level2">
 <h2>Django</h2>
@@ -695,7 +707,7 @@ class ArticleViewSet(ModelViewSet):
 
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.js"></script>
 
-  <!-- reveal.js plugins -->
+  // reveal.js plugins
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/search/search.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/zoom/zoom.js"></script>
@@ -705,10 +717,8 @@ class ArticleViewSet(ModelViewSet):
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-      
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
+        // Push each slide change to the browser history
+        history: true,
         // Transition style
         transition: 'none', // none/fade/slide/convex/concave/zoom
 
