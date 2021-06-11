@@ -63,7 +63,7 @@ users = [
 ]
 ```
 
-## <em class="type">Python Exercise 4</em> Users
+## <em class="type">Python Exercise 4</em> Hello users
 
 Work in your exercises repository, in a file `04-django/01-python-intro/users-hello.py`.
 
