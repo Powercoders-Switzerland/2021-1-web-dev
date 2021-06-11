@@ -2,9 +2,74 @@
 title: REST Services with Django
 ---
 
-## Introduction
+## Python Introduction
 
-<!-- todo: -->
+Slides are here: <https://erklär-mir-mal.ch/2021-1/09-01-intro-to-python.html>.
+
+## <em class="type">Python Exercise 1</em> Greeting
+
+Work in your exercises repository, in a file  `04-django/01-python-intro/greet.py`.
+
+Define a function `greet(name)` that prints a greeting to the console.
+
+For example, `greet("Ada")` should print `Hello Ada!`.
+
+## <em class="type">Python Exercise 2</em> Sum
+
+Work in your exercises repository, in a file `04-django/01-python-intro/sum.py`.
+
+Define a function `sum(array)` similar that sums up the elements of an array and returns the result.
+
+For example, `print(sum([1, 2, 3]))` should print `6`.
+
+Note: there is a built-in [`sum`](https://docs.python.org/3/library/functions.html#sum) function! (But here the goal is that you implement it yourself.)
+
+## <em class="type">Python Exercise 3</em> Minimum
+
+Work in your exercises repository, in a file `04-django/01-python-intro/min.py`.
+
+Define a function `min(array)` that returns the minimum element of an array.
+
+For example, `print(min([2, 1, 3]))` should print `1`.
+
+Note: there is a built-in [`min`](https://docs.python.org/3/library/functions.html#min) function! (But here the goal is that you implement it yourself.)
+
+## <em class="type">Python Exercise 4</em> Users
+
+Work in your exercises repository, in a file `04-django/01-python-intro/users.py`.
+
+For each user that is an adult, print `My name is ??? and I am ??? years old.`.
+
+```python
+users = [
+	{
+		"first_name": "Brain",
+		"last_name": "Mohr",
+		"age": 54
+	},
+	{
+		"first_name": "Bella",
+		"last_name": "VonRueden",
+		"age": 17
+	},
+	{
+		"first_name": "Franz",
+		"last_name": "Raynor",
+		"age": 28
+	},
+    {
+		"first_name": "Celestino",
+		"last_name": "Bailey",
+		"age": 61
+    }
+]
+```
+
+## <em class="type">Python Exercise 5</em> Random password generator
+
+Work in your exercises repository, in a file `04-django/01-python-intro/random_password.py`.
+
+Using [`random.randint`](https://docs.python.org/3/library/random.html#random.randint), define a function `randomPassword(n)` that returns a random password of length `n` made of numbers and letters. No other constraint.
 
 ## Learning Objectives
 
