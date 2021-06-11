@@ -69,7 +69,7 @@ Work in your exercises repository, in a file `04-django/01-python-intro/users-he
 
 Add the list of users from the previous slide.
 
-Define a function `helloUsers(users)` that outputs `My name is ??? and I am ??? years old`. for each user.
+Define a function `hello_users(users)` that outputs `My name is ??? and I am ??? years old`. for each user.
 
 ## <em class="type">Python Exercise 5</em> Group by age
 
@@ -77,13 +77,13 @@ Work in your exercises repository, in a file `04-django/01-python-intro/adults_c
 
 Add the list of users from the second previous slide.
 
-Write a function `groupByAge(users)` that should return a dictionary of the form `{"adults": [ ... ], "children": [ ... ]}`, where each array only contains the corresponding users.
+Write a function `group_by_age(users)` that should return a dictionary of the form `{"adults": [ ... ], "children": [ ... ]}`, where each array only contains the corresponding users.
 
 ## <em class="type">Python Exercise 6</em> Random password generator
 
 Work in your exercises repository, in a file `04-django/01-python-intro/random_password.py`.
 
-Using [`random.randint`](https://docs.python.org/3/library/random.html#random.randint), define a function `randomPassword(n)` that returns a random password of length `n` made of numbers and letters. No other constraint.
+Define a function `randomPassword(n)` that returns a random password of length `n` made of numbers and letters. No other constraint.
 
 ## Learning Objectives
 
