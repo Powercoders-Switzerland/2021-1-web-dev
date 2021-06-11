@@ -624,6 +624,7 @@ class ArticleViewSet(ModelViewSet):
 <ul>
 <li>Have a look at <a href="https://docs.djangoproject.com/en/3.2/topics/db/examples/">relationships</a></li>
 <li>Extend your models</li>
+<li>Have a lookt at <a href="https://pytest-django.readthedocs.io/">testing</a></li>
 </ul>
 </section>
     </div>
@@ -631,7 +632,7 @@ class ArticleViewSet(ModelViewSet):
 
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.js"></script>
 
-  <!-- reveal.js plugins -->
+  // reveal.js plugins
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/search/search.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/zoom/zoom.js"></script>
@@ -641,10 +642,8 @@ class ArticleViewSet(ModelViewSet):
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-      
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
+        // Push each slide change to the browser history
+        history: true,
         // Transition style
         transition: 'none', // none/fade/slide/convex/concave/zoom
 

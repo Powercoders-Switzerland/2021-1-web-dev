@@ -597,3 +597,4 @@ class ArticleViewSet(ModelViewSet):
 
 - Have a look at [relationships](https://docs.djangoproject.com/en/3.2/topics/db/examples/)
 - Extend your models
+- Have a lookt at [testing](https://pytest-django.readthedocs.io/)
