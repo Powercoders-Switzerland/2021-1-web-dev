@@ -60,17 +60,120 @@
 <li><a href="https://django-filter.readthedocs.io/">django-filter.readthedocs.io</a></li>
 </ul>
 </section>
-<section id="rest" class="slide level2">
-<h2>REST</h2>
-<!-- todo:
+<section id="rest-diagram" class="slide level2">
+<h2>REST Diagram</h2>
+<p><img data-src="images/rest.svg" /></p>
+</section>
+<section id="http-method-diagram" class="slide level2">
+<h2>HTTP Method Diagram</h2>
+<p><img data-src="images/http-method.svg" /></p>
+</section>
+<section id="url-diagram" class="slide level2">
+<h2>URL Diagram</h2>
+<p><img data-src="images/url.svg" /></p>
+</section>
+<section id="http-status-diagram" class="slide level2">
+<h2>HTTP Status Diagram</h2>
+<p><img data-src="images/http-status.svg" /></p>
+</section>
+<section id="http-overview" class="slide level2">
+<h2>HTTP Overview</h2>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview"><em>An overview of HTTP</em>, MDN</a></p>
+</section>
+<section id="http-methods" class="slide level2">
+<h2>HTTP Methods</h2>
+<p>4 out of the 9 HTTP methods:</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET"><code>GET</code></a>: show something.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST"><code>POST</code></a>: add something.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE"><code>DELETE</code></a>: remove something.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH"><code>PATCH</code></a>: modify something.</li>
+</ul>
+</section>
+<section id="http-headers" class="slide level2">
+<h2>HTTP Headers</h2>
+<pre><code>HTTP/1.1 200 OK
+Date: Sat, 09 Oct 2010 14:28:02 GMT
+Server: Apache
+Last-Modified: Tue, 01 Dec 2009 20:18:22 GMT
+ETag: &quot;51142bc1-7449-479b075b2891b&quot;
+Accept-Ranges: bytes
+Content-Length: 29769
+Content-Type: text/html
 
-- REST
-- HTTP Methods
-- HTTP Status codes
-- URL
-- etc.
-
--->
+&lt;!DOCTYPE html...</code></pre>
+<p>Additional key-value pairs passed with a request or response.</p>
+</section>
+<section id="http-status-ranges" class="slide level2">
+<h2>HTTP Status Ranges</h2>
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">
+HTTP status ranges in a nutshell:<br><br>1xx: hold on<br>2xx: here you go<br>3xx: go away<br>4xx: you fucked up<br>5xx: I fucked up
+</p>
+— Steve Losh (<span class="citation" data-cites="stevelosh">@stevelosh</span>) <a href="https://twitter.com/stevelosh/status/372740571749572610?ref_src=twsrc%5Etfw">August 28, 2013</a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</section>
+<section id="http-status" class="slide level2">
+<h2>HTTP Status</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200"><code>200 OK</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/301"><code>301 Moved Permanently</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/303"><code>303 See Other</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/304"><code>304 Not Modified</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/400"><code>400 Bad Request</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404"><code>404 Not Found</code></a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/451"><code>451 Unavailable For Legal Reasons</code></a> (<a href="https://en.wikipedia.org/wiki/HTTP_451">read more</a>)</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"><code>500 Internal Server Error</code></a></li>
+</ul>
+</section>
+<section id="url" class="slide level2">
+<h2>URL</h2>
+<p><img data-src="images/mdn-url-all.png" /></p>
+<p>Read more: <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL"><em>What is an URL?</em>, MDN</a></p>
+</section>
+<section id="recall-fetch-api-get" class="slide level2">
+<h2>Recall: Fetch API (GET)</h2>
+<pre class="js"><code>fetch(&quot;https://api.quotable.io/random&quot;)
+    .then((response) =&gt; {
+        console.log(&quot;HTTP Response status: &quot; + response.status);
+        return response.json();
+    })
+    .then((data) =&gt; console.log(data));</code></pre>
+</section>
+<section id="recall-fetch-api-post" class="slide level2">
+<h2>Recall: Fetch API (POST)</h2>
+<pre class="js"><code>const data = {
+    /*... */
+};
+fetch(&quot;/shop/articles&quot;, {
+    method: &quot;POST&quot;, // *GET, POST, PUT, DELETE, etc.
+    headers: {
+        &quot;Content-Type&quot;: &quot;application/json&quot;,
+    },
+    redirect: &quot;follow&quot;, // manual, *follow, error
+    body: JSON.stringify(data), // body data type must match &quot;Content-Type&quot; header
+})
+    .then((response) =&gt; response.json())
+    .then((data) =&gt; console.log(data));</code></pre>
+<p>Read more: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"><em>Using Fetch</em>, MDN</a></p>
+</section>
+<section id="rest-principles" class="slide level2">
+<h2>REST Principles</h2>
+<p>4 of the 6 principles:</p>
+<ul>
+<li><strong>Client-server separation</strong>.</li>
+<li><strong>Uniform</strong>: use standard protocols and formats: HTTP, URI, and very often JSON.</li>
+<li><strong>Stateless</strong>: each request is self-contained and does not depend on prior requests.</li>
+<li><strong>Cachable</strong>: responses include cache-control information.</li>
+</ul>
+</section>
+<section id="rest-simplified" class="slide level2">
+<h2>REST Simplified</h2>
+<blockquote>
+<p>Beginners can assume a REST API means an HTTP service that can be called using standard web libraries and tools.</p>
+<p>— <a href="https://developer.mozilla.org/en-US/docs/Glossary/REST"><em>REST</em>, MDN</a></p>
+</blockquote>
 </section>
 <section id="wsgiasgi" class="slide level2">
 <h2>WSGI/ASGI</h2>
@@ -528,7 +631,7 @@ class ArticleViewSet(ModelViewSet):
 
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.js"></script>
 
-  // reveal.js plugins
+  <!-- reveal.js plugins -->
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/search/search.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/zoom/zoom.js"></script>
@@ -538,8 +641,10 @@ class ArticleViewSet(ModelViewSet):
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-        // Push each slide change to the browser history
-        history: true,
+      
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
         // Transition style
         transition: 'none', // none/fade/slide/convex/concave/zoom
 
