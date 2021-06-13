@@ -2,6 +2,8 @@
 
 A possible solution for all steps of the [To-do list exercise](https://powercoders-switzerland.github.io/2021-1-web-dev/02-typescript/slides.html#/exercise-2-to-do-list).
 
+[See the result](https://powercoders-switzerland.github.io/2021-1-web-dev/02-typescript/solutions/02-todo-list/).
+
 ## How to install
 
 ```
