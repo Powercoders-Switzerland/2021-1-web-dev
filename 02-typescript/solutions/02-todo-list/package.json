@@ -1,0 +1,15 @@
+{
+  "name": "03-todo-list",
+  "version": "1.0.0",
+  "author": "Matthieu Bovel",
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "build:watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.2.3",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0"
+  }
+}
