@@ -1,4 +1,4 @@
-import json
+from pprint import pprint
 
 # Import the users list from `data.py`:
 import data
@@ -15,4 +15,4 @@ def group_by_age(users):
 
 
 # See https://docs.python.org/3/library/json.html
-print(json.dumps(group_by_age(data.users), indent=4))
+pprint(group_by_age(data.users))
