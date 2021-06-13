@@ -10,7 +10,7 @@ special_chars = '_-'
 
 def generate_password_constrained2():
     size = randint(10, 20)
-    n_digits = randint(1, len(digits))
+    n_digits = randint(1, size-2)
     password = choices(letters, k=size - n_digits) + \
         choices(digits, k=n_digits - 1) + \
         choices(special_chars, k=1)
