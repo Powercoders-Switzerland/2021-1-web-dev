@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Python introduction</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="https://xn--erklr-mir-mal-efb.ch/2021-1/css/theme/powercoders.css"/>
+  <link rel="stylesheet" href="../slides.css"/>
+  <link href='https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css' rel='stylesheet' />
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Python introduction</h1>
+</section>
+
+<section id="slides" class="slide level2">
+<h2>Slides</h2>
+<p>Slides from the workshop: <a href="https://erklär-mir-mal.ch/2021-1/09-01-intro-to-python.html" class="uri">https://erklär-mir-mal.ch/2021-1/09-01-intro-to-python.html</a>.</p>
+</section>
+<section id="python-exercise-1-greeting" class="slide level2">
+<h2><em class="type">Python Exercise 1</em> Greeting</h2>
+<p>Work in your exercises repository, in a file <code>04-python/greet.py</code>.</p>
+<p>Define a function <code>greet(name)</code> that prints a greeting to the console.</p>
+<p>For example, <code>greet("Ada")</code> should print <code>Hello Ada!</code>.</p>
+</section>
+<section id="python-exercise-2-sum" class="slide level2">
+<h2><em class="type">Python Exercise 2</em> Sum</h2>
+<p>Work in your exercises repository, in a file <code>04-python/sum.py</code>.</p>
+<p>Define a function <code>sum(array)</code> similar that sums up the elements of an array and returns the result.</p>
+<p>For example, <code>print(sum([1, 2, 3]))</code> should print <code>6</code>.</p>
+<p>Note: there is a built-in <a href="https://docs.python.org/3/library/functions.html#sum"><code>sum</code></a> function! (But here the goal is that you implement it yourself.)</p>
+</section>
+<section id="python-exercise-3-minimum" class="slide level2">
+<h2><em class="type">Python Exercise 3</em> Minimum</h2>
+<p>Work in your exercises repository, in a file <code>04-python/min.py</code>.</p>
+<p>Define a function <code>min(array)</code> that returns the minimum element of an array.</p>
+<p>For example, <code>print(min([2, 1, 3]))</code> should print <code>1</code>.</p>
+<p>Note: there is a built-in <a href="https://docs.python.org/3/library/functions.html#min"><code>min</code></a> function! (But here the goal is that you implement it yourself.)</p>
+</section>
+<section id="users-data" class="slide level2">
+<h2>Users data</h2>
+<p>List of dictionaries (equivalent of an array of objects in JavaScript) used for the two next exercises:</p>
+<pre class="python"><code>users = [
+    {
+        &quot;first_name&quot;: &quot;Brain&quot;,
+        &quot;last_name&quot;: &quot;Mohr&quot;,
+        &quot;age&quot;: 54
+    },
+    {
+        &quot;first_name&quot;: &quot;Bella&quot;,
+        &quot;last_name&quot;: &quot;VonRueden&quot;,
+        &quot;age&quot;: 17
+    },
+    {
+        &quot;first_name&quot;: &quot;Franz&quot;,
+        &quot;last_name&quot;: &quot;Raynor&quot;,
+        &quot;age&quot;: 28
+    },
+    {
+        &quot;first_name&quot;: &quot;Celestino&quot;,
+        &quot;last_name&quot;: &quot;Bailey&quot;,
+        &quot;age&quot;: 61
+    }
+]</code></pre>
+</section>
+<section id="python-exercise-4-hello-users" class="slide level2">
+<h2><em class="type">Python Exercise 4</em> Hello users</h2>
+<p>Work in your exercises repository, in a file <code>04-python/users_hello.py</code>.</p>
+<p>Add the list of users from the previous slide.</p>
+<p>Define a function <code>hello_users(users)</code> that outputs <code>My name is ??? and I am ??? years old</code>. for each user.</p>
+</section>
+<section id="python-exercise-5-group-by-age" class="slide level2">
+<h2><em class="type">Python Exercise 5</em> Group by age</h2>
+<p>Work in your exercises repository, in a file <code>04-python/adults_children.py</code>.</p>
+<p>Add the list of users from the second previous slide.</p>
+<p>Write a function <code>group_by_age(users)</code> that should return a dictionary of the form <code>{"adults": [ ... ], "children": [ ... ]}</code>, where each array only contains the corresponding users.</p>
+</section>
+<section id="python-exercise-6-random-password-generator" class="slide level2">
+<h2><em class="type">Python Exercise 6</em> Random password generator</h2>
+<p>Work in your exercises repository, in a file <code>04-python/generate_password.py</code>.</p>
+<p>Define a function <code>generate_password()</code> that returns a random password made of numbers, letters and the <code>-</code> and <code>_</code> characters. No other constraints.</p>
+</section>
+<section id="python-exercise-7-random-password-generator-with-constraints" class="slide level2">
+<h2><em class="type">Python Exercise 7</em> Random password generator with constraints</h2>
+<p>Work in your exercises repository, in a file <code>04-python/generate_password_constrained.py</code>.</p>
+<p>Define a function <code>generate_password_constrained()</code> that returns a random password made of numbers, letters and the <code>-</code> and <code>_</code> characters.</p>
+<p>The result should contain at least one number and one special character.</p>
+<p><strong>Note:</strong> you can re-use the function defined in the previous exercise.</p>
+</section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/search/search.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+      
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+        // Transition style
+        transition: 'none', // none/fade/slide/convex/concave/zoom
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-c.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-jsx.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-tsx.min.js"></script>
+    <script>
+    	for (const preEl of document.querySelectorAll("pre")) {
+    		const className = preEl.getAttribute("class");
+
+    		if (className) {
+    			const codeEl = preEl.querySelector("code");
+    			if (!Prism.languages[className]) {
+    				throw new Error(className + " does not exist.");
+    			}
+    			codeEl.innerHTML = Prism.highlight(
+    				codeEl.textContent,
+    				Prism.languages[className],
+    				className
+    			);
+    		}
+    	}
+    </script>
+    </body>
+</html>

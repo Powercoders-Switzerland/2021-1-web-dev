@@ -573,6 +573,8 @@ element.classList.remove(&quot;a-class&quot;);</code></pre>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-python.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-c.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-jsx.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-tsx.min.js"></script>
     <script>
     	for (const preEl of document.querySelectorAll("pre")) {
     		const className = preEl.getAttribute("class");
@@ -580,7 +582,7 @@ element.classList.remove(&quot;a-class&quot;);</code></pre>
     		if (className) {
     			const codeEl = preEl.querySelector("code");
     			if (!Prism.languages[className]) {
-    				console.log(className);
+    				throw new Error(className + " does not exist.");
     			}
     			codeEl.innerHTML = Prism.highlight(
     				codeEl.textContent,
