@@ -1,0 +1,19 @@
+body {
+	font-family: "Comic Sans MS";
+	margin: 1em;
+	color: green;
+	font-size: 2em;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+nav > ul {
+	display: flex;
+}
+
+nav > ul > li {
+	margin-right: 1em;
+}
