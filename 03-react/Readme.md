@@ -677,6 +677,33 @@ const getMyQuote = async () => {
 };
 ```
 
+### Adding query parameters to a URL
+
+```js
+const url = new URL("https://api.example.com");
+url.searchParams.append("q", "Hello World");
+url.searchParams.append("sort", "year");
+console.log(url.toString());
+```
+
+### Type of `response.json()`
+
+`response.json()` returns an object of type `any`:
+
+```js
+const data: any = await response.json();
+```
+
+This means that you can assign it to any type, and TypeScript will _not_ check it. This is because TypeScript could not possibly know what will be returned by your request. Therefore, your need to be extra careful to assign it to the correct type.
+
+### Typed `useState()`
+
+You can explicitly set the type of a React state value:
+
+```ts
+const [value, setValue] = React.useState<boolean>(true);
+```
+
 ## <em class="type">Example 5</em> [Random quote](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/05-random-quote)
 
 ## <em class="type">Exercise 5</em> Images search
@@ -690,6 +717,37 @@ On your page, there should be a text input and a `Search images` button. When cl
 - Copy the content of `03-react/examples/05-random-quote` example to a folder `03-react/05-images-search` in your exercises repository.
 - Then, run `npm install`.
 - To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
+
+### <em class="type">Step 2</em> Find the search API method
+
+Find which API method you will need to call to get your results. Try an example in your browser and study the JSON response.
+
+### <em class="type">Step 3</em> Write a `PixbaySearch` type
+
+Write a `PixbaySearch` interface corresponding to the data you expect back from your request to the API.
+
+**Note:** you only need to declare the object properties that you will use.
+
+### <em class="type">Step 4</em> Define a state of type `PixbaySearch | null`
+
+To create a state variable of type `PixbaySearch | null`, which an initial value of `null`, use:
+
+```tsx
+const [data, setData] =
+	React.useState<PixbaySearch | null>(null);
+```
+
+### <em class="type">Step 5</em> Add the click event listener
+
+Add a minimal view that just shows your `data` state variable as JSON (`JSON.strinfify(data)`) in a `<pre>` element, and a button that will call the API and update the state using `setData(...)`.
+
+### <em class="type">Step 6</em> Write the view
+
+Write the actual code displaying your `data`:
+
+- Before the button is clicked, "Type something and click 'Search images'" should be displayed.
+- If the button has been pressed but not images have been found, you should display "No images found".
+- If the button has been pressed and images have been found, show the images.
 
 ## State immutability
 

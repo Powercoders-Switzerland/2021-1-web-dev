@@ -720,6 +720,24 @@ return &lt;input type=&quot;text&quot; onChange={handleChange} /&gt;;</code></pr
     const data = await response.json();
     console.log(data);
 };</code></pre>
+</section>
+<section id="adding-query-parameters-to-a-url" class="slide level3">
+<h3>Adding query parameters to a URL</h3>
+<pre class="js"><code>const url = new URL(&quot;https://api.example.com&quot;);
+url.searchParams.append(&quot;q&quot;, &quot;Hello World&quot;);
+url.searchParams.append(&quot;sort&quot;, &quot;year&quot;);
+console.log(url.toString());</code></pre>
+</section>
+<section id="type-of-response.json" class="slide level3">
+<h3>Type of <code>response.json()</code></h3>
+<p><code>response.json()</code> returns an object of type <code>any</code>:</p>
+<pre class="js"><code>const data: any = await response.json();</code></pre>
+<p>This means that you can assign it to any type, and TypeScript will <em>not</em> check it. This is because TypeScript could not possibly know what will be returned by your request. Therefore, your need to be extra careful to assign it to the correct type.</p>
+</section>
+<section id="typed-usestate" class="slide level3">
+<h3>Typed <code>useState()</code></h3>
+<p>You can explicitly set the type of a React state value:</p>
+<pre class="ts"><code>const [value, setValue] = React.useState&lt;boolean&gt;(true);</code></pre>
 </section></section>
 <section id="example-5-random-quote" class="title-slide slide level2">
 <h2><em class="type">Example 5</em> <a href="https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/05-random-quote">Random quote</a></h2>
@@ -741,6 +759,34 @@ return &lt;input type=&quot;text&quot; onChange={handleChange} /&gt;;</code></pr
 <li>Copy the content of <code>03-react/examples/05-random-quote</code> example to a folder <code>03-react/05-images-search</code> in your exercises repository.</li>
 <li>Then, run <code>npm install</code>.</li>
 <li>To compile your TypeScript code, use the <code>npm run build</code> (to compile once) or <code>npm run build:watch</code> (to automatically recompile on every change).</li>
+</ul>
+</section>
+<section id="step-2-find-the-search-api-method" class="slide level3">
+<h3><em class="type">Step 2</em> Find the search API method</h3>
+<p>Find which API method you will need to call to get your results. Try an example in your browser and study the JSON response.</p>
+</section>
+<section id="step-3-write-a-pixbaysearch-type" class="slide level3">
+<h3><em class="type">Step 3</em> Write a <code>PixbaySearch</code> type</h3>
+<p>Write a <code>PixbaySearch</code> interface corresponding to the data you expect back from your request to the API.</p>
+<p><strong>Note:</strong> you only need to declare the object properties that you will use.</p>
+</section>
+<section id="step-4-define-a-state-of-type-pixbaysearch-null" class="slide level3">
+<h3><em class="type">Step 4</em> Define a state of type <code>PixbaySearch | null</code></h3>
+<p>To create a state variable of type <code>PixbaySearch | null</code>, which an initial value of <code>null</code>, use:</p>
+<pre class="tsx"><code>const [data, setData] =
+    React.useState&lt;PixbaySearch | null&gt;(null);</code></pre>
+</section>
+<section id="step-5-add-the-click-event-listener" class="slide level3">
+<h3><em class="type">Step 5</em> Add the click event listener</h3>
+<p>Add a minimal view that just shows your <code>data</code> state variable as JSON (<code>JSON.strinfify(data)</code>) in a <code>&lt;pre&gt;</code> element, and a button that will call the API and update the state using <code>setData(...)</code>.</p>
+</section>
+<section id="step-6-write-the-view" class="slide level3">
+<h3><em class="type">Step 6</em> Write the view</h3>
+<p>Write the actual code displaying your <code>data</code>:</p>
+<ul>
+<li>Before the button is clicked, “Type something and click ‘Search images’” should be displayed.</li>
+<li>If the button has been pressed but not images have been found, you should display “No images found”.</li>
+<li>If the button has been pressed and images have been found, show the images.</li>
 </ul>
 </section></section>
 <section>
