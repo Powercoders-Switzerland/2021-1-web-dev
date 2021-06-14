@@ -8,34 +8,36 @@ if (!(appDiv instanceof HTMLDivElement)) {
 }
 
 /**
- * Reads the value of an input element as a number.
- *
- * If the value cannot be parsed as a number, `0` is returned.
+ * Convert a string to an integer.
+ * 
+ * Returns 0 if the string can not be converted.
  */
-const readInputInteger = (
-	input: HTMLInputElement
+const toInt = (
+	value: string
 ): number => {
-	const result = parseInt(input.value);
+	const result = parseInt(value);
 	return isNaN(result) ? 0 : result;
 };
 
 const App = (): JSX.Element => {
-	const [a, setA] = React.useState(0);
-	const [b, setB] = React.useState(0);
+	const [a, setA] = React.useState("");
+	const [b, setB] = React.useState("");
 
 	return (
 		<main>
 			<input
 				type="number"
-				onChange={(e) => setA(readInputInteger(e.target))}
+				value={a}
+				onChange={(e) => setA(e.target.value)}
 			/>
 			{" + "}
 			<input
 				type="number"
-				onChange={(e) => setB(readInputInteger(e.target))}
+				value={b}
+				onChange={(e) => setB(e.target.value)}
 			/>
 			{" = "}
-			<span>{a + b}</span>
+			<span>{toInt(a) + toInt(b)}</span>
 		</main>
 	);
 };

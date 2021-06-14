@@ -547,18 +547,20 @@ Reproduce your degrees converter in React.
 - Then, run `npm install`.
 - To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
 
-## `useEffect` hook
+## <em class="type">Example 5</em> [Random quote](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/05-random-quote)
 
-### Reference
-
-[Using the Effect Hook, React docs](https://reactjs.org/docs/hooks-effect.html)
-
-## <em class="type">Example 5</em> Clock
-
-## <em class="type">Exercise 5</em> Random quote
+## <em class="type">Example 5</em> Unsplash search
 
 ## State immutability
 
 ## <em class="type">Exercise 6</em> Numbers sum
 
 ## <em class="type">Exercise 6</em> To-do list
+
+## `useEffect` hook
+
+### Reference
+
+[Using the Effect Hook, React docs](https://reactjs.org/docs/hooks-effect.html)
+
+## <em class="type">Example 7</em> Clock

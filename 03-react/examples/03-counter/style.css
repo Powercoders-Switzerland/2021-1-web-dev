@@ -1,0 +1,40 @@
+body {
+	text-align: center;
+	font-family: sans-serif;
+	font-weight: 200;
+	margin: 0;
+	font-size: 1.5em;
+	background-color: #333;
+}
+
+#app {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+p {
+	font-size: 10em;
+	margin: 0;
+	color: lawngreen;
+}
+
+button {
+	-webkit-appearance: none;
+	appearance: none;
+	border: 1px solid #ccc;
+	background-color: #eee;
+	padding: 1em;
+	font-size: inherit;
+	cursor: pointer;
+	border-radius: 0.3em;
+}
+
+button:hover {
+	background-color: #ccc;
+}
+
+button:focus {
+	background-color: #aaa;
+}

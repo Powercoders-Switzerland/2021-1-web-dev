@@ -1,4 +1,6 @@
-# React Hello World
+# Counter
+
+[See the result](https://powercoders-switzerland.github.io/2021-1-web-dev/03-react/examples/03-counter/).
 
 ## How to install
 

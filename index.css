@@ -111,3 +111,18 @@ h1 {
 .legend > ul > .item {
 	margin: 0;
 }
+.solution {
+	text-decoration: none;
+	padding: 0.3em 0.8em;
+	margin: 0.3em 0;
+	color: #111;
+	display: inline-block;
+	background-color: #ccc;
+	border-radius: 0.5em;
+}
+.solution:hover {
+	background-color: #aaa;
+}
+.solution:focus {
+	background-color: #888;
+}

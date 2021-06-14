@@ -1,0 +1,44 @@
+body {
+	font-size: 1.6em;
+	line-height: 1.5;
+	margin: 0;
+}
+
+main {
+	text-align: right;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	min-height: 100vh;
+}
+
+.quote-card {
+	max-width: 30em;
+}
+
+blockquote {
+	font-size: 2em;
+	position: relative;
+	text-align: left;
+	max-width: 30em;
+}
+
+blockquote::before {
+	content: "“";
+	font-size: 6em;
+	position: absolute;
+	left: -0.6em;
+	top: -0.4em;
+}
+
+button {
+	-webkit-appearance: none;
+	appearance: none;
+	border: none;
+	background-color: #eee;
+	padding: 1em;
+	font-size: inherit;
+	cursor: pointer;
+	border-radius: 0.3em;
+}
