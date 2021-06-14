@@ -613,7 +613,7 @@ On every click, display a different book, with a different background color.
 
 ### <em class="type">Step 1</em> Add the React boilerplate
 
-- Copy the content of `03-react/examples/01-hello-react` example to a folder `03-react/03-random-book` in your exercises repository.
+- Copy the content of `03-react/examples/01-hello-react` example to a folder `03-react/03-random-book-on-click` in your exercises repository.
 - Then, run `npm install`.
 - To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
 
