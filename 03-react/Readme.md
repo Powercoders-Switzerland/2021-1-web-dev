@@ -507,17 +507,99 @@ Display the users in two separate sections depending on their age.
 
 Next to the name of each user, display a badge if it is an admin.
 
+## <em class="type">Recap</em> ES6 destructuring
+
+### Reference
+
+- [Destructuring assignment, MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+- [Slide from a few weeks ago](https://erklär-mir-mal.ch/2021-1/05-01-js-repetition-with-loops.html#/21)
+
+### Array destructuring
+
+```js
+// This is a shorthand:
+const [hello, world] = ["Hello", "World"];
+
+// for this:
+const myArray = ["Hello", "World"];
+const hello = myArray[0];
+const world = myArray[1];
+```
+
+### Object destructuring
+
+```js
+// This is a shorthand:
+const { firstname, lastname } = {
+	firstname: "Ada",
+	lastname: "Lovelace",
+};
+
+// for this:
+const myObject = { firstname: "Ada", lastname: "Lovelace" };
+const firstname = myObject.firstname;
+const lastname = myObject.lastname;
+```
+
 ## Events
 
 ### Reference
 
 [Handling Events](https://reactjs.org/docs/handling-events.html)
 
+### `onClick` prop
+
+To listen on clicks:
+
+```tsx
+<button onClick={() => console.log("Button clicked!")}>
+	Click me!
+</button>
+```
+
+### `onChange` prop
+
+To listen on input changes:
+
+```tsx
+<input
+	type="text"
+	onChange={(e) =>
+		console.log("New value: " + e.target.value)
+	}
+/>
+```
+
 ## `useState` hook
 
 ### Reference
 
 [Using the State Hook](https://reactjs.org/docs/hooks-state.html)
+
+### Usage
+
+```tsx
+const App = () => {
+	// `0` is the initial value, before `setCounter` is ever called.
+	const [counter, setCounter] = React.useState(0);
+
+	// We can read the state value using `counter`, or
+	// change it by calling `setCounter(newValue)`.
+
+	return (
+		<main>
+			<p>{counter}</p>
+			<button onClick={() => setCounter(counter + 1)}>
+				Increment
+			</button>
+		</main>
+	);
+};
+```
+
+React will take care of automatically re-rendering the component when the state changes.
+
+In this case, the view will be updated when calling `setCounter()`.
 
 ## <em class="type">Example 3</em> [Counter](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/03-counter)
 
@@ -535,7 +617,7 @@ On every click, display different book, with a different background color.
 - Then, run `npm install`.
 - To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
 
-## <em class="type">Exercise 3</em> Degrees converter
+## <em class="type">Exercise 4</em> Degrees converter
 
 ### Goal
 
@@ -543,7 +625,7 @@ Reproduce your degrees converter in React.
 
 ### <em class="type">Step 1</em> Add the React boilerplate
 
-- Copy the content of `03-react/examples/01-hello-react` example to a folder `03-react/03-converter` in your exercises repository.
+- Copy the content of `03-react/examples/01-hello-react` example to a folder `03-react/04-converter` in your exercises repository.
 - Then, run `npm install`.
 - To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
 

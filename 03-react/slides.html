@@ -543,22 +543,95 @@ function App() {
 <p>Next to the name of each user, display a badge if it is an admin.</p>
 </section></section>
 <section>
-<section id="events" class="title-slide slide level2">
-<h2>Events</h2>
+<section id="recap-es6-destructuring" class="title-slide slide level2">
+<h2><em class="type">Recap</em> ES6 destructuring</h2>
 
 </section>
 <section id="reference-3" class="slide level3">
 <h3>Reference</h3>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment">Destructuring assignment, MDN</a></li>
+<li><a href="https://erklär-mir-mal.ch/2021-1/05-01-js-repetition-with-loops.html#/21">Slide from a few weeks ago</a></li>
+</ul>
+</section>
+<section id="array-destructuring" class="slide level3">
+<h3>Array destructuring</h3>
+<pre class="js"><code>// This is a shorthand:
+const [hello, world] = [&quot;Hello&quot;, &quot;World&quot;];
+
+// for this:
+const myArray = [&quot;Hello&quot;, &quot;World&quot;];
+const hello = myArray[0];
+const world = myArray[1];</code></pre>
+</section>
+<section id="object-destructuring" class="slide level3">
+<h3>Object destructuring</h3>
+<pre class="js"><code>// This is a shorthand:
+const { firstname, lastname } = {
+    firstname: &quot;Ada&quot;,
+    lastname: &quot;Lovelace&quot;,
+};
+
+// for this:
+const myObject = { firstname: &quot;Ada&quot;, lastname: &quot;Lovelace&quot; };
+const firstname = myObject.firstname;
+const lastname = myObject.lastname;</code></pre>
+</section></section>
+<section>
+<section id="events" class="title-slide slide level2">
+<h2>Events</h2>
+
+</section>
+<section id="reference-4" class="slide level3">
+<h3>Reference</h3>
 <p><a href="https://reactjs.org/docs/handling-events.html">Handling Events</a></p>
+</section>
+<section id="onclick-prop" class="slide level3">
+<h3><code>onClick</code> prop</h3>
+<p>To listen on clicks:</p>
+<pre class="tsx"><code>&lt;button onClick={() =&gt; console.log(&quot;Button clicked!&quot;)}&gt;
+    Click me!
+&lt;/button&gt;</code></pre>
+</section>
+<section id="onchange-prop" class="slide level3">
+<h3><code>onChange</code> prop</h3>
+<p>To listen on input changes:</p>
+<pre class="tsx"><code>&lt;input
+    type=&quot;text&quot;
+    onChange={(e) =&gt;
+        console.log(&quot;New value: &quot; + e.target.value)
+    }
+/&gt;</code></pre>
 </section></section>
 <section>
 <section id="usestate-hook" class="title-slide slide level2">
 <h2><code>useState</code> hook</h2>
 
 </section>
-<section id="reference-4" class="slide level3">
+<section id="reference-5" class="slide level3">
 <h3>Reference</h3>
 <p><a href="https://reactjs.org/docs/hooks-state.html">Using the State Hook</a></p>
+</section>
+<section id="usage" class="slide level3">
+<h3>Usage</h3>
+<pre class="tsx"><code>const App = () =&gt; {
+    // `0` is the initial value, before `setCounter` is ever called.
+    const [counter, setCounter] = React.useState(0);
+
+    // We can read the state value using `counter`, or
+    // change it by calling `setCounter(newValue)`.
+
+    return (
+        &lt;main&gt;
+            &lt;p&gt;{counter}&lt;/p&gt;
+            &lt;button onClick={() =&gt; setCounter(counter + 1)}&gt;
+                Increment
+            &lt;/button&gt;
+        &lt;/main&gt;
+    );
+};</code></pre>
+<p>React will take care of automatically re-rendering the component when the state changes.</p>
+<p>In this case, the view will be updated when calling <code>setCounter()</code>.</p>
 </section></section>
 <section id="example-3-counter" class="title-slide slide level2">
 <h2><em class="type">Example 3</em> <a href="https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/03-counter">Counter</a></h2>
@@ -588,8 +661,8 @@ function App() {
 </ul>
 </section></section>
 <section>
-<section id="exercise-3-degrees-converter" class="title-slide slide level2">
-<h2><em class="type">Exercise 3</em> Degrees converter</h2>
+<section id="exercise-4-degrees-converter" class="title-slide slide level2">
+<h2><em class="type">Exercise 4</em> Degrees converter</h2>
 
 </section>
 <section id="goal-3" class="slide level3">
@@ -599,11 +672,21 @@ function App() {
 <section id="step-1-add-the-react-boilerplate-3" class="slide level3">
 <h3><em class="type">Step 1</em> Add the React boilerplate</h3>
 <ul>
-<li>Copy the content of <code>03-react/examples/01-hello-react</code> example to a folder <code>03-react/03-converter</code> in your exercises repository.</li>
+<li>Copy the content of <code>03-react/examples/01-hello-react</code> example to a folder <code>03-react/04-converter</code> in your exercises repository.</li>
 <li>Then, run <code>npm install</code>.</li>
 <li>To compile your TypeScript code, use the <code>npm run build</code> (to compile once) or <code>npm run build:watch</code> (to automatically recompile on every change).</li>
 </ul>
 </section></section>
+<section id="example-5-random-quote" class="title-slide slide level2">
+<h2><em class="type">Example 5</em> <a href="https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/05-random-quote">Random quote</a></h2>
+
+</section>
+
+<section id="example-5-unsplash-search" class="title-slide slide level2">
+<h2><em class="type">Example 5</em> Unsplash search</h2>
+
+</section>
+
 <section id="state-immutability" class="title-slide slide level2">
 <h2>State immutability</h2>
 
@@ -624,17 +707,12 @@ function App() {
 <h2><code>useEffect</code> hook</h2>
 
 </section>
-<section id="reference-5" class="slide level3">
+<section id="reference-6" class="slide level3">
 <h3>Reference</h3>
 <p><a href="https://reactjs.org/docs/hooks-effect.html">Using the Effect Hook, React docs</a></p>
 </section></section>
-<section id="example-5-clock" class="title-slide slide level2">
-<h2><em class="type">Example 5</em> Clock</h2>
-
-</section>
-
-<section id="exercise-5-random-quote" class="title-slide slide level2">
-<h2><em class="type">Exercise 5</em> Random quote</h2>
+<section id="example-7-clock" class="title-slide slide level2">
+<h2><em class="type">Example 7</em> Clock</h2>
 
 </section>
     </div>
