@@ -8,16 +8,6 @@ if (!(appDiv instanceof HTMLDivElement)) {
 	throw new Error("No div with id 'app' found");
 }
 
-/**
- * Convert a string to an integer.
- *
- * Returns 0 if the string can not be converted.
- */
-const toInt = (value: string): number => {
-	const result = parseInt(value);
-	return isNaN(result) ? 0 : result;
-};
-
 // From https://www.designwizard.com/blog/design-trends/colour-combination.
 const themes: string[][] = [
 	["#5F4B8B", "#E69A8D"],
@@ -58,7 +48,9 @@ const App = (): JSX.Element => {
 			}}
 		>
 			<div className="quote-card">
-				{quote && (
+				{quote === null ? (
+					""
+				) : (
 					<blockquote>
 						<p>{quote.content}</p>
 						<p>
