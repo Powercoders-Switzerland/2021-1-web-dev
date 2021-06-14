@@ -1,6 +1,6 @@
-# Addition
+# Random quote
 
-[See the result](https://powercoders-switzerland.github.io/2021-1-web-dev/03-react/examples/04-addition/).
+[See the result](https://powercoders-switzerland.github.io/2021-1-web-dev/03-react/examples/05-random-quote/).
 
 ## How to install
 
