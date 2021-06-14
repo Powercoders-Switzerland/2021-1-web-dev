@@ -609,7 +609,7 @@ In this case, the view will be updated when calling `setCounter()`.
 
 ### Goal
 
-On every click, display different book, with a different background color.
+On every click, display a different book, with a different background color.
 
 ### <em class="type">Step 1</em> Add the React boilerplate
 
@@ -629,9 +629,50 @@ Reproduce your degrees converter in React.
 - Then, run `npm install`.
 - To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
 
+## Recap: `fetch` API and promises
+
+### Reference
+
+- [Using Fetch, MDN](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+- [Slides from a few weeks ago](https://erklär-mir-mal.ch/2021-1/06-02-ajax+json.html#/22)
+
+### Usage with `then()` and `catch()`
+
+```js
+fetch("https://api.quotable.io/random")
+	.then((response) => {
+		console.log("HTTP Response status: " + response.status);
+		return response.json();
+	})
+	.then((data) => console.log(data));
+```
+
+### Usage with `async` and `await`
+
+```js
+const getMyQuote = async () => {
+	const response = await fetch(
+		"https://api.quotable.io/random"
+	);
+	console.log("HTTP Response status: " + response.status);
+	const data = await response.json();
+	console.log(data);
+};
+```
+
 ## <em class="type">Example 5</em> [Random quote](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/05-random-quote)
 
-## <em class="type">Example 5</em> Unsplash search
+## <em class="type">Example 5</em> Images search
+
+### Goal
+
+On your page, there should be a text input and a `Search images` button. When clicking on the button, you should show 10 related images found with the [Pixabay API](https://pixabay.com/api/docs/).
+
+### <em class="type">Step 1</em> Add the React boilerplate
+
+- Copy the content of `03-react/examples/05-random-quote` example to a folder `03-react/05-unsplash-search` in your exercises repository.
+- Then, run `npm install`.
+- To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
 
 ## State immutability
 

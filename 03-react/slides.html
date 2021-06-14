@@ -650,7 +650,7 @@ const lastname = myObject.lastname;</code></pre>
 </section>
 <section id="goal-2" class="slide level3">
 <h3>Goal</h3>
-<p>On every click, display different book, with a different background color.</p>
+<p>On every click, display a different book, with a different background color.</p>
 </section>
 <section id="step-1-add-the-react-boilerplate-2" class="slide level3">
 <h3><em class="type">Step 1</em> Add the React boilerplate</h3>
@@ -677,16 +677,60 @@ const lastname = myObject.lastname;</code></pre>
 <li>To compile your TypeScript code, use the <code>npm run build</code> (to compile once) or <code>npm run build:watch</code> (to automatically recompile on every change).</li>
 </ul>
 </section></section>
+<section>
+<section id="recap-fetch-api-and-promises" class="title-slide slide level2">
+<h2>Recap: <code>fetch</code> API and promises</h2>
+
+</section>
+<section id="reference-6" class="slide level3">
+<h3>Reference</h3>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch">Using Fetch, MDN</a></li>
+<li><a href="https://erklär-mir-mal.ch/2021-1/06-02-ajax+json.html#/22">Slides from a few weeks ago</a></li>
+</ul>
+</section>
+<section id="usage-with-then-and-catch" class="slide level3">
+<h3>Usage with <code>then()</code> and <code>catch()</code></h3>
+<pre class="js"><code>fetch(&quot;https://api.quotable.io/random&quot;)
+    .then((response) =&gt; {
+        console.log(&quot;HTTP Response status: &quot; + response.status);
+        return response.json();
+    })
+    .then((data) =&gt; console.log(data));</code></pre>
+</section>
+<section id="usage-with-async-and-await" class="slide level3">
+<h3>Usage with <code>async</code> and <code>await</code></h3>
+<pre class="js"><code>const getMyQuote = async () =&gt; {
+    const response = await fetch(
+        &quot;https://api.quotable.io/random&quot;
+    );
+    console.log(&quot;HTTP Response status: &quot; + response.status);
+    const data = await response.json();
+    console.log(data);
+};</code></pre>
+</section></section>
 <section id="example-5-random-quote" class="title-slide slide level2">
 <h2><em class="type">Example 5</em> <a href="https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/05-random-quote">Random quote</a></h2>
 
 </section>
 
-<section id="example-5-unsplash-search" class="title-slide slide level2">
-<h2><em class="type">Example 5</em> Unsplash search</h2>
+<section>
+<section id="example-5-images-search" class="title-slide slide level2">
+<h2><em class="type">Example 5</em> Images search</h2>
 
 </section>
-
+<section id="goal-4" class="slide level3">
+<h3>Goal</h3>
+<p>On your page, there should be a text input and a <code>Search images</code> button. When clicking on the button, you should show 10 related images found with the <a href="https://pixabay.com/api/docs/">Pixabay API</a>.</p>
+</section>
+<section id="step-1-add-the-react-boilerplate-4" class="slide level3">
+<h3><em class="type">Step 1</em> Add the React boilerplate</h3>
+<ul>
+<li>Copy the content of <code>03-react/examples/05-random-quote</code> example to a folder <code>03-react/05-unsplash-search</code> in your exercises repository.</li>
+<li>Then, run <code>npm install</code>.</li>
+<li>To compile your TypeScript code, use the <code>npm run build</code> (to compile once) or <code>npm run build:watch</code> (to automatically recompile on every change).</li>
+</ul>
+</section></section>
 <section id="state-immutability" class="title-slide slide level2">
 <h2>State immutability</h2>
 
@@ -707,7 +751,7 @@ const lastname = myObject.lastname;</code></pre>
 <h2><code>useEffect</code> hook</h2>
 
 </section>
-<section id="reference-6" class="slide level3">
+<section id="reference-7" class="slide level3">
 <h3>Reference</h3>
 <p><a href="https://reactjs.org/docs/hooks-effect.html">Using the Effect Hook, React docs</a></p>
 </section></section>
