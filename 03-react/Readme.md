@@ -562,13 +562,30 @@ To listen on clicks:
 To listen on input changes:
 
 ```tsx
-<input
-	type="text"
-	onChange={(e) =>
-		console.log("New value: " + e.target.value)
-	}
-/>
+return (
+	<input
+		type="text"
+		onChange={(e) =>
+			console.log("New value: " + e.target.value)
+		}
+	/>
+);
 ```
+
+### Type of `onChange` event
+
+As in the DOM API, the handler takes an event object as parameter, with a `target` property referring the to event target (HTML element on which the event was triggered).
+
+When you write the handler inline as in the previous slide, you do not need a parameter type annotation. However, if you want to declare your function elsewhere, you will need to tell TypeScript that the event is of type ` React.ChangeEvent<HTMLInputElement>`:
+
+```tsx
+const handleChange = (
+	e: React.ChangeEvent<HTMLInputElement>
+) => console.log("New value: " + e.target.value);
+return <input type="text" onChange={handleChange} />;
+```
+
+<small>For now, let's assume `React.ChangeEvent<HTMLInputElement>` represents "an object with a `target` property of type `HTMLInputElement`". We will learn about [generics](https://www.typescriptlang.org/docs/handbook/2/generics.html) later.</small>
 
 ## `useState` hook
 
@@ -662,7 +679,7 @@ const getMyQuote = async () => {
 
 ## <em class="type">Example 5</em> [Random quote](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/05-random-quote)
 
-## <em class="type">Example 5</em> Images search
+## <em class="type">Exercise 5</em> Images search
 
 ### Goal
 
@@ -670,11 +687,13 @@ On your page, there should be a text input and a `Search images` button. When cl
 
 ### <em class="type">Step 1</em> Add the React boilerplate
 
-- Copy the content of `03-react/examples/05-random-quote` example to a folder `03-react/05-unsplash-search` in your exercises repository.
+- Copy the content of `03-react/examples/05-random-quote` example to a folder `03-react/05-images-search` in your exercises repository.
 - Then, run `npm install`.
 - To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
 
 ## State immutability
+
+### Updating
 
 ## <em class="type">Exercise 6</em> Numbers sum
 

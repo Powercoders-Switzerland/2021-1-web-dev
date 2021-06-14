@@ -596,12 +596,24 @@ const lastname = myObject.lastname;</code></pre>
 <section id="onchange-prop" class="slide level3">
 <h3><code>onChange</code> prop</h3>
 <p>To listen on input changes:</p>
-<pre class="tsx"><code>&lt;input
-    type=&quot;text&quot;
-    onChange={(e) =&gt;
-        console.log(&quot;New value: &quot; + e.target.value)
-    }
-/&gt;</code></pre>
+<pre class="tsx"><code>return (
+    &lt;input
+        type=&quot;text&quot;
+        onChange={(e) =&gt;
+            console.log(&quot;New value: &quot; + e.target.value)
+        }
+    /&gt;
+);</code></pre>
+</section>
+<section id="type-of-onchange-event" class="slide level3">
+<h3>Type of <code>onChange</code> event</h3>
+<p>As in the DOM API, the handler takes an event object as parameter, with a <code>target</code> property referring the to event target (HTML element on which the event was triggered).</p>
+<p>When you write the handler inline as in the previous slide, you do not need a parameter type annotation. However, if you want to declare your function elsewhere, you will need to tell TypeScript that the event is of type <code>React.ChangeEvent&lt;HTMLInputElement&gt;</code>:</p>
+<pre class="tsx"><code>const handleChange = (
+    e: React.ChangeEvent&lt;HTMLInputElement&gt;
+) =&gt; console.log(&quot;New value: &quot; + e.target.value);
+return &lt;input type=&quot;text&quot; onChange={handleChange} /&gt;;</code></pre>
+<p><small>For now, let’s assume <code>React.ChangeEvent&lt;HTMLInputElement&gt;</code> represents “an object with a <code>target</code> property of type <code>HTMLInputElement</code>”. We will learn about <a href="https://www.typescriptlang.org/docs/handbook/2/generics.html">generics</a> later.</small></p>
 </section></section>
 <section>
 <section id="usestate-hook" class="title-slide slide level2">
@@ -715,8 +727,8 @@ const lastname = myObject.lastname;</code></pre>
 </section>
 
 <section>
-<section id="example-5-images-search" class="title-slide slide level2">
-<h2><em class="type">Example 5</em> Images search</h2>
+<section id="exercise-5-images-search" class="title-slide slide level2">
+<h2><em class="type">Exercise 5</em> Images search</h2>
 
 </section>
 <section id="goal-4" class="slide level3">
@@ -726,16 +738,19 @@ const lastname = myObject.lastname;</code></pre>
 <section id="step-1-add-the-react-boilerplate-4" class="slide level3">
 <h3><em class="type">Step 1</em> Add the React boilerplate</h3>
 <ul>
-<li>Copy the content of <code>03-react/examples/05-random-quote</code> example to a folder <code>03-react/05-unsplash-search</code> in your exercises repository.</li>
+<li>Copy the content of <code>03-react/examples/05-random-quote</code> example to a folder <code>03-react/05-images-search</code> in your exercises repository.</li>
 <li>Then, run <code>npm install</code>.</li>
 <li>To compile your TypeScript code, use the <code>npm run build</code> (to compile once) or <code>npm run build:watch</code> (to automatically recompile on every change).</li>
 </ul>
 </section></section>
+<section>
 <section id="state-immutability" class="title-slide slide level2">
 <h2>State immutability</h2>
 
 </section>
-
+<section id="updating" class="slide level3">
+<h3>Updating</h3>
+</section></section>
 <section id="exercise-6-numbers-sum" class="title-slide slide level2">
 <h2><em class="type">Exercise 6</em> Numbers sum</h2>
 
