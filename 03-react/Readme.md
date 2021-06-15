@@ -864,8 +864,18 @@ const reduce = (
 	f: (a: number, b: number) => number,
 	initialValue: number
 ) => {
-	// ...
+	let acc = initialValue;
+	for (const n of numbers) {
+		acc = f(acc, n);
+	}
+	return acc;
 };
+
+reduce([1, 2, 3], (a, b) => a + b, 0);
+// Returns 6
+
+reduce([2, 1, 3], (a, b) => Math.min(a, b));
+// Returns 1
 ```
 
 ### <em class="type">Mini-exercise</em> `reduce` usage
