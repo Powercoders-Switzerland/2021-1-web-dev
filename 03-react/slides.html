@@ -838,6 +838,59 @@ const add = (a: number, b: number): number =&gt; a + b;</code></pre>
 <li><code>reduce(array: number[], f: ???)</code>: <code>f</code> takes two parameters, the current <em>accumulated value</em>, and an item. It is uses to <em>reduce</em> the array to a single value.</li>
 </ul>
 </section>
+<section id="example-implementation-of-map" class="slide level3">
+<h3>Example implementation of <code>map()</code></h3>
+<p>Example implementation of <code>map()</code> for an array of numbers:</p>
+<pre class="ts"><code>const map = (
+    numbers: number[],
+    f: (n: number) =&gt; number
+) =&gt; {
+    const result: number[] = [];
+    for (const n of numbers) {
+        result.push(f(n));
+    }
+    return result;
+};
+
+map([1, 2, 3], (x) =&gt; x * x);
+// Returns [1, 4, 9]
+
+map([1, 2, 3], (x) =&gt; x * 2);
+// Returns [2, 4, 6]</code></pre>
+</section>
+<section id="example-implementation-of-filter" class="slide level3">
+<h3>Example implementation of <code>filter()</code></h3>
+<p>Example implementation of <code>filter()</code> for an array of numbers:</p>
+<pre class="ts"><code>const filter = (
+    numbers: number[],
+    f: (n: number) =&gt; boolean
+) =&gt; {
+    const result: number[] = [];
+    for (const n of numbers) {
+        if (f(n)) {
+            result.push(n);
+        }
+    }
+    return result;
+};
+
+filter([1, -5, 6, -9, 2, 3], (x) =&gt; x &gt;= 0);
+// Returns [1, 6, 2, 3]
+
+filter([0, 5, 8, 2, 9, 3], (x) =&gt; x % 2 === 0);
+// Returns [0, 8, 2]</code></pre>
+</section>
+<section id="example-implementation-of-reduce" class="slide level3">
+<h3>Example implementation of <code>reduce()</code></h3>
+<p>Example implementation of <code>reduce()</code> for an array of numbers:</p>
+<pre class="ts"><code>const reduce = (
+    numbers: number[],
+    f: (a: number, b: number) =&gt; number,
+    initialValue: number
+) =&gt; {
+    // ...
+};</code></pre>
+</section>
 <section id="mini-exercise-reduce-usage" class="slide level3">
 <h3><em class="type">Mini-exercise</em> <code>reduce</code> usage</h3>
 <p>Use <code>Array.prototype.reduce()</code> to:</p>
@@ -901,27 +954,40 @@ const b = [...a, 6];</code></pre>
 <h3>Object spread syntax</h3>
 <pre class="js"><code>const ada = { firstname: &quot;Ada&quot;, lastname: &quot;Lovelace&quot; };
 const ada2 = { ...ada, age: 42 };</code></pre>
+</section></section>
+<section>
+<section id="exercise-6-form" class="title-slide slide level2">
+<h2><em class="type">Exercise 6</em> Form</h2>
+
 </section>
-<section id="mini-exercise-react-form" class="slide level3">
-<h3><em class="type">Mini-exercise</em> React form</h3>
+<section id="goal-5" class="slide level3">
+<h3>Goal</h3>
 <p>Write a <code>&lt;Form /&gt;</code> component with a single state variable of the following type:</p>
 <pre class="ts"><code>interface UserForm {
     firstname: string;
     lastname: string;
     age: number;
 }</code></pre>
-</section>
-<section id="mini-exercise-react-list-of-numbers" class="slide level3">
-<h3><em class="type">Mini-exercise</em> React list of numbers</h3>
-<p>Write a <code>&lt;NumbersList /&gt;</code> component with a single state variable of the type <code>number[]</code>. The component should show a list of numbers, a form to add one, and allow editing existing ones.</p>
+<p>Your component should show one <code>&lt;input&gt;</code> for each property of the <code>UserForm</code> interface, a submit button. On form submission (using <code>onSubmit</code> event), your show the content of the fields to the page.</p>
+<p>Please work on a <code>03-react/06-form</code> directory in your exercises repository.</p>
 </section></section>
-<section id="exercise-6-numbers-sum" class="title-slide slide level2">
-<h2><em class="type">Exercise 6</em> Numbers sum</h2>
+<section>
+<section id="exercise-7-list-of-strings" class="title-slide slide level2">
+<h2><em class="type">Exercise 7</em> List of strings</h2>
+
+</section>
+<section id="goal-6" class="slide level3">
+<h3>Goal</h3>
+<p>Write a <code>&lt;StringsList /&gt;</code> component with a single state variable of type <code>string[]</code>. The component should show a list of strings, a form to add one, and allow editing existing ones.</p>
+<p>Please work on a <code>03-react/07-strings-list</code> directory in your exercises repository.</p>
+</section></section>
+<section id="example-6-numbers-sum" class="title-slide slide level2">
+<h2><em class="type">Example 6</em> <a href="https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/06-array-sum">Numbers sum</a></h2>
 
 </section>
 
-<section id="exercise-7-to-do-list" class="title-slide slide level2">
-<h2><em class="type">Exercise 7</em> To-do list</h2>
+<section id="exercise-8-to-do-list" class="title-slide slide level2">
+<h2><em class="type">Exercise 8</em> To-do list</h2>
 
 </section>
 
@@ -933,11 +999,11 @@ const ada2 = { ...ada, age: 42 };</code></pre>
 <section id="reference-8" class="slide level3">
 <h3>Reference</h3>
 <p><a href="https://reactjs.org/docs/hooks-effect.html">Using the Effect Hook, React docs</a></p>
-</section></section>
-<section id="example-7-clock" class="title-slide slide level2">
-<h2><em class="type">Example 7</em> Clock</h2>
-
 </section>
+<section id="definition" class="slide level3">
+<h3>Definition</h3>
+<p>[WIP]</p>
+</section></section>
     </div>
   </div>
 

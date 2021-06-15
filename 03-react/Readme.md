@@ -806,6 +806,68 @@ Think how to specify the type of `f` in these functions:
 - `filter(array: number[], f: ???)`: only keep elements where `f(element)` returns `true`.
 - `reduce(array: number[], f: ???)`: `f` takes two parameters, the current _accumulated value_, and an item. It is uses to _reduce_ the array to a single value.
 
+### Example implementation of `map()`
+
+Example implementation of `map()` for an array of numbers:
+
+```ts
+const map = (
+	numbers: number[],
+	f: (n: number) => number
+) => {
+	const result: number[] = [];
+	for (const n of numbers) {
+		result.push(f(n));
+	}
+	return result;
+};
+
+map([1, 2, 3], (x) => x * x);
+// Returns [1, 4, 9]
+
+map([1, 2, 3], (x) => x * 2);
+// Returns [2, 4, 6]
+```
+
+### Example implementation of `filter()`
+
+Example implementation of `filter()` for an array of numbers:
+
+```ts
+const filter = (
+	numbers: number[],
+	f: (n: number) => boolean
+) => {
+	const result: number[] = [];
+	for (const n of numbers) {
+		if (f(n)) {
+			result.push(n);
+		}
+	}
+	return result;
+};
+
+filter([1, -5, 6, -9, 2, 3], (x) => x >= 0);
+// Returns [1, 6, 2, 3]
+
+filter([0, 5, 8, 2, 9, 3], (x) => x % 2 === 0);
+// Returns [0, 8, 2]
+```
+
+### Example implementation of `reduce()`
+
+Example implementation of `reduce()` for an array of numbers:
+
+```ts
+const reduce = (
+	numbers: number[],
+	f: (a: number, b: number) => number,
+	initialValue: number
+) => {
+	// ...
+};
+```
+
 ### <em class="type">Mini-exercise</em> `reduce` usage
 
 Use `Array.prototype.reduce()` to:
@@ -872,7 +934,9 @@ const ada = { firstname: "Ada", lastname: "Lovelace" };
 const ada2 = { ...ada, age: 42 };
 ```
 
-### <em class="type">Mini-exercise</em> React form
+## <em class="type">Exercise 6</em> Form
+
+### Goal
 
 Write a `<Form />` component with a single state variable of the following type:
 
@@ -884,13 +948,21 @@ interface UserForm {
 }
 ```
 
-### <em class="type">Mini-exercise</em> React list of numbers
+Your component should show one `<input>` for each property of the `UserForm` interface, a submit button. On form submission (using `onSubmit` event), your show the content of the fields to the page.
 
-Write a `<NumbersList />` component with a single state variable of the type `number[]`. The component should show a list of numbers, a form to add one, and allow editing existing ones.
+Please work on a `03-react/06-form` directory in your exercises repository.
 
-## <em class="type">Exercise 6</em> Numbers sum
+## <em class="type">Exercise 7</em> List of strings
 
-## <em class="type">Exercise 7</em> To-do list
+### Goal
+
+Write a `<StringsList />` component with a single state variable of type `string[]`. The component should show a list of strings, a form to add one, and allow editing existing ones.
+
+Please work on a `03-react/07-strings-list` directory in your exercises repository.
+
+## <em class="type">Example 6</em> [Numbers sum](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/06-array-sum)
+
+## <em class="type">Exercise 8</em> To-do list
 
 ## `useEffect` hook
 
@@ -898,4 +970,6 @@ Write a `<NumbersList />` component with a single state variable of the type `nu
 
 [Using the Effect Hook, React docs](https://reactjs.org/docs/hooks-effect.html)
 
-## <em class="type">Example 7</em> Clock
+### Definition
+
+[WIP]
