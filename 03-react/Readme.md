@@ -806,6 +806,14 @@ Think how to specify the type of `f` in these functions:
 - `filter(array: number[], f: ???)`: only keep elements where `f(element)` returns `true`.
 - `reduce(array: number[], f: ???)`: `f` takes two parameters, the current _accumulated value_, and an item. It is uses to _reduce_ the array to a single value.
 
+### <em class="type">Mini-exercise</em> `reduce` usage
+
+Use `Array.prototype.reduce()` to:
+
+- compute the sum of the elements in an array,
+- compute the minimum element in an array,
+- find the first non-null element in an array.
+
 ### Example implementation of `map()`
 
 Example implementation of `map()` for an array of numbers:
@@ -874,24 +882,20 @@ const reduce = (
 reduce([1, 2, 3], (a, b) => a + b, 0);
 // Returns 6
 
-reduce([2, 1, 3], (a, b) => Math.min(a, b));
+reduce(
+	[2, 1, 3],
+	(a, b) => Math.min(a, b),
+	Number.MAX_SAFE_INTEGER
+);
 // Returns 1
 ```
-
-### <em class="type">Mini-exercise</em> `reduce` usage
-
-Use `Array.prototype.reduce()` to:
-
-- compute the sum of the elements in an array,
-- compute the minimum element in an array,
-- find the first non-null element in an array.
 
 ## Object and array state updates
 
 ### State in React is considered _immutable_
 
 ```tsx
-const [numbers, setNumbers] = [1, 2, 3];
+const [numbers, setNumbers] = React.useState([1, 2, 3]);
 
 numbers[2] = 42;
 setNumbers(numbers); // THIS DOES NOT WORK!
