@@ -790,20 +790,138 @@ console.log(url.toString());</code></pre>
 </ul>
 </section></section>
 <section>
-<section id="state-immutability" class="title-slide slide level2">
-<h2>State immutability</h2>
+<section id="recap-arrow-functions" class="title-slide slide level2">
+<h2><em class="type">Recap</em> Arrow functions</h2>
 
 </section>
-<section id="updating" class="slide level3">
-<h3>Updating</h3>
+<section id="reference-7" class="slide level3">
+<h3>Reference</h3>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#syntax">Array functions expressions &gt; Syntax, MDN</a></p>
+</section>
+<section id="shortest-form" class="slide level3">
+<h3>Shortest form</h3>
+<pre class="ts"><code>const pow2 = (n: number): number =&gt; n * n;</code></pre>
+<p>Here, parentheses are optional.</p>
+</section>
+<section id="multiple-or-no-parameters" class="slide level3">
+<h3>Multiple or no parameters</h3>
+<pre class="ts"><code>const pow2 = (): string =&gt; &quot;Hello world&quot;;
+const add = (a: number, b: number): number =&gt; a + b;</code></pre>
+<p>Here, parentheses are mandatory.</p>
+</section>
+<section id="multiline-statements" class="slide level3">
+<h3>Multiline statements</h3>
+<pre class="ts"><code>const greet = (name: string): string =&gt; {
+    const result = `Hello ${name}!`;
+    return result;
+};</code></pre>
+<p>To write several statements in the body of the function, we must add brackets around the body and a return statement.</p>
+</section>
+<section id="function-types" class="slide level3">
+<h3>Function types</h3>
+<pre class="ts"><code>const greet = (
+    name: string,
+    transform: (name: string) =&gt; string
+): string =&gt; {
+    const transformedName = transform(name);
+    const result = `Hello ${transformedName}!`;
+    return result;
+};</code></pre>
+<p>The syntax for function types is similar to array functions</p>
+</section>
+<section id="mini-exercise-types-of-array-methods" class="slide level3">
+<h3><em class="type">Mini-exercise</em> Types of array methods</h3>
+<p>Think how to specify the type of <code>f</code> in these functions:</p>
+<ul>
+<li><code>map(array: number[], f: ???)</code>: apply <code>f</code> to each item.</li>
+<li><code>filter(array: number[], f: ???)</code>: only keep elements where <code>f(element)</code> returns <code>true</code>.</li>
+<li><code>reduce(array: number[], f: ???)</code>: <code>f</code> takes two parameters, the current <em>accumulated value</em>, and an item. It is uses to <em>reduce</em> the array to a single value.</li>
+</ul>
+</section>
+<section id="mini-exercise-reduce-usage" class="slide level3">
+<h3><em class="type">Mini-exercise</em> <code>reduce</code> usage</h3>
+<p>Use <code>Array.prototype.reduce()</code> to:</p>
+<ul>
+<li>compute the sum of the elements in an array,</li>
+<li>compute the minimum element in an array,</li>
+<li>find the first non-null element in an array.</li>
+</ul>
+</section></section>
+<section>
+<section id="object-and-array-state-updates" class="title-slide slide level2">
+<h2>Object and array state updates</h2>
+
+</section>
+<section id="state-in-react-is-considered-immutable" class="slide level3">
+<h3>State in React is considered <em>immutable</em></h3>
+<pre class="tsx"><code>const [numbers, setNumbers] = [1, 2, 3];
+
+numbers[2] = 42;
+setNumbers(numbers); // THIS DOES NOT WORK!</code></pre>
+</section>
+<section id="referential-equality-examples" class="slide level3">
+<h3>Referential equality examples</h3>
+<pre class="js"><code>[] === [];
+[1, 2, 3] === [1, 2, 3];
+{&quot;firstname&quot;: &quot;Ada&quot;} === {&quot;firstname&quot;: &quot;Ada&quot;};
+{} === {};
+
+const a = [1, 2, 3];
+const b = a;
+a === b;
+
+b.push(42)
+a === b</code></pre>
+</section>
+<section id="referential-equality-video" class="slide level3">
+<h3>Referential equality video</h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p8MpTvVYLVI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</section>
+<section id="array-slice-method" class="slide level3">
+<h3>Array slice method</h3>
+<p>See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice"><code>Array.prototype.slice()</code></a>.</p>
+</section>
+<section id="array-spread-syntax" class="slide level3">
+<h3>Array spread syntax</h3>
+<pre class="js"><code>const a = [1, 2, 3];
+const b = [...a, 6];</code></pre>
+</section>
+<section id="mini-exercise-array-update-patterns" class="slide level3">
+<h3><em class="type">Mini-exercise</em> Array update patterns</h3>
+<p>How can we use the array spread syntax to:</p>
+<ul>
+<li>Prepend an element?</li>
+<li>Concatenate arrays?</li>
+<li>Remove an element?</li>
+<li>Modify an element?</li>
+</ul>
+</section>
+<section id="object-spread-syntax" class="slide level3">
+<h3>Object spread syntax</h3>
+<pre class="js"><code>const ada = { firstname: &quot;Ada&quot;, lastname: &quot;Lovelace&quot; };
+const ada2 = { ...ada, age: 42 };</code></pre>
+</section>
+<section id="mini-exercise-react-form" class="slide level3">
+<h3><em class="type">Mini-exercise</em> React form</h3>
+<p>Write a <code>&lt;Form /&gt;</code> component with a single state variable of the following type:</p>
+<pre class="ts"><code>interface UserForm {
+    firstname: string;
+    lastname: string;
+    age: number;
+}</code></pre>
+</section>
+<section id="mini-exercise-react-list-of-numbers" class="slide level3">
+<h3><em class="type">Mini-exercise</em> React list of numbers</h3>
+<p>Write a <code>&lt;NumbersList /&gt;</code> component with a single state variable of the type <code>number[]</code>. The component should show a list of numbers, a form to add one, and allow editing existing ones.</p>
 </section></section>
 <section id="exercise-6-numbers-sum" class="title-slide slide level2">
 <h2><em class="type">Exercise 6</em> Numbers sum</h2>
 
 </section>
 
-<section id="exercise-6-to-do-list" class="title-slide slide level2">
-<h2><em class="type">Exercise 6</em> To-do list</h2>
+<section id="exercise-7-to-do-list" class="title-slide slide level2">
+<h2><em class="type">Exercise 7</em> To-do list</h2>
 
 </section>
 
@@ -812,7 +930,7 @@ console.log(url.toString());</code></pre>
 <h2><code>useEffect</code> hook</h2>
 
 </section>
-<section id="reference-7" class="slide level3">
+<section id="reference-8" class="slide level3">
 <h3>Reference</h3>
 <p><a href="https://reactjs.org/docs/hooks-effect.html">Using the Effect Hook, React docs</a></p>
 </section></section>

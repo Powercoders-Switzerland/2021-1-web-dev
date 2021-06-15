@@ -749,13 +749,148 @@ Write the actual code displaying your `data`:
 - If the button has been pressed but not images have been found, you should display "No images found".
 - If the button has been pressed and images have been found, show the images.
 
-## State immutability
+## <em class="type">Recap</em> Arrow functions
 
-### Updating
+### Reference
+
+[Array functions expressions > Syntax, MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#syntax)
+
+### Shortest form
+
+```ts
+const pow2 = (n: number): number => n * n;
+```
+
+Here, parentheses are optional.
+
+### Multiple or no parameters
+
+```ts
+const pow2 = (): string => "Hello world";
+const add = (a: number, b: number): number => a + b;
+```
+
+Here, parentheses are mandatory.
+
+### Multiline statements
+
+```ts
+const greet = (name: string): string => {
+	const result = `Hello ${name}!`;
+	return result;
+};
+```
+
+To write several statements in the body of the function, we must add brackets around the body and a return statement.
+
+### Function types
+
+```ts
+const greet = (
+	name: string,
+	transform: (name: string) => string
+): string => {
+	const transformedName = transform(name);
+	const result = `Hello ${transformedName}!`;
+	return result;
+};
+```
+
+The syntax for function types is similar to array functions
+
+### <em class="type">Mini-exercise</em> Types of array methods
+
+Think how to specify the type of `f` in these functions:
+
+- `map(array: number[], f: ???)`: apply `f` to each item.
+- `filter(array: number[], f: ???)`: only keep elements where `f(element)` returns `true`.
+- `reduce(array: number[], f: ???)`: `f` takes two parameters, the current _accumulated value_, and an item. It is uses to _reduce_ the array to a single value.
+
+### <em class="type">Mini-exercise</em> `reduce` usage
+
+Use `Array.prototype.reduce()` to:
+
+- compute the sum of the elements in an array,
+- compute the minimum element in an array,
+- find the first non-null element in an array.
+
+## Object and array state updates
+
+### State in React is considered _immutable_
+
+```tsx
+const [numbers, setNumbers] = [1, 2, 3];
+
+numbers[2] = 42;
+setNumbers(numbers); // THIS DOES NOT WORK!
+```
+
+### Referential equality examples
+
+```js
+[] === [];
+[1, 2, 3] === [1, 2, 3];
+{"firstname": "Ada"} === {"firstname": "Ada"};
+{} === {};
+
+const a = [1, 2, 3];
+const b = a;
+a === b;
+
+b.push(42)
+a === b
+```
+
+### Referential equality video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p8MpTvVYLVI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Array slice method
+
+See [`Array.prototype.slice()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice).
+
+### Array spread syntax
+
+```js
+const a = [1, 2, 3];
+const b = [...a, 6];
+```
+
+### <em class="type">Mini-exercise</em> Array update patterns
+
+How can we use the array spread syntax to:
+
+- Prepend an element?
+- Concatenate arrays?
+- Remove an element?
+- Modify an element?
+
+### Object spread syntax
+
+```js
+const ada = { firstname: "Ada", lastname: "Lovelace" };
+const ada2 = { ...ada, age: 42 };
+```
+
+### <em class="type">Mini-exercise</em> React form
+
+Write a `<Form />` component with a single state variable of the following type:
+
+```ts
+interface UserForm {
+	firstname: string;
+	lastname: string;
+	age: number;
+}
+```
+
+### <em class="type">Mini-exercise</em> React list of numbers
+
+Write a `<NumbersList />` component with a single state variable of the type `number[]`. The component should show a list of numbers, a form to add one, and allow editing existing ones.
 
 ## <em class="type">Exercise 6</em> Numbers sum
 
-## <em class="type">Exercise 6</em> To-do list
+## <em class="type">Exercise 7</em> To-do list
 
 ## `useEffect` hook
 
