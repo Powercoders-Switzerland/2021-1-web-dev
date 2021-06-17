@@ -996,8 +996,6 @@ Your component should show one `<input>` for each property of the `UserForm` int
 
 Please work on a `03-react/06-form` directory in your exercises repository.
 
-## <em class="type">Exercise 7</em> List of strings
-
 ## <em class="type">Example 6</em> [Numbers sum](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/06-array-sum)
 
 ## <em class="type">Exercise 7</em> To-do list
