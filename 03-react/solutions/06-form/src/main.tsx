@@ -22,7 +22,7 @@ const App = () => {
 
 	return (
 		<form
-			onChange={(e) => {
+			onSubmit={(e) => {
 				e.preventDefault();
 				// TODO: Show form data
 			}}

@@ -1040,7 +1040,11 @@ Add event handlers so that the checkbox can be checked/unchecked, and that the s
 
 Add a form with a single input allowing to add an item.
 
-### <em class="type">Step 8 (extra)</em> Filter
+### <em class="type">Step 8 (extra)</em> Persistence
+
+Save the state of your app to local storage.
+
+### <em class="type">Step 9 (extra)</em> Filter
 
 Add a `<select>` element allowing to filter items by "All", "To do" or "Done".
 
@@ -1050,10 +1054,97 @@ Add a `<select>` element allowing to filter items by "All", "To do" or "Done".
 
 [Using the Effect Hook, React docs](https://reactjs.org/docs/hooks-effect.html)
 
+### Run once the component is mounted
+
+```tsx
+useEffect(() => console.log("Component did mount."), []);
+```
+
+### Run when a state variable changes
+
+```tsx
+const [text, setText] = React.useStat("");
+useEffect(
+	() => console.log("State variable 'text' changed."),
+	[text]
+);
+```
+
 ## React router
+
+### Reference
+
+[React Router documentation](https://reactrouter.com/web/guides/quick-start)
+
+### Basic routing
+
+```tsx
+export default function App() {
+	return (
+		<Router>
+			<div>
+				<nav>
+					<ul>
+						<li>
+							<Link to="/">Home</Link>
+						</li>
+						<li>
+							<Link to="/about">About</Link>
+						</li>
+					</ul>
+				</nav>
+
+				{/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+				<Switch>
+					<Route path="/about">About</Route>
+					<Route path="/">Home</Route>
+				</Switch>
+			</div>
+		</Router>
+	);
+}
+```
+
+### URL Parameters
+
+```tsx
+function User() {
+	const params = useParams<{ id: string }>();
+
+	return <p>{param.id}</p>;
+}
+
+export default function App() {
+	return (
+		<Router>
+			<div>
+				<nav>
+					<ul>
+						<li>
+							<Link to="/">Home</Link>
+						</li>
+						<li>
+							<Link to="/user/1">User 1</Link>
+						</li>
+						<li>
+							<Link to="/user/2">User 1</Link>
+						</li>
+					</ul>
+				</nav>
+				<Switch>
+					<Route path="/user/:id">About</Route>
+					<Route path="/">Home</Route>
+				</Switch>
+			</div>
+		</Router>
+	);
+}
+```
 
 ## <em class="type">Exercise 8</em> Powercoders participants
 
 ### Goal
 
-[WIP]
+- On the homepage, show a list of contributors the [2021-1-web-dev](https://github.com/Powercoders-Switzerland/2021-1-web-dev) repo.
+- On route `/participant/:name`, show information about a single participant with GitHub username `:name`.

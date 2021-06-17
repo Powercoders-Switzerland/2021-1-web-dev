@@ -1058,8 +1058,12 @@ const ada2 = { ...ada, age: 42 };</code></pre>
 <h3><em class="type">Step 7</em> Add item form</h3>
 <p>Add a form with a single input allowing to add an item.</p>
 </section>
-<section id="step-8-extra-filter" class="slide level3">
-<h3><em class="type">Step 8 (extra)</em> Filter</h3>
+<section id="step-8-extra-persistence" class="slide level3">
+<h3><em class="type">Step 8 (extra)</em> Persistence</h3>
+<p>Save the state of your app to local storage.</p>
+</section>
+<section id="step-9-extra-filter" class="slide level3">
+<h3><em class="type">Step 9 (extra)</em> Filter</h3>
 <p>Add a <code>&lt;select&gt;</code> element allowing to filter items by “All”, “To do” or “Done”.</p>
 </section></section>
 <section>
@@ -1070,12 +1074,90 @@ const ada2 = { ...ada, age: 42 };</code></pre>
 <section id="reference-8" class="slide level3">
 <h3>Reference</h3>
 <p><a href="https://reactjs.org/docs/hooks-effect.html">Using the Effect Hook, React docs</a></p>
+</section>
+<section id="run-once-the-component-is-mounted" class="slide level3">
+<h3>Run once the component is mounted</h3>
+<pre class="tsx"><code>useEffect(() =&gt; console.log(&quot;Component did mount.&quot;), []);</code></pre>
+</section>
+<section id="run-when-a-state-variable-changes" class="slide level3">
+<h3>Run when a state variable changes</h3>
+<pre class="tsx"><code>const [text, setText] = React.useStat(&quot;&quot;);
+useEffect(
+    () =&gt; console.log(&quot;State variable &#39;text&#39; changed.&quot;),
+    [text]
+);</code></pre>
 </section></section>
+<section>
 <section id="react-router" class="title-slide slide level2">
 <h2>React router</h2>
 
 </section>
+<section id="reference-9" class="slide level3">
+<h3>Reference</h3>
+<p><a href="https://reactrouter.com/web/guides/quick-start">React Router documentation</a></p>
+</section>
+<section id="basic-routing" class="slide level3">
+<h3>Basic routing</h3>
+<pre class="tsx"><code>export default function App() {
+    return (
+        &lt;Router&gt;
+            &lt;div&gt;
+                &lt;nav&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;
+                            &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                            &lt;Link to=&quot;/about&quot;&gt;About&lt;/Link&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/nav&gt;
 
+                {/* A &lt;Switch&gt; looks through its children &lt;Route&gt;s and
+            renders the first one that matches the current URL. */}
+                &lt;Switch&gt;
+                    &lt;Route path=&quot;/about&quot;&gt;About&lt;/Route&gt;
+                    &lt;Route path=&quot;/&quot;&gt;Home&lt;/Route&gt;
+                &lt;/Switch&gt;
+            &lt;/div&gt;
+        &lt;/Router&gt;
+    );
+}</code></pre>
+</section>
+<section id="url-parameters" class="slide level3">
+<h3>URL Parameters</h3>
+<pre class="tsx"><code>function User() {
+    const params = useParams&lt;{ id: string }&gt;();
+
+    return &lt;p&gt;{param.id}&lt;/p&gt;;
+}
+
+export default function App() {
+    return (
+        &lt;Router&gt;
+            &lt;div&gt;
+                &lt;nav&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;
+                            &lt;Link to=&quot;/&quot;&gt;Home&lt;/Link&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                            &lt;Link to=&quot;/user/1&quot;&gt;User 1&lt;/Link&gt;
+                        &lt;/li&gt;
+                        &lt;li&gt;
+                            &lt;Link to=&quot;/user/2&quot;&gt;User 1&lt;/Link&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/nav&gt;
+                &lt;Switch&gt;
+                    &lt;Route path=&quot;/user/:id&quot;&gt;About&lt;/Route&gt;
+                    &lt;Route path=&quot;/&quot;&gt;Home&lt;/Route&gt;
+                &lt;/Switch&gt;
+            &lt;/div&gt;
+        &lt;/Router&gt;
+    );
+}</code></pre>
+</section></section>
 <section>
 <section id="exercise-8-powercoders-participants" class="title-slide slide level2">
 <h2><em class="type">Exercise 8</em> Powercoders participants</h2>
@@ -1083,7 +1165,10 @@ const ada2 = { ...ada, age: 42 };</code></pre>
 </section>
 <section id="goal-7" class="slide level3">
 <h3>Goal</h3>
-<p>[WIP]</p>
+<ul>
+<li>On the homepage, show a list of contributors the <a href="https://github.com/Powercoders-Switzerland/2021-1-web-dev">2021-1-web-dev</a> repo.</li>
+<li>On route <code>/participant/:name</code>, show information about a single participant with GitHub username <code>:name</code>.</li>
+</ul>
 </section></section>
     </div>
   </div>
