@@ -38,7 +38,11 @@
 </section>
 <section id="dom-apis" class="slide level3">
 <h3>DOM APIs</h3>
-<pre class="ts"><code>const renderArticle = (title: string, author: string, content: string) =&gt; {
+<pre class="ts"><code>const renderArticle = (
+    title: string,
+    author: string,
+    content: string
+) =&gt; {
     const articleEl = document.createElement(&quot;article&quot;);
     const titleEl = document.createElement(&quot;h2&quot;);
     titleEl.innerText = title;
@@ -60,7 +64,11 @@
 </section>
 <section id="entering-jsx" class="slide level3">
 <h3>Entering JSX</h3>
-<pre class="tsx"><code>const renderArticle = (title: string, author: string, content: string) =&gt; {
+<pre class="tsx"><code>const renderArticle = (
+    title: string,
+    author: string,
+    content: string
+) =&gt; {
     return (
         &lt;article&gt;
             &lt;h2&gt;{title}&lt;/h2&gt;
@@ -144,7 +152,9 @@
 <h3>Conditional operator</h3>
 <pre class="tsx"><code>function App() {
     const userConnected: boolean = false;
-    return &lt;div className={userConnected ? &quot;guest&quot; : &quot;user&quot;}&gt;&lt;/div&gt;;
+    return (
+        &lt;div className={userConnected ? &quot;guest&quot; : &quot;user&quot;}&gt;&lt;/div&gt;
+    );
 }</code></pre>
 </section></section>
 <section>
@@ -227,7 +237,13 @@ function Comment(props: CommentProps) {
 }
 
 function App() {
-    return &lt;Comment title=&quot;Evidence&quot; author=&quot;René&quot; content=&quot;Cogito, ergo sum&quot; /&gt;;
+    return (
+        &lt;Comment
+            title=&quot;Evidence&quot;
+            author=&quot;René&quot;
+            content=&quot;Cogito, ergo sum&quot;
+        /&gt;
+    );
 }</code></pre>
 </section>
 <section id="object-as-prop" class="slide level3">
@@ -278,7 +294,8 @@ function App() {
 <pre class="typescript"><code>const users = [
     {
         id: 1,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/nicollerich_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/nicollerich_128.jpg&quot;,
         first_name: &quot;Claire&quot;,
         last_name: &quot;Price&quot;,
         age: 12,
@@ -288,7 +305,8 @@ function App() {
     },
     {
         id: 2,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/edobene_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/edobene_128.jpg&quot;,
         first_name: &quot;Carrie&quot;,
         last_name: &quot;Mayer&quot;,
         age: 62,
@@ -298,7 +316,8 @@ function App() {
     },
     {
         id: 3,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/rodnylobos_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/rodnylobos_128.jpg&quot;,
         first_name: &quot;Jessy&quot;,
         last_name: &quot;Kassulke&quot;,
         age: 8,
@@ -308,7 +327,8 @@ function App() {
     },
     {
         id: 4,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/charliegann_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/charliegann_128.jpg&quot;,
         first_name: &quot;Amalia&quot;,
         last_name: &quot;Rogahn&quot;,
         age: 108,
@@ -318,7 +338,8 @@ function App() {
     },
     {
         id: 5,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/jmfsocial_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/jmfsocial_128.jpg&quot;,
         first_name: &quot;Kristoffer&quot;,
         last_name: &quot;Wuckert&quot;,
         age: 66,
@@ -328,7 +349,8 @@ function App() {
     },
     {
         id: 6,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/craigrcoles_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/craigrcoles_128.jpg&quot;,
         first_name: &quot;Kiera&quot;,
         last_name: &quot;Rohan&quot;,
         age: 36,
@@ -338,7 +360,8 @@ function App() {
     },
     {
         id: 7,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/bruno_mart_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/bruno_mart_128.jpg&quot;,
         first_name: &quot;Emmie&quot;,
         last_name: &quot;Hand&quot;,
         age: 74,
@@ -348,7 +371,8 @@ function App() {
     },
     {
         id: 8,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/woodsman001_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/woodsman001_128.jpg&quot;,
         first_name: &quot;Cameron&quot;,
         last_name: &quot;Veum&quot;,
         age: 16,
@@ -358,7 +382,8 @@ function App() {
     },
     {
         id: 9,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/markwienands_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/markwienands_128.jpg&quot;,
         first_name: &quot;Tremaine&quot;,
         last_name: &quot;Sanford&quot;,
         age: 10,
@@ -368,7 +393,8 @@ function App() {
     },
     {
         id: 10,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/ah_lice_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/ah_lice_128.jpg&quot;,
         first_name: &quot;Ronaldo&quot;,
         last_name: &quot;Weissnat&quot;,
         age: 83,
@@ -378,7 +404,8 @@ function App() {
     },
     {
         id: 11,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/zaki3d_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/zaki3d_128.jpg&quot;,
         first_name: &quot;Ephraim&quot;,
         last_name: &quot;Goyette&quot;,
         age: 63,
@@ -388,7 +415,8 @@ function App() {
     },
     {
         id: 12,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/boxmodel_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/boxmodel_128.jpg&quot;,
         first_name: &quot;Clay&quot;,
         last_name: &quot;Kunde&quot;,
         age: 113,
@@ -398,7 +426,8 @@ function App() {
     },
     {
         id: 13,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/VinThomas_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/VinThomas_128.jpg&quot;,
         first_name: &quot;Melisa&quot;,
         last_name: &quot;Leannon&quot;,
         age: 18,
@@ -408,7 +437,8 @@ function App() {
     },
     {
         id: 14,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/miguelmendes_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/miguelmendes_128.jpg&quot;,
         first_name: &quot;Clovis&quot;,
         last_name: &quot;Medhurst&quot;,
         age: 15,
@@ -418,7 +448,8 @@ function App() {
     },
     {
         id: 15,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/mandalareopens_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/mandalareopens_128.jpg&quot;,
         first_name: &quot;Mylene&quot;,
         last_name: &quot;Renner&quot;,
         age: 49,
@@ -428,7 +459,8 @@ function App() {
     },
     {
         id: 16,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/ma_tiax_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/ma_tiax_128.jpg&quot;,
         first_name: &quot;Marcos&quot;,
         last_name: &quot;Ferry&quot;,
         age: 47,
@@ -438,7 +470,8 @@ function App() {
     },
     {
         id: 17,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/balakayuriy_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/balakayuriy_128.jpg&quot;,
         first_name: &quot;Brain&quot;,
         last_name: &quot;Mohr&quot;,
         age: 54,
@@ -448,7 +481,8 @@ function App() {
     },
     {
         id: 18,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/aleclarsoniv_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/aleclarsoniv_128.jpg&quot;,
         first_name: &quot;Bella&quot;,
         last_name: &quot;VonRueden&quot;,
         age: 18,
@@ -458,7 +492,8 @@ function App() {
     },
     {
         id: 19,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/andrewarrow_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/andrewarrow_128.jpg&quot;,
         first_name: &quot;Franz&quot;,
         last_name: &quot;Raynor&quot;,
         age: 28,
@@ -468,7 +503,8 @@ function App() {
     },
     {
         id: 20,
-        avatar: &quot;https://cdn.fakercloud.com/avatars/carlosgavina_128.jpg&quot;,
+        avatar:
+            &quot;https://cdn.fakercloud.com/avatars/carlosgavina_128.jpg&quot;,
         first_name: &quot;Celestino&quot;,
         last_name: &quot;Bailey&quot;,
         age: 61,
@@ -553,7 +589,9 @@ const lastname = myObject.lastname;</code></pre>
 <section id="onclick-prop" class="slide level3">
 <h3><code>onClick</code> prop</h3>
 <p>To listen on clicks:</p>
-<pre class="tsx"><code>&lt;button onClick={() =&gt; console.log(&quot;Button clicked!&quot;)}&gt;Click me!&lt;/button&gt;</code></pre>
+<pre class="tsx"><code>&lt;button onClick={() =&gt; console.log(&quot;Button clicked!&quot;)}&gt;
+    Click me!
+&lt;/button&gt;</code></pre>
 </section>
 <section id="onchange-prop" class="slide level3">
 <h3><code>onChange</code> prop</h3>
@@ -561,7 +599,9 @@ const lastname = myObject.lastname;</code></pre>
 <pre class="tsx"><code>return (
     &lt;input
         type=&quot;text&quot;
-        onChange={(e) =&gt; console.log(&quot;New value: &quot; + e.target.value)}
+        onChange={(e) =&gt;
+            console.log(&quot;New value: &quot; + e.target.value)
+        }
     /&gt;
 );</code></pre>
 </section>
@@ -569,8 +609,9 @@ const lastname = myObject.lastname;</code></pre>
 <h3>Type of <code>onChange</code> event</h3>
 <p>As in the DOM API, the handler takes an event object as parameter, with a <code>target</code> property referring the to event target (HTML element on which the event was triggered).</p>
 <p>When you write the handler inline as in the previous slide, you do not need a parameter type annotation. However, if you want to declare your function elsewhere, you will need to tell TypeScript that the event is of type <code>React.ChangeEvent&lt;HTMLInputElement&gt;</code>:</p>
-<pre class="tsx"><code>const handleChange = (e: React.ChangeEvent&lt;HTMLInputElement&gt;) =&gt;
-    console.log(&quot;New value: &quot; + e.target.value);
+<pre class="tsx"><code>const handleChange = (
+    e: React.ChangeEvent&lt;HTMLInputElement&gt;
+) =&gt; console.log(&quot;New value: &quot; + e.target.value);
 return &lt;input type=&quot;text&quot; onChange={handleChange} /&gt;;</code></pre>
 <p><small>For now, let’s assume <code>React.ChangeEvent&lt;HTMLInputElement&gt;</code> represents “an object with a <code>target</code> property of type <code>HTMLInputElement</code>”. We will learn about <a href="https://www.typescriptlang.org/docs/handbook/2/generics.html">generics</a> later.</small></p>
 </section></section>
@@ -595,7 +636,9 @@ return &lt;input type=&quot;text&quot; onChange={handleChange} /&gt;;</code></pr
     return (
         &lt;main&gt;
             &lt;p&gt;{counter}&lt;/p&gt;
-            &lt;button onClick={() =&gt; setCounter(counter + 1)}&gt;Increment&lt;/button&gt;
+            &lt;button onClick={() =&gt; setCounter(counter + 1)}&gt;
+                Increment
+            &lt;/button&gt;
         &lt;/main&gt;
     );
 };</code></pre>
@@ -670,7 +713,9 @@ return &lt;input type=&quot;text&quot; onChange={handleChange} /&gt;;</code></pr
 <section id="usage-with-async-and-await" class="slide level3">
 <h3>Usage with <code>async</code> and <code>await</code></h3>
 <pre class="js"><code>const getMyQuote = async () =&gt; {
-    const response = await fetch(&quot;https://api.quotable.io/random&quot;);
+    const response = await fetch(
+        &quot;https://api.quotable.io/random&quot;
+    );
     console.log(&quot;HTTP Response status: &quot; + response.status);
     const data = await response.json();
     console.log(data);
@@ -728,7 +773,8 @@ console.log(url.toString());</code></pre>
 <section id="step-4-define-a-state-of-type-pixbaysearch-null" class="slide level3">
 <h3><em class="type">Step 4</em> Define a state of type <code>PixbaySearch | null</code></h3>
 <p>To create a state variable of type <code>PixbaySearch | null</code>, which an initial value of <code>null</code>, use:</p>
-<pre class="tsx"><code>const [data, setData] = React.useState&lt;PixbaySearch | null&gt;(null);</code></pre>
+<pre class="tsx"><code>const [data, setData] =
+    React.useState&lt;PixbaySearch | null&gt;(null);</code></pre>
 </section>
 <section id="step-5-add-the-click-event-listener" class="slide level3">
 <h3><em class="type">Step 5</em> Add the click event listener</h3>
@@ -773,7 +819,10 @@ const add = (a: number, b: number): number =&gt; a + b;</code></pre>
 </section>
 <section id="function-types" class="slide level3">
 <h3>Function types</h3>
-<pre class="ts"><code>const greet = (name: string, transform: (name: string) =&gt; string): string =&gt; {
+<pre class="ts"><code>const greet = (
+    name: string,
+    transform: (name: string) =&gt; string
+): string =&gt; {
     const transformedName = transform(name);
     const result = `Hello ${transformedName}!`;
     return result;
@@ -801,7 +850,10 @@ const add = (a: number, b: number): number =&gt; a + b;</code></pre>
 <section id="example-implementation-of-map" class="slide level3">
 <h3>Example implementation of <code>map()</code></h3>
 <p>Example implementation of <code>map()</code> for an array of numbers:</p>
-<pre class="ts"><code>const map = (numbers: number[], f: (n: number) =&gt; number) =&gt; {
+<pre class="ts"><code>const map = (
+    numbers: number[],
+    f: (n: number) =&gt; number
+) =&gt; {
     const result: number[] = [];
     for (const n of numbers) {
         result.push(f(n));
@@ -818,7 +870,10 @@ map([1, 2, 3], (x) =&gt; x * 2);
 <section id="example-implementation-of-filter" class="slide level3">
 <h3>Example implementation of <code>filter()</code></h3>
 <p>Example implementation of <code>filter()</code> for an array of numbers:</p>
-<pre class="ts"><code>const filter = (numbers: number[], f: (n: number) =&gt; boolean) =&gt; {
+<pre class="ts"><code>const filter = (
+    numbers: number[],
+    f: (n: number) =&gt; boolean
+) =&gt; {
     const result: number[] = [];
     for (const n of numbers) {
         if (f(n)) {
@@ -852,7 +907,11 @@ filter([0, 5, 8, 2, 9, 3], (x) =&gt; x % 2 === 0);
 reduce([1, 2, 3], (a, b) =&gt; a + b, 0);
 // Returns 6
 
-reduce([2, 1, 3], (a, b) =&gt; Math.min(a, b), Number.MAX_SAFE_INTEGER);
+reduce(
+    [2, 1, 3],
+    (a, b) =&gt; Math.min(a, b),
+    Number.MAX_SAFE_INTEGER
+);
 // Returns 1</code></pre>
 </section></section>
 <section>
@@ -869,17 +928,17 @@ setNumbers(numbers); // THIS DOES NOT WORK!</code></pre>
 </section>
 <section id="referential-equality-examples" class="slide level3">
 <h3>Referential equality examples</h3>
-<pre class="js"><code>[] === [];
-[1, 2, 3] === [1, 2, 3];
-{&quot;firstname&quot;: &quot;Ada&quot;} === {&quot;firstname&quot;: &quot;Ada&quot;};
-{} === {};
+<pre class="js"><code>[] === []; // false
+[1, 2, 3] === [1, 2, 3]; // false
+{&quot;firstname&quot;: &quot;Ada&quot;} === {&quot;firstname&quot;: &quot;Ada&quot;}; // false
+{} === {};  // false
 
 const a = [1, 2, 3];
 const b = a;
-a === b;
+a === b;  // true
 
 b.push(42)
-a === b</code></pre>
+a === b // true</code></pre>
 </section>
 <section id="referential-equality-video" class="slide level3">
 <h3>Referential equality video</h3>
@@ -895,15 +954,36 @@ a === b</code></pre>
 <pre class="js"><code>const a = [1, 2, 3];
 const b = [...a, 6];</code></pre>
 </section>
-<section id="mini-exercise-array-update-patterns" class="slide level3">
-<h3><em class="type">Mini-exercise</em> Array update patterns</h3>
-<p>How can we use the array spread syntax to:</p>
-<ul>
-<li>Prepend an element?</li>
-<li>Concatenate arrays?</li>
-<li>Remove an element?</li>
-<li>Modify an element?</li>
-</ul>
+<section id="append-to-an-array" class="slide level3">
+<h3>Append to an array</h3>
+<pre class="ts"><code>function append&lt;T&gt;(array: T[], value: T) {
+    return [...array, value];
+}</code></pre>
+</section>
+<section id="prepend-to-an-array" class="slide level3">
+<h3>Prepend to an array</h3>
+<pre class="ts"><code>function append&lt;T&gt;(array: T[], value: T) {
+    return [value, ...array];
+}</code></pre>
+</section>
+<section id="remove-an-array-element" class="slide level3">
+<h3>Remove an array element</h3>
+<pre class="ts"><code>function remove&lt;T&gt;(array: T[], index: number) {
+    return [
+        ...array.slice(0, index),
+        ...array.slice(index + 1),
+    ];
+}</code></pre>
+</section>
+<section id="replace-an-array-element" class="slide level3">
+<h3>Replace an array element</h3>
+<pre class="ts"><code>function replace&lt;T&gt;(array: T[], value: T, index: number) {
+    return [
+        ...array.slice(0, index),
+        value,
+        ...array.slice(index + 1),
+    ];
+}</code></pre>
 </section>
 <section id="object-spread-syntax" class="slide level3">
 <h3>Object spread syntax</h3>
@@ -926,26 +1006,58 @@ const ada2 = { ...ada, age: 42 };</code></pre>
 <p>Your component should show one <code>&lt;input&gt;</code> for each property of the <code>UserForm</code> interface, a submit button. On form submission (using <code>onSubmit</code> event), your show the content of the fields to the page.</p>
 <p>Please work on a <code>03-react/06-form</code> directory in your exercises repository.</p>
 </section></section>
-<section>
 <section id="exercise-7-list-of-strings" class="title-slide slide level2">
 <h2><em class="type">Exercise 7</em> List of strings</h2>
 
 </section>
-<section id="goal-6" class="slide level3">
-<h3>Goal</h3>
-<p>Write a <code>&lt;StringsList /&gt;</code> component with a single state variable of type <code>string[]</code>. The component should show a list of strings, a form to add one, and allow editing existing ones.</p>
-<p>Please work on a <code>03-react/07-strings-list</code> directory in your exercises repository.</p>
-</section></section>
+
 <section id="example-6-numbers-sum" class="title-slide slide level2">
 <h2><em class="type">Example 6</em> <a href="https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/06-array-sum">Numbers sum</a></h2>
 
 </section>
 
+<section>
 <section id="exercise-8-to-do-list" class="title-slide slide level2">
 <h2><em class="type">Exercise 8</em> To-do list</h2>
 
 </section>
-
+<section id="goal-6" class="slide level3">
+<h3>Goal</h3>
+<p>Reproduce your todo list with React.</p>
+</section>
+<section id="step-1-add-the-react-boilerplate-5" class="slide level3">
+<h3><em class="type">Step 1</em> Add the React boilerplate</h3>
+<ul>
+<li>Copy the content of <code>03-react/examples/01-hello-world</code> example to a folder <code>03-react/07-todo-list</code> in your exercises repository.</li>
+<li>Then, run <code>npm install</code>.</li>
+<li>To compile your TypeScript code, use the <code>npm run build</code> (to compile once) or <code>npm run build:watch</code> (to automatically recompile on every change).</li>
+</ul>
+</section>
+<section id="step-1-state-type" class="slide level3">
+<h3><em class="type">Step 1</em> <code>State</code> type</h3>
+<p>Define a <code>TodoItem</code> type representing an individual todo list item. It should an object with the following attributes:</p>
+<ul>
+<li><code>created</code> (a number),</li>
+<li><code>done</code> (a boolean),</li>
+<li><code>title</code> (a string).</li>
+</ul>
+<p>The <code>created</code> attribute will hold the <em>timestamp</em> of the creation time of the item and will be used as ID. See <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now"><code>Date.now()</code></a>.</p>
+</section>
+<section id="step-2-state-type" class="slide level3">
+<h3><em class="type">Step 2</em> <code>State</code> type</h3>
+<p>Define an initial example state in a <code>initialTodos</code> variable of type <code>TodoItem[]</code>.</p>
+</section>
+<section id="step-3-todos-state-variable" class="slide level3">
+<h3><em class="type">Step 3</em> <code>todos</code> state variable</h3>
+<p>Edit the <code>App</code> component so that it contains a state variable <code>todos</code>, with the initial value <code>initialTodos</code>.</p>
+</section>
+<section id="step-4-display-the-list" class="slide level3">
+<h3><em class="type">Step 4</em> Display the list</h3>
+<p>Render the <code>todos</code> variable into a list, with a checkbox for each item.</p>
+</section>
+<section id="step-5-coming-soon" class="slide level3">
+<h3><em class="type">Step 5</em> Coming soon</h3>
+</section></section>
 <section>
 <section id="useeffect-hook" class="title-slide slide level2">
 <h2><code>useEffect</code> hook</h2>
@@ -954,11 +1066,11 @@ const ada2 = { ...ada, age: 42 };</code></pre>
 <section id="reference-8" class="slide level3">
 <h3>Reference</h3>
 <p><a href="https://reactjs.org/docs/hooks-effect.html">Using the Effect Hook, React docs</a></p>
-</section>
-<section id="definition" class="slide level3">
-<h3>Definition</h3>
-<p>[WIP]</p>
 </section></section>
+<section id="react-router" class="title-slide slide level2">
+<h2>React router</h2>
+
+</section>
     </div>
   </div>
 

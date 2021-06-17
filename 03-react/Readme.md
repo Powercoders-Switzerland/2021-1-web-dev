@@ -904,17 +904,17 @@ setNumbers(numbers); // THIS DOES NOT WORK!
 ### Referential equality examples
 
 ```js
-[] === [];
-[1, 2, 3] === [1, 2, 3];
-{"firstname": "Ada"} === {"firstname": "Ada"};
-{} === {};
+[] === []; // false
+[1, 2, 3] === [1, 2, 3]; // false
+{"firstname": "Ada"} === {"firstname": "Ada"}; // false
+{} === {};  // false
 
 const a = [1, 2, 3];
 const b = a;
-a === b;
+a === b;  // true
 
 b.push(42)
-a === b
+a === b // true
 ```
 
 ### Referential equality video
@@ -932,14 +932,44 @@ const a = [1, 2, 3];
 const b = [...a, 6];
 ```
 
-### <em class="type">Mini-exercise</em> Array update patterns
+### Append to an array
 
-How can we use the array spread syntax to:
+```ts
+function append<T>(array: T[], value: T) {
+	return [...array, value];
+}
+```
 
-- Prepend an element?
-- Concatenate arrays?
-- Remove an element?
-- Modify an element?
+### Prepend to an array
+
+```ts
+function append<T>(array: T[], value: T) {
+	return [value, ...array];
+}
+```
+
+### Remove an array element
+
+```ts
+function remove<T>(array: T[], index: number) {
+	return [
+		...array.slice(0, index),
+		...array.slice(index + 1),
+	];
+}
+```
+
+### Replace an array element
+
+```ts
+function replace<T>(array: T[], value: T, index: number) {
+	return [
+		...array.slice(0, index),
+		value,
+		...array.slice(index + 1),
+	];
+}
+```
 
 ### Object spread syntax
 
@@ -968,15 +998,43 @@ Please work on a `03-react/06-form` directory in your exercises repository.
 
 ## <em class="type">Exercise 7</em> List of strings
 
-### Goal
-
-Write a `<StringsList />` component with a single state variable of type `string[]`. The component should show a list of strings, a form to add one, and allow editing existing ones.
-
-Please work on a `03-react/07-strings-list` directory in your exercises repository.
-
 ## <em class="type">Example 6</em> [Numbers sum](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/06-array-sum)
 
 ## <em class="type">Exercise 8</em> To-do list
+
+### Goal
+
+Reproduce your todo list with React.
+
+### <em class="type">Step 1</em> Add the React boilerplate
+
+- Copy the content of `03-react/examples/01-hello-world` example to a folder `03-react/07-todo-list` in your exercises repository.
+- Then, run `npm install`.
+- To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
+
+### <em class="type">Step 1</em> `State` type
+
+Define a `TodoItem` type representing an individual todo list item. It should an object with the following attributes:
+
+- `created` (a number),
+- `done` (a boolean),
+- `title` (a string).
+
+The `created` attribute will hold the _timestamp_ of the creation time of the item and will be used as ID. See [`Date.now()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now).
+
+### <em class="type">Step 2</em> `State` type
+
+Define an initial example state in a `initialTodos` variable of type `TodoItem[]`.
+
+### <em class="type">Step 3</em> `todos` state variable
+
+Edit the `App` component so that it contains a state variable `todos`, with the initial value `initialTodos`.
+
+### <em class="type">Step 4</em> Display the list
+
+Render the `todos` variable into a list, with a checkbox for each item.
+
+### <em class="type">Step 5</em> Coming soon
 
 ## `useEffect` hook
 
@@ -984,6 +1042,4 @@ Please work on a `03-react/07-strings-list` directory in your exercises reposito
 
 [Using the Effect Hook, React docs](https://reactjs.org/docs/hooks-effect.html)
 
-### Definition
-
-[WIP]
+## React router
