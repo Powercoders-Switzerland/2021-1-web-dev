@@ -1000,7 +1000,7 @@ Please work on a `03-react/06-form` directory in your exercises repository.
 
 ## <em class="type">Example 6</em> [Numbers sum](https://github.com/Powercoders-Switzerland/2021-1-web-dev/tree/main/03-react/examples/06-array-sum)
 
-## <em class="type">Exercise 8</em> To-do list
+## <em class="type">Exercise 7</em> To-do list
 
 ### Goal
 
@@ -1012,7 +1012,7 @@ Reproduce your todo list with React.
 - Then, run `npm install`.
 - To compile your TypeScript code, use the `npm run build` (to compile once) or `npm run build:watch` (to automatically recompile on every change).
 
-### <em class="type">Step 1</em> `State` type
+### <em class="type">Step 2</em> `State` type
 
 Define a `TodoItem` type representing an individual todo list item. It should an object with the following attributes:
 
@@ -1022,19 +1022,19 @@ Define a `TodoItem` type representing an individual todo list item. It should an
 
 The `created` attribute will hold the _timestamp_ of the creation time of the item and will be used as ID. See [`Date.now()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now).
 
-### <em class="type">Step 2</em> `State` type
+### <em class="type">Step 3</em> `State` type
 
 Define an initial example state in a `initialTodos` variable of type `TodoItem[]`.
 
-### <em class="type">Step 3</em> `todos` state variable
+### <em class="type">Step 4</em> `todos` state variable
 
 Edit the `App` component so that it contains a state variable `todos`, with the initial value `initialTodos`.
 
-### <em class="type">Step 4</em> Display the list
+### <em class="type">Step 5</em> Display the list
 
 Render the `todos` variable into a list, with a checkbox for each item.
 
-### <em class="type">Step 5</em> Coming soon
+### <em class="type">Step 6</em> Coming soon
 
 ## `useEffect` hook
 
