@@ -1018,7 +1018,7 @@ Define a `TodoItem` type representing an individual todo list item. It should an
 - `done` (a boolean),
 - `title` (a string).
 
-The `created` attribute will hold the _timestamp_ of the creation time of the item and will be used as ID. See [`Date.now()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now).
+The `created` attribute will hold the _timestamp_ of the creation time of the item and will be used as a unique ID. See [`Date.now()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/now).
 
 ### <em class="type">Step 3</em> `State` type
 
@@ -1032,7 +1032,17 @@ Edit the `App` component so that it contains a state variable `todos`, with the 
 
 Render the `todos` variable into a list, with a checkbox for each item.
 
-### <em class="type">Step 6</em> Coming soon
+### <em class="type">Step 6</em> Checkbox handlers
+
+Add event handlers so that the checkbox can be checked/unchecked, and that the state is updated accordingly.
+
+### <em class="type">Step 7</em> Add item form
+
+Add a form with a single input allowing to add an item.
+
+### <em class="type">Step 8 (extra)</em> Filter
+
+Add a `<select>` element allowing to filter items by "All", "To do" or "Done".
 
 ## `useEffect` hook
 
@@ -1041,3 +1051,9 @@ Render the `todos` variable into a list, with a checkbox for each item.
 [Using the Effect Hook, React docs](https://reactjs.org/docs/hooks-effect.html)
 
 ## React router
+
+## <em class="type">Exercise 8</em> Powercoders participants
+
+### Goal
+
+[WIP]

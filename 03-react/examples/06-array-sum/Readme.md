@@ -1,6 +1,6 @@
-# Random quote
+# Array sum
 
-[See the result](https://powercoders-switzerland.github.io/2021-1-web-dev/03-react/examples/05-random-quote/).
+[See the result](https://powercoders-switzerland.github.io/2021-1-web-dev/03-react/examples/06-array-sum/).
 
 ## How to install
 

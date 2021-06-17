@@ -1,6 +1,6 @@
-# Random quote
+# Animals
 
-[See the result](https://powercoders-switzerland.github.io/2021-1-web-dev/03-react/examples/05-random-quote/).
+[See the result](https://powercoders-switzerland.github.io/2021-1-web-dev/03-react/examples/07-animals/).
 
 ## How to install
 
