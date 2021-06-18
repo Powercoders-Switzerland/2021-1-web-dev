@@ -320,16 +320,27 @@ def view_article(request, id):
 def view_article(request, id):
     return HttpResponseNotAllowed([&#39;GET&#39;, &#39;POST&#39;])</code></pre>
 </section>
-<section id="curl" class="slide level2">
-<h2>cURL</h2>
-<ul>
-<li>cURL is a CLI tool for making requests</li>
-</ul>
-<pre><code>curl --include \
-     --request POST \
-     --header &quot;Content-Type: application/json&quot; \
-     --data &#39;{&quot;name&quot;:&quot;test&quot;}&#39; \
-     http://localhost:8000/shop/articles/</code></pre>
+<section id="recall-fetch-api-get" class="slide level2">
+<h2>Recall: Fetch API (GET)</h2>
+<pre class="js"><code>fetch(&quot;https://api.quotable.io/random&quot;)
+    .then((response) =&gt; {
+        console.log(&quot;HTTP Response status: &quot; + response.status);
+        return response.json();
+    })
+    .then((data) =&gt; console.log(data));</code></pre>
+</section>
+<section id="recall-fetch-api-post" class="slide level2">
+<h2>Recall: Fetch API (POST)</h2>
+<pre class="js"><code>const data = {
+    /*... */
+};
+fetch(&quot;/shop/articles&quot;, {
+    method: &quot;POST&quot;, // *GET, POST, PUT, DELETE, etc.
+    body: JSON.stringify(data),
+})
+    .then((response) =&gt; response.json())
+    .then((data) =&gt; console.log(data));</code></pre>
+<p>Read more: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"><em>Using Fetch</em>, MDN</a></p>
 </section>
 <section id="exercise-2" class="slide level2">
 <h2>Exercise 2</h2>
@@ -614,7 +625,7 @@ class ArticleViewSet(ModelViewSet):
 
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.js"></script>
 
-  // reveal.js plugins
+  <!-- reveal.js plugins -->
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/search/search.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/zoom/zoom.js"></script>
@@ -624,8 +635,10 @@ class ArticleViewSet(ModelViewSet):
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-        // Push each slide change to the browser history
-        history: true,
+      
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
         // Transition style
         transition: 'none', // none/fade/slide/convex/concave/zoom
 
