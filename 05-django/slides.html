@@ -128,32 +128,6 @@ HTTP status ranges in a nutshell:<br><br>1xx: hold on<br>2xx: here you go<br>3xx
 <p><img data-src="images/mdn-url-all.png" /></p>
 <p>Read more: <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL"><em>What is an URL?</em>, MDN</a></p>
 </section>
-<section id="recall-fetch-api-get" class="slide level2">
-<h2>Recall: Fetch API (GET)</h2>
-<pre class="js"><code>fetch(&quot;https://api.quotable.io/random&quot;)
-    .then((response) =&gt; {
-        console.log(&quot;HTTP Response status: &quot; + response.status);
-        return response.json();
-    })
-    .then((data) =&gt; console.log(data));</code></pre>
-</section>
-<section id="recall-fetch-api-post" class="slide level2">
-<h2>Recall: Fetch API (POST)</h2>
-<pre class="js"><code>const data = {
-    /*... */
-};
-fetch(&quot;/shop/articles&quot;, {
-    method: &quot;POST&quot;, // *GET, POST, PUT, DELETE, etc.
-    headers: {
-        &quot;Content-Type&quot;: &quot;application/json&quot;,
-    },
-    redirect: &quot;follow&quot;, // manual, *follow, error
-    body: JSON.stringify(data), // body data type must match &quot;Content-Type&quot; header
-})
-    .then((response) =&gt; response.json())
-    .then((data) =&gt; console.log(data));</code></pre>
-<p>Read more: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"><em>Using Fetch</em>, MDN</a></p>
-</section>
 <section id="rest-principles" class="slide level2">
 <h2>REST Principles</h2>
 <p>4 of the 6 principles:</p>

@@ -88,37 +88,6 @@ Additional key-value pairs passed with a request or response.
 
 Read more: [_What is an URL?_, MDN](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_is_a_URL)
 
-## Recall: Fetch API (GET)
-
-```js
-fetch("https://api.quotable.io/random")
-	.then((response) => {
-		console.log("HTTP Response status: " + response.status);
-		return response.json();
-	})
-	.then((data) => console.log(data));
-```
-
-## Recall: Fetch API (POST)
-
-```js
-const data = {
-	/*... */
-};
-fetch("/shop/articles", {
-	method: "POST", // *GET, POST, PUT, DELETE, etc.
-	headers: {
-		"Content-Type": "application/json",
-	},
-	redirect: "follow", // manual, *follow, error
-	body: JSON.stringify(data), // body data type must match "Content-Type" header
-})
-	.then((response) => response.json())
-	.then((data) => console.log(data));
-```
-
-Read more: [_Using Fetch_, MDN](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
-
 ## REST Principles
 
 4 of the 6 principles:
