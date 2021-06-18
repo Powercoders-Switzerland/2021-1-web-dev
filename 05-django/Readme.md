@@ -349,22 +349,44 @@ class Article(Model):
 - **Date & Time**: DurationField, DateField, DateTimeField, TimeField
 - **Relationships**: ForeignKey, ManyToManyField, OneToOneField
 
-## Querying
+## Querying (1)
 
 - Django allows DB interaction using the `objects` property of any model
-
+- Creating new objects
 ```py
-Article.objects.create(name=name)
+article = Article.objects.create(name=name)
+article.save()
+```
+- Querying all objects
+```py
+articles = Article.objects.all()
+articles = Article.objects.all()[:5]
+```
 
-Article.objects.all()
-Article.objects.all()[:5]
+## Querying (2)
 
-Article.objects.filter(id=id).get()
-Article.objects.filter(id=id).first()
+- Ordering
+```py
+articles = Article.objects.order_by('name').all()[:5]
+articles = Article.objects.order_by('-name').all()[:5]
+```
+- Querying one object (get will return an exception if not found, first `None`)
+```py
+article = Article.objects.filter(id=id).get()
+article = Article.objects.filter(id=id).first()
+```
 
-Article.objects.order_by('name').all()[:5]
-Article.objects.order_by('-name').all()[:5]
+## Querying (3)
 
+- Modifying an object
+```py
+article = Article.objects.filter(id=id).get()
+article.name = name
+article.save()
+```
+- Deleting an object
+```py
+article = Article.objects.filter(id=id).get()
 article.name = name
 article.save()
 article.delete()
@@ -410,7 +432,7 @@ class ArticelAdmin(ModelAdmin):
 - pip allows installation from a text file
 
 ```
-pip install -r requirements.txt
+env/bin/pip install -r requirements.txt
 ```
 
 - it's possible to pin version

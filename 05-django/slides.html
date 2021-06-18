@@ -385,22 +385,45 @@ class Article(Model):
 <li><strong>Relationships</strong>: ForeignKey, ManyToManyField, OneToOneField</li>
 </ul>
 </section>
-<section id="querying" class="slide level2">
-<h2>Querying</h2>
+<section id="querying-1" class="slide level2">
+<h2>Querying (1)</h2>
 <ul>
 <li>Django allows DB interaction using the <code>objects</code> property of any model</li>
+<li>Creating new objects</li>
 </ul>
-<pre class="py"><code>Article.objects.create(name=name)
-
-Article.objects.all()
-Article.objects.all()[:5]
-
-Article.objects.filter(id=id).get()
-Article.objects.filter(id=id).first()
-
-Article.objects.order_by(&#39;name&#39;).all()[:5]
-Article.objects.order_by(&#39;-name&#39;).all()[:5]
-
+<pre class="py"><code>article = Article.objects.create(name=name)
+article.save()</code></pre>
+<ul>
+<li>Querying all objects</li>
+</ul>
+<pre class="py"><code>articles = Article.objects.all()
+articles = Article.objects.all()[:5]</code></pre>
+</section>
+<section id="querying-2" class="slide level2">
+<h2>Querying (2)</h2>
+<ul>
+<li>Ordering</li>
+</ul>
+<pre class="py"><code>articles = Article.objects.order_by(&#39;name&#39;).all()[:5]
+articles = Article.objects.order_by(&#39;-name&#39;).all()[:5]</code></pre>
+<ul>
+<li>Querying one object (get will return an exception if not found, first <code>None</code>)</li>
+</ul>
+<pre class="py"><code>article = Article.objects.filter(id=id).get()
+article = Article.objects.filter(id=id).first()</code></pre>
+</section>
+<section id="querying-3" class="slide level2">
+<h2>Querying (3)</h2>
+<ul>
+<li>Modifying an object</li>
+</ul>
+<pre class="py"><code>article = Article.objects.filter(id=id).get()
+article.name = name
+article.save()</code></pre>
+<ul>
+<li>Deleting an object</li>
+</ul>
+<pre class="py"><code>article = Article.objects.filter(id=id).get()
 article.name = name
 article.save()
 article.delete()</code></pre>
@@ -447,7 +470,7 @@ class ArticelAdmin(ModelAdmin):
 <ul>
 <li>pip allows installation from a text file</li>
 </ul>
-<pre><code>pip install -r requirements.txt</code></pre>
+<pre><code>env/bin/pip install -r requirements.txt</code></pre>
 <ul>
 <li>it’s possible to pin version</li>
 </ul>
@@ -625,7 +648,7 @@ class ArticleViewSet(ModelViewSet):
 
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/dist/reveal.js"></script>
 
-  <!-- reveal.js plugins -->
+  // reveal.js plugins
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/notes/notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/search/search.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.1.1/plugin/zoom/zoom.js"></script>
@@ -635,10 +658,8 @@ class ArticleViewSet(ModelViewSet):
       // Full list of configuration options available at:
       // https://revealjs.com/config/
       Reveal.initialize({
-      
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
+        // Push each slide change to the browser history
+        history: true,
         // Transition style
         transition: 'none', // none/fade/slide/convex/concave/zoom
 
