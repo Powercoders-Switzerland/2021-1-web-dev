@@ -283,17 +283,32 @@ def view_article(request, id):
 	return HttpResponseNotAllowed(['GET', 'POST'])
 ```
 
-## cURL
+## Recall: Fetch API (GET)
 
-- cURL is a CLI tool for making requests
+```js
+fetch("https://api.quotable.io/random")
+	.then((response) => {
+		console.log("HTTP Response status: " + response.status);
+		return response.json();
+	})
+	.then((data) => console.log(data));
+```
 
+## Recall: Fetch API (POST)
+
+```js
+const data = {
+	/*... */
+};
+fetch("/shop/articles", {
+	method: "POST", // *GET, POST, PUT, DELETE, etc.
+	body: JSON.stringify(data),
+})
+	.then((response) => response.json())
+	.then((data) => console.log(data));
 ```
-curl --include \
-	 --request POST \
-	 --header "Content-Type: application/json" \
-	 --data '{"name":"test"}' \
-	 http://localhost:8000/shop/articles/
-```
+
+Read more: [_Using Fetch_, MDN](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
 ## Exercise 2
 
