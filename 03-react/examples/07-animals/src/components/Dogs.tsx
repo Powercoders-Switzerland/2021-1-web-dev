@@ -17,15 +17,15 @@ export default function Dogs() {
 	const [response, setResponse] =
 		React.useState<DogCeoResponse>(null);
 
-	const { breed } = useParams<{ breed: string }>();
+	const params = useParams<{ breed: string }>();
 
 	React.useEffect(() => {
 		fetch(
-			`https://dog.ceo/api/breed/${breed}/images/random/10`
+			`https://dog.ceo/api/breed/${params.breed}/images/random/10`
 		)
 			.then((response) => response.json())
 			.then(setResponse);
-	}, [breed]);
+	}, [params]);
 
 	if (response === null) {
 		return <p>Loading…</p>;
@@ -40,12 +40,15 @@ export default function Dogs() {
 	}
 
 	return (
-		<ul>
-			{response.message.map((source) => (
-				<li key={source}>
-					<img src={source} />
-				</li>
-			))}
-		</ul>
+		<main>
+			<h1>{params.breed}</h1>
+			<ul>
+				{response.message.map((source) => (
+					<li key={source}>
+						<img src={source} />
+					</li>
+				))}
+			</ul>
+		</main>
 	);
 }
