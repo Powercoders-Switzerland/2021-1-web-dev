@@ -239,7 +239,7 @@ def view_article(request):
 
 ```py
 from django.urls import path
-from shop. views import view_article
+from shop.views import view_article
 
 urlpatterns = [
     path('articles/1/', view_article),
