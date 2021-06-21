@@ -1,4 +1,8 @@
-# React Hello World
+# Form
+
+[See the result](https://powercoders-switzerland.github.io/2021-1-web-dev/03-react/solutions/06-form/).
+
+[See the instructions](https://powercoders-switzerland.github.io/2021-1-web-dev/03-react/slides.html#/exercise-6-form).
 
 ## How to install
 

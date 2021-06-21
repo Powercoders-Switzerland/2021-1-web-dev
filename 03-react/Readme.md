@@ -982,7 +982,7 @@ const ada2 = { ...ada, age: 42 };
 
 ### Goal
 
-Write a `<Form />` component with a single state variable of the following type:
+Write a component with a single state variable of the following type:
 
 ```ts
 interface UserForm {
@@ -992,7 +992,7 @@ interface UserForm {
 }
 ```
 
-Your component should show one `<input>` for each property of the `UserForm` interface, a submit button. On form submission (using `onSubmit` event), your show the content of the fields to the page.
+Your component should show one `<input>` for each property of the `UserForm` interface, a submit button. On form submission (using `onSubmit` event), your should show the content of the fields on the page.
 
 Please work on a `03-react/06-form` directory in your exercises repository.
 
