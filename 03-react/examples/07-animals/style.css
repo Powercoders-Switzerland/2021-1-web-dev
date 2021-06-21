@@ -1,5 +1,6 @@
 body {
-	font-family: "Comic Sans MS";
+	/* See https://www.comicsanscriminal.com/ */
+	font-family: "Comic Sans MS", "Comic Sans", cursive;
 	margin: 1em;
 	color: green;
 	background-color: lightpink;
