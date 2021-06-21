@@ -24,26 +24,31 @@ const App = () => {
 		<form
 			onSubmit={(e) => {
 				e.preventDefault();
-				// TODO: Show form data
+				alert(
+					`${user.firstname} ${user.lastname}, ${user.age} years old.`
+				);
 			}}
 		>
 			<input
 				type="text"
 				value={user.firstname}
-				// TODO update user.firstname
-				onChange={(e) => {}}
+				onChange={(e) =>
+					setUser({ ...user, firstname: e.target.value })
+				}
 			/>
 			<input
 				type="text"
-				// TODO update user.lastname
 				value={user.lastname}
-				onChange={(e) => {}}
+				onChange={(e) =>
+					setUser({ ...user, lastname: e.target.value })
+				}
 			/>
 			<input
 				type="number"
-				// TODO update user.age
 				value={user.age}
-				onChange={(e) => {}}
+				onChange={(e) =>
+					setUser({ ...user, age: e.target.value })
+				}
 			/>
 			<input type="submit" value="Send my data" />
 		</form>
