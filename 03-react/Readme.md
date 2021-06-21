@@ -1148,7 +1148,7 @@ export default function App() {
 
 ### Goal
 
-- On the homepage, show a list of contributors the [2021-1-web-dev](https://github.com/Powercoders-Switzerland/2021-1-web-dev) repo.
+- On the homepage, show a list of contributors to the [2021-1-web-dev](https://github.com/Powercoders-Switzerland/2021-1-web-dev) repo.
 - On route `/participant/:name`, show information about a single participant with GitHub username `:name`.
 
 ### Details

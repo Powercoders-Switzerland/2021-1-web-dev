@@ -1145,12 +1145,14 @@ export default function App() {
                             &lt;Link to=&quot;/user/1&quot;&gt;User 1&lt;/Link&gt;
                         &lt;/li&gt;
                         &lt;li&gt;
-                            &lt;Link to=&quot;/user/2&quot;&gt;User 1&lt;/Link&gt;
+                            &lt;Link to=&quot;/user/2&quot;&gt;User 2&lt;/Link&gt;
                         &lt;/li&gt;
                     &lt;/ul&gt;
                 &lt;/nav&gt;
                 &lt;Switch&gt;
-                    &lt;Route path=&quot;/user/:id&quot;&gt;About&lt;/Route&gt;
+                    &lt;Route path=&quot;/user/:id&quot; children={&lt;User /&gt;}&gt;
+                        About
+                    &lt;/Route&gt;
                     &lt;Route path=&quot;/&quot;&gt;Home&lt;/Route&gt;
                 &lt;/Switch&gt;
             &lt;/div&gt;
@@ -1166,7 +1168,7 @@ export default function App() {
 <section id="goal-7" class="slide level3">
 <h3>Goal</h3>
 <ul>
-<li>On the homepage, show a list of contributors the <a href="https://github.com/Powercoders-Switzerland/2021-1-web-dev">2021-1-web-dev</a> repo.</li>
+<li>On the homepage, show a list of contributors to the <a href="https://github.com/Powercoders-Switzerland/2021-1-web-dev">2021-1-web-dev</a> repo.</li>
 <li>On route <code>/participant/:name</code>, show information about a single participant with GitHub username <code>:name</code>.</li>
 </ul>
 </section>
