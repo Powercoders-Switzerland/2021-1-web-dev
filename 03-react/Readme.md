@@ -1128,12 +1128,14 @@ export default function App() {
 							<Link to="/user/1">User 1</Link>
 						</li>
 						<li>
-							<Link to="/user/2">User 1</Link>
+							<Link to="/user/2">User 2</Link>
 						</li>
 					</ul>
 				</nav>
 				<Switch>
-					<Route path="/user/:id">About</Route>
+					<Route path="/user/:id" children={<User />}>
+						About
+					</Route>
 					<Route path="/">Home</Route>
 				</Switch>
 			</div>
@@ -1148,3 +1150,11 @@ export default function App() {
 
 - On the homepage, show a list of contributors the [2021-1-web-dev](https://github.com/Powercoders-Switzerland/2021-1-web-dev) repo.
 - On route `/participant/:name`, show information about a single participant with GitHub username `:name`.
+
+### Details
+
+- Work in a folder `03-react/08-participants` in your exercises repository. You can start from the `07-animals` example and edit it (please remove the awful styles!).
+- Use the following [GitHub API](https://docs.github.com/en/rest) endpoints:
+  - [`/repos/{owner}/{repo}/contributors`](https://docs.github.com/en/rest/reference/repos#list-repository-contributors),
+  - [`users/{username}`](https://docs.github.com/en/rest/reference/users#get-a-user).
+- You do not need an API key.
