@@ -361,6 +361,7 @@ fetch(&quot;/shop/articles&quot;, {
 <li>Django has its own object-relational mapper (ORM)</li>
 <li>Requests are normally NOT bound to a transaction but immediately commited</li>
 <li>Some DB interactions may need an atomic decorator/context manager</li>
+<li>File: <code>shop/models.py</code></li>
 </ul>
 <pre class="py"><code>from django.db.models import Model
 from django.db.models import CharField
@@ -440,6 +441,7 @@ env/bin/python manage.py migrate</code></pre>
 <h2>Admin UI</h2>
 <ul>
 <li>Models can be registered and are then available at the admin UI</li>
+<li>File: <code>shop/admin.py</code></li>
 </ul>
 <pre class="py"><code>from django.contrib.admin import ModelAdmin, register
 from shop.models import Article
@@ -482,7 +484,7 @@ djangorestframework</code></pre>
 <ul>
 <li>Install</li>
 </ul>
-<pre><code>pip install djangorestframework
+<pre><code>env/bin/pip install djangorestframework
 </code></pre>
 <ul>
 <li>Enable</li>
@@ -496,6 +498,7 @@ djangorestframework</code></pre>
 <h2>View Sets</h2>
 <ul>
 <li>Viewsets are classes which provide CRUD operations for models</li>
+<li>File <code>shop/views.py</code></li>
 </ul>
 <pre class="py"><code>from shop.models import Article
 from shop.serializers import ArticleSerializer
@@ -506,33 +509,11 @@ class ArticleViewSet(ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer</code></pre>
 </section>
-<section id="actions" class="slide level2">
-<h2>Actions</h2>
-<ul>
-<li>Additional actions can be defined for on instance or all instances</li>
-</ul>
-<pre class="py"><code>from shop.models import Article
-from shop.serializers import ArticleSerializer
-from rest_framework.viewsets import ModelViewSet
-from rest_framework.decorators import action
-
-
-class ArticleViewSet(ModelViewSet):
-    queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
-
-    @action(detail=True, methods=[&#39;post&#39;])
-    def restock(self, request, pk=None):
-        pass
-
-    @action(detail=False)
-    def popular(self, request):
-        pass</code></pre>
-</section>
 <section id="serializers" class="slide level2">
 <h2>Serializers</h2>
 <ul>
 <li>Serializers define the data format of a model for requests and responses</li>
+<li>File: <code>shop/serializers.py</code></li>
 </ul>
 <pre class="py"><code>from shop.models import Article
 from rest_framework.serializers import HyperlinkedModelSerializer
@@ -548,6 +529,7 @@ class ArticleSerializer(HyperlinkedModelSerializer):
 <h2>Routing: Routers</h2>
 <ul>
 <li>Routers register all CRUD operations for viewsets</li>
+<li>File: <code>shop/urls.py</code></li>
 </ul>
 <pre class="py"><code>from shop.views import ArticleViewSet
 from rest_framework.routers import DefaultRouter
@@ -580,7 +562,7 @@ urlpatterns = router.urls</code></pre>
 <ul>
 <li>install</li>
 </ul>
-<pre><code>pip install django-filter
+<pre><code>env/bin/pip install django-filter
 </code></pre>
 <ul>
 <li>enable and configure</li>
@@ -600,6 +582,7 @@ REST_FRAMEWORK = {
 <h2>Filter Sets</h2>
 <ul>
 <li>Filter sets are classes which define filters for models</li>
+<li>File <code>shop/filters.py</code></li>
 </ul>
 <pre class="py"><code>from django_filters import FilterSet
 from shop.models import Article
@@ -614,6 +597,7 @@ class ArticleFilter(FilterSet):
 <h2>View Sets with Filters</h2>
 <ul>
 <li>Filtersets can be added to view sets</li>
+<li>File: <code>shop/views.py</code></li>
 </ul>
 <pre class="py"><code>from shop.filters import ArticleFilter
 from shop.models import Article
@@ -634,6 +618,17 @@ class ArticleViewSet(ModelViewSet):
 <li>Add a filter to your viewset for filtering by category</li>
 <li>Test the filters with the browsable API</li>
 </ul>
+</section>
+<section id="pagination" class="slide level2">
+<h2>Pagination</h2>
+<ul>
+<li>Pagination can be enabled in <code>settings.py</code></li>
+</ul>
+<pre class="py"><code>REST_FRAMEWORK = {
+    ...
+    &#39;DEFAULT_PAGINATION_CLASS&#39;: &#39;rest_framework.pagination.LimitOffsetPagination&#39;,
+    &#39;PAGE_SIZE&#39;: 5
+}</code></pre>
 </section>
 <section id="whats-next" class="slide level2">
 <h2>What’s next?</h2>

@@ -326,6 +326,7 @@ Read more: [_Using Fetch_, MDN](https://developer.mozilla.org/en-US/docs/Web/API
 - Django has its own object-relational mapper (ORM)
 - Requests are normally NOT bound to a transaction but immediately commited
 - Some DB interactions may need an atomic decorator/context manager
+- File: `shop/models.py`
 
 ```py
 from django.db.models import Model
@@ -404,6 +405,7 @@ env/bin/python manage.py migrate
 ## Admin UI
 
 - Models can be registered and are then available at the admin UI
+- File: `shop/admin.py`
 
 ```py
 from django.contrib.admin import ModelAdmin, register
@@ -447,7 +449,7 @@ djangorestframework
 - Install
 
 ```
-pip install djangorestframework
+env/bin/pip install djangorestframework
 
 ```
 
@@ -463,6 +465,7 @@ INSTALLED_APPS = [
 ## View Sets
 
 - Viewsets are classes which provide CRUD operations for models
+- File `shop/views.py`
 
 ```py
 from shop.models import Article
@@ -475,33 +478,11 @@ class ArticleViewSet(ModelViewSet):
     serializer_class = ArticleSerializer
 ```
 
-## Actions
-
-- Additional actions can be defined for on instance or all instances
-
-```py
-from shop.models import Article
-from shop.serializers import ArticleSerializer
-from rest_framework.viewsets import ModelViewSet
-from rest_framework.decorators import action
-
-
-class ArticleViewSet(ModelViewSet):
-    queryset = Article.objects.all()
-    serializer_class = ArticleSerializer
-
-	@action(detail=True, methods=['post'])
-	def restock(self, request, pk=None):
-		pass
-
-	@action(detail=False)
-	def popular(self, request):
-		pass
-```
 
 ## Serializers
 
 - Serializers define the data format of a model for requests and responses
+- File: `shop/serializers.py`
 
 ```py
 from shop.models import Article
@@ -518,6 +499,7 @@ class ArticleSerializer(HyperlinkedModelSerializer):
 ## Routing: Routers
 
 - Routers register all CRUD operations for viewsets
+- File: `shop/urls.py`
 
 ```py
 from shop.views import ArticleViewSet
@@ -550,7 +532,7 @@ https://duckduckgo.com/?t=ffab&q=query+parameters&ia=web
 - install
 
 ```
-pip install django-filter
+env/bin/pip install django-filter
 
 ```
 
@@ -572,6 +554,7 @@ REST_FRAMEWORK = {
 ## Filter Sets
 
 - Filter sets are classes which define filters for models
+- File `shop/filters.py`
 
 ```py
 from django_filters import FilterSet
@@ -587,6 +570,7 @@ class ArticleFilter(FilterSet):
 ## View Sets with Filters
 
 - Filtersets can be added to view sets
+- File: `shop/views.py`
 
 ```py
 from shop.filters import ArticleFilter
@@ -607,6 +591,20 @@ class ArticleViewSet(ModelViewSet):
 - Add categories to your model
 - Add a filter to your viewset for filtering by category
 - Test the filters with the browsable API
+
+
+## Pagination
+
+- Pagination can be enabled in `settings.py`
+
+```py
+REST_FRAMEWORK = {
+    ...
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 5
+}
+```
+
 
 ## What's next?
 
