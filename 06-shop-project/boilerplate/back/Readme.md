@@ -27,3 +27,15 @@ env/bin/python manage.py runserver
 # Windows
 env\Scripts\py manage.py runserver
 ```
+
+## How to load demo data
+
+```
+# Mac
+env/bin/python manage.py loaddata products.json
+
+# Windows
+env\Scripts\py manage.py loaddata products.json
+```
+
+This assumes a model called `Product` in the app `shop`, with the fields: `title`, `description`, `price`, `image` and `category`.
