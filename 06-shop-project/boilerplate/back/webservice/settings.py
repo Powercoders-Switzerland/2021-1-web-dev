@@ -124,6 +124,10 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR.joinpath('static')
 
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("application/javascript", ".js", True)
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
