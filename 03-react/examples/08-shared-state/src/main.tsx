@@ -34,7 +34,9 @@ export default function App() {
 			<Switch>
 				<Route
 					path="/login"
-					children={<LoginForm setUser={setUser} />}
+					children={
+						<LoginForm user={user} setUser={setUser} />
+					}
 				/>
 				<Route
 					path="/"
